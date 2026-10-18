@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label2.Text = DateTime.Now.ToString("dd/mm/yyyy");
+            label2.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void button13_Click(object sender, EventArgs e)

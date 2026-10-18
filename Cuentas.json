@@ -1,0 +1,76 @@
+﻿{
+	"catalogo_cuentas": {
+		"activos": {
+			"activos_corriente": [
+				{
+					"codigo": "1101",
+					"nombre": "caja"
+				},
+				{
+					"codigo": "1102",
+					"nombre": "Clientes"
+				},
+				{
+					"codigo": "1103",
+					"nombre": "Inventario"
+				}
+			],
+			"activo_no_corriente": [
+				{
+					"codigo": "1201",
+					"nombre": "Mobiliario y equipo de oficina"
+				},
+				{
+					"codigo": "1202",
+					"nombre": "muebles y enseres"
+				},
+				{
+					"codigo": "1203",
+					"nombre": "equipo de transporte"
+				}
+			]
+		},
+		"pasivos": {
+			"pasivo_a_corto_plazo": [
+				{
+					"codigo": "2101",
+					"nombre": "anticipo de clientes"
+				},
+				{
+					"codigo": "2102",
+					"nombre": "Acreedores"
+				}
+			]
+		},
+		"patrimonio_capital": {
+			"cuentas_capital": [
+				{
+					"codigo": "3101",
+					"nombre": "capital inicial"
+				},
+				{
+					"codigo": "3102",
+					"nombre": "Utilidades del ejercicio"
+				}
+			]
+		},
+		"estado_de_resultado": {
+			"ingresos": [
+				{
+					"codigo": "4101",
+					"nombre": "Ventas o ingresos por servicios"
+				}
+			],
+			"gastos": [
+				{
+					"codigo": "5101",
+					"nombre": "Gastos de ventas"
+				},
+				{
+					"codigo": "5102",
+					"nombre": "Gastos de Administracion"
+				}
+			]
+		}
+	}
+}
