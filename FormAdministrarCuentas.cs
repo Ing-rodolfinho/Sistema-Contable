@@ -15,6 +15,10 @@ namespace WindowsFormsApp1
         private const string NaturalezaCredito = "credito";
         private const string EtiquetaDebito = "Débito";
         private const string EtiquetaCredito = "Crédito";
+        private const string EstadoActivo = "activo";
+        private const string EstadoInactivo = "inactivo";
+        private const string EtiquetaActivo = "Activa";
+        private const string EtiquetaInactivo = "Inactiva";
 
         private readonly string rutaCuentas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cuentas.json");
         private readonly string rutaCuentasProyecto = Path.GetFullPath(
@@ -35,6 +39,7 @@ namespace WindowsFormsApp1
             public string Nombre;
             public string Naturaleza;
             public decimal Saldo;
+            public string Estado;
         }
 
         public FormAdministrarCuentas()
@@ -45,6 +50,9 @@ namespace WindowsFormsApp1
         private void FormAdministrarCuentas_Load(object sender, EventArgs e)
         {
             CargarCuentas();
+            CargarEstados();
+            if (cboEstado != null && cboEstado.Text.Trim().Length == 0)
+                cboEstado.Text = EtiquetaActivo;
         }
 
         private void CargarCuentas()
@@ -71,6 +79,7 @@ namespace WindowsFormsApp1
                 ActualizarComboTipos(null);
                 ActualizarComboGrupos(null, null);
                 CargarNaturalezas();
+                CargarEstados();
                 NormalizarCuentas();
                 ConstruirArbol();
                 LimpiarCampos();
@@ -163,6 +172,17 @@ namespace WindowsFormsApp1
             return texto == NaturalezaCredito ? NaturalezaCredito : NaturalezaDebito;
         }
 
+        private static string LeerEstado(JsonNode cuenta)
+        {
+            if (!(cuenta?["estado"] is JsonValue valor)) return EstadoActivo;
+            if (!valor.TryGetValue(out string texto)) return EstadoActivo;
+
+            texto = (texto ?? "").Trim().ToLowerInvariant();
+            if (texto.Length == 0) return EstadoActivo;
+
+            return texto == EstadoInactivo ? EstadoInactivo : EstadoActivo;
+        }
+
         private static decimal LeerSaldo(JsonNode cuenta)
         {
             if (!(cuenta?["saldo"] is JsonValue valor)) return 0m;
@@ -211,6 +231,32 @@ namespace WindowsFormsApp1
             cargando = estado;
         }
 
+        private void CargarEstados()
+        {
+            bool estado = cargando;
+            cargando = true;
+            if (cboEstado != null)
+            {
+                cboEstado.Items.Clear();
+                cboEstado.Items.Add(EtiquetaActivo);
+                cboEstado.Items.Add(EtiquetaInactivo);
+                cboEstado.Text = EtiquetaActivo;
+            }
+            cargando = estado;
+        }
+
+        private static string ClaveEstadoDesdeTexto(string texto)
+        {
+            return string.Equals((texto ?? "").Trim(), EtiquetaInactivo, StringComparison.OrdinalIgnoreCase)
+                ? EstadoInactivo
+                : EstadoActivo;
+        }
+
+        private static string EtiquetaEstado(string clave)
+        {
+            return clave == EstadoInactivo ? EtiquetaInactivo : EtiquetaActivo;
+        }
+
         private void NormalizarCuentas()
         {
             foreach (KeyValuePair<string, JsonNode> tipo in catalogo.AsObject())
@@ -230,6 +276,9 @@ namespace WindowsFormsApp1
 
                         if (cuenta["saldo"] == null)
                             cuenta["saldo"] = 0m;
+
+                        if (cuenta["estado"] == null)
+                            cuenta["estado"] = EstadoActivo;
                     }
                 }
             }
@@ -276,16 +325,19 @@ namespace WindowsFormsApp1
                                 string nombre = cta?["nombre"]?.GetValue<string>() ?? "";
                                 string naturaleza = LeerNaturaleza(cta) ?? NaturalezaSugerida(tipo.Key, grupo.Key);
                                 string etiquetaNaturaleza = EtiquetaNaturaleza(naturaleza);
+                                string estado = LeerEstado(cta);
+                                string etiquetaEstado = EtiquetaEstado(estado);
                                 bool coincide = !hayFiltro
                                     || codigo.ToLowerInvariant().Contains(filtro)
                                     || nombre.ToLowerInvariant().Contains(filtro)
                                     || etiquetaNaturaleza.ToLowerInvariant().Contains(filtro)
+                                    || etiquetaEstado.ToLowerInvariant().Contains(filtro)
                                     || NombreBonito(tipo.Key).ToLowerInvariant().Contains(filtro)
                                     || NombreBonito(grupo.Key).ToLowerInvariant().Contains(filtro);
 
                                 if (!coincide) continue;
 
-                                nodoGrupo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " (" + etiquetaNaturaleza + ")")
+                                nodoGrupo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " (" + etiquetaNaturaleza + ") - " + etiquetaEstado)
                                 {
                                     Tag = new NodoRef
                                     {
@@ -295,10 +347,12 @@ namespace WindowsFormsApp1
                                         Codigo = codigo,
                                         Nombre = nombre,
                                         Naturaleza = naturaleza,
-                                        Saldo = LeerSaldo(cta)
+                                        Saldo = LeerSaldo(cta),
+                                        Estado = estado
                                     },
                                     ToolTipText = "Cuenta " + codigo + ": " + nombre
                                         + " | Naturaleza: " + etiquetaNaturaleza
+                                        + " | Estado: " + etiquetaEstado
                                 });
                                 grupoTieneVisible = true;
                             }
@@ -335,6 +389,7 @@ namespace WindowsFormsApp1
                     txtCodigo.Text = cuentaSeleccionada.Codigo;
                     txtNombre.Text = cuentaSeleccionada.Nombre;
                     AplicarNaturalezaSeleccionada(cuentaSeleccionada.Naturaleza);
+                    AplicarEstadoSeleccionado(cuentaSeleccionada.Estado ?? EstadoActivo);
                     numSaldo.Value = LimitarSaldo(cuentaSeleccionada.Saldo);
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
                     lblMensaje.Text = "Cuenta consultada: " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre;
@@ -349,6 +404,7 @@ namespace WindowsFormsApp1
                     txtNombre.Clear();
                     LimpiarNaturalezaYSaldo();
                     AplicarNaturalezaSugerida();
+                    AplicarEstadoDefecto();
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
                     lblMensaje.Text = "Grupo seleccionado. Complete los datos para agregar una cuenta aquí.";
                     btnModificar.Enabled = false;
@@ -362,6 +418,7 @@ namespace WindowsFormsApp1
                     txtNombre.Clear();
                     LimpiarNaturalezaYSaldo();
                     AplicarNaturalezaSugerida();
+                    AplicarEstadoDefecto();
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo);
                     lblMensaje.Text = "Tipo seleccionado. Elija o escriba un grupo para agregar una cuenta.";
                     btnModificar.Enabled = false;
@@ -422,6 +479,25 @@ namespace WindowsFormsApp1
             naturalezaManual = false;
         }
 
+        private void AplicarEstadoSeleccionado(string estadoCuenta)
+        {
+            string clave = string.IsNullOrEmpty(estadoCuenta) ? EstadoActivo : estadoCuenta;
+            bool estado = cargando;
+            cargando = true;
+            if (cboEstado != null)
+                cboEstado.Text = EtiquetaEstado(clave);
+            cargando = estado;
+        }
+
+        private void AplicarEstadoDefecto()
+        {
+            bool estado = cargando;
+            cargando = true;
+            if (cboEstado != null)
+                cboEstado.Text = EtiquetaActivo;
+            cargando = estado;
+        }
+
         private void LimpiarNaturalezaYSaldo()
         {
             bool estado = cargando;
@@ -445,9 +521,9 @@ namespace WindowsFormsApp1
         }
 
         private bool ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-            out string nombre, out string naturaleza, out decimal saldo)
+            out string nombre, out string naturaleza, out string estado, out decimal saldo)
         {
-            claveTipo = claveGrupo = codigo = nombre = naturaleza = "";
+            claveTipo = claveGrupo = codigo = nombre = naturaleza = estado = EstadoActivo;
             saldo = 0m;
 
             if (cboTipo.Text.Trim().Length == 0)
@@ -495,9 +571,14 @@ namespace WindowsFormsApp1
                 cboNaturaleza.Focus();
                 return false;
             }
+            if (cboEstado != null && cboEstado.Text.Trim().Length == 0)
+            {
+                cboEstado.Text = EtiquetaActivo;
+            }
 
             naturaleza = ClaveNaturalezaDesdeTexto(cboNaturaleza.Text);
             saldo = LimitarSaldo(numSaldo.Value);
+            estado = cboEstado != null ? ClaveEstadoDesdeTexto(cboEstado.Text) : EstadoActivo;
 
             claveTipo = ClaveDesdeTexto(cboTipo.Text, catalogo.AsObject().Select(kv => kv.Key));
             claveGrupo = ClaveDesdeTexto(cboGrupo.Text,
@@ -587,7 +668,7 @@ namespace WindowsFormsApp1
             try
             {
                 if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-                    out string nombre, out string naturaleza, out decimal saldo))
+                    out string nombre, out string naturaleza, out string estado, out decimal saldo))
                     return;
 
                 if (ExisteCodigo(codigo, claveTipo, claveGrupo, null))
@@ -602,7 +683,8 @@ namespace WindowsFormsApp1
                     ["codigo"] = codigo,
                     ["nombre"] = nombre,
                     ["naturaleza"] = naturaleza,
-                    ["saldo"] = saldo
+                    ["saldo"] = saldo,
+                    ["estado"] = estado
                 });
 
                 hayCambiosPendientes = true;
@@ -629,7 +711,7 @@ namespace WindowsFormsApp1
                     return;
                 }
                 if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-                    out string nombre, out string naturaleza, out decimal saldo))
+                    out string nombre, out string naturaleza, out string estado, out decimal saldo))
                     return;
 
                 string codigoAntiguo = cuentaSeleccionada.Codigo;
@@ -653,6 +735,7 @@ namespace WindowsFormsApp1
                     cuentaVieja["nombre"] = nombre;
                     cuentaVieja["naturaleza"] = naturaleza;
                     cuentaVieja["saldo"] = saldo;
+                    cuentaVieja["estado"] = estado;
                 }
                 else
                 {
@@ -662,7 +745,8 @@ namespace WindowsFormsApp1
                         ["codigo"] = codigo,
                         ["nombre"] = nombre,
                         ["naturaleza"] = naturaleza,
-                        ["saldo"] = saldo
+                        ["saldo"] = saldo,
+                        ["estado"] = estado
                     });
                 }
 
@@ -795,6 +879,7 @@ namespace WindowsFormsApp1
             cboTipo.Text = "";
             cboGrupo.Text = "";
             cboNaturaleza.Text = "";
+            if (cboEstado != null) cboEstado.Text = EtiquetaActivo;
             cargando = estado;
             txtCodigo.Clear();
             txtNombre.Clear();

@@ -1,16 +1,38 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : FormBase
     {
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+        private const int WM_SETREDRAW = 0x0B;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void SuspendTree(Control control)
+        {
+            if (control == null) return;
+            control.SuspendLayout();
+            foreach (Control child in control.Controls)
+                SuspendTree(child);
+        }
+
+        private void ResumeTree(Control control)
+        {
+            if (control == null) return;
+            foreach (Control child in control.Controls)
+                ResumeTree(child);
+            control.ResumeLayout(true);
         }
 
         private Button botonActivo;
@@ -52,25 +74,54 @@ namespace WindowsFormsApp1
 
         private void CambiarFormularioHijo(Form formularioHijo)
         {
+            if (panelContenedor == null || panelContenedor.IsDisposed) return;
+
+            SendMessage(Handle, WM_SETREDRAW, 0, 0);
+            SendMessage(panelContenedor.Handle, WM_SETREDRAW, 0, 0);
+
+            SuspendLayout();
+            panelContenedor.SuspendLayout();
+            SuspendTree(panelContenedor);
+            SuspendTree(this);
+
+            formularioHijo.SuspendLayout();
+            SuspendTree(formularioHijo);
+
             if (formularioActivo != null && !formularioActivo.IsDisposed)
             {
+                panelContenedor.Controls.Remove(formularioActivo);
                 formularioActivo.Close();
-
-                if (!formularioActivo.IsDisposed)
-                {
-                    formularioHijo.Dispose();
-                    return;
-                }
+                formularioActivo.Dispose();
             }
 
             formularioActivo = formularioHijo;
             formularioHijo.TopLevel = false;
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
+            formularioHijo.Visible = false;
+            formularioHijo.Anchor = AnchorStyles.None;
+
+            panelContenedor.Controls.Clear();
             panelContenedor.Controls.Add(formularioHijo);
-            panelContenedor.Tag = formularioHijo;
-            formularioHijo.BringToFront();
-            formularioHijo.Show();
+
+            formularioHijo.Visible = true;
+
+            ResumeTree(formularioHijo);
+            formularioHijo.ResumeLayout(true);
+
+            ResumeTree(panelContenedor);
+            panelContenedor.ResumeLayout(true);
+
+            ResumeTree(this);
+            ResumeLayout(true);
+
+            SendMessage(panelContenedor.Handle, WM_SETREDRAW, 1, 0);
+            SendMessage(Handle, WM_SETREDRAW, 1, 0);
+
+            panelContenedor.Invalidate(true);
+            Invalidate(true);
+            panelContenedor.Update();
+            Update();
         }
 
         private void EstablecerBotonActivo(Button boton)

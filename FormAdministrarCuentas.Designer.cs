@@ -53,6 +53,8 @@
             this.cboNaturaleza = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.numSaldo = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.cboEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.flpBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
             this.btnModificar = new Guna.UI2.WinForms.Guna2Button();
@@ -81,12 +83,12 @@
             this.tlpFondo.Controls.Add(this.tlpPrincipal, 0, 1);
             this.tlpFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
-            this.tlpFondo.Margin = new System.Windows.Forms.Padding(4);
+            this.tlpFondo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 2;
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFondo.Size = new System.Drawing.Size(1447, 860);
+            this.tlpFondo.Size = new System.Drawing.Size(1447, 846);
             this.tlpFondo.TabIndex = 0;
             // 
             // lblTitulo
@@ -115,7 +117,7 @@
             this.tlpPrincipal.Name = "tlpPrincipal";
             this.tlpPrincipal.RowCount = 1;
             this.tlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPrincipal.Size = new System.Drawing.Size(1407, 763);
+            this.tlpPrincipal.Size = new System.Drawing.Size(1407, 749);
             this.tlpPrincipal.TabIndex = 1;
             // 
             // panelArbol
@@ -129,7 +131,7 @@
             this.panelArbol.Name = "panelArbol";
             this.panelArbol.Radius = 20;
             this.panelArbol.ShadowColor = System.Drawing.Color.Black;
-            this.panelArbol.Size = new System.Drawing.Size(769, 755);
+            this.panelArbol.Size = new System.Drawing.Size(769, 741);
             this.panelArbol.TabIndex = 0;
             // 
             // tlpArbol
@@ -141,14 +143,14 @@
             this.tlpArbol.Controls.Add(this.treeCuentas, 0, 2);
             this.tlpArbol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpArbol.Location = new System.Drawing.Point(0, 0);
-            this.tlpArbol.Margin = new System.Windows.Forms.Padding(4);
+            this.tlpArbol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlpArbol.Name = "tlpArbol";
             this.tlpArbol.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
             this.tlpArbol.RowCount = 3;
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpArbol.Size = new System.Drawing.Size(769, 755);
+            this.tlpArbol.Size = new System.Drawing.Size(769, 741);
             this.tlpArbol.TabIndex = 0;
             this.tlpArbol.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpArbol_Paint);
             // 
@@ -201,7 +203,7 @@
             this.txtBuscar.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtBuscar.Location = new System.Drawing.Point(83, 4);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(642, 26);
             this.txtBuscar.TabIndex = 1;
@@ -220,10 +222,10 @@
             this.treeCuentas.ItemHeight = 24;
             this.treeCuentas.LineColor = System.Drawing.Color.Sienna;
             this.treeCuentas.Location = new System.Drawing.Point(24, 108);
-            this.treeCuentas.Margin = new System.Windows.Forms.Padding(4);
+            this.treeCuentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeCuentas.Name = "treeCuentas";
             this.treeCuentas.ShowNodeToolTips = true;
-            this.treeCuentas.Size = new System.Drawing.Size(721, 628);
+            this.treeCuentas.Size = new System.Drawing.Size(721, 614);
             this.treeCuentas.TabIndex = 2;
             this.treeCuentas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCuentas_AfterSelect);
             // 
@@ -238,7 +240,7 @@
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Radius = 20;
             this.panelDetalle.ShadowColor = System.Drawing.Color.Black;
-            this.panelDetalle.Size = new System.Drawing.Size(604, 755);
+            this.panelDetalle.Size = new System.Drawing.Size(604, 741);
             this.panelDetalle.TabIndex = 1;
             // 
             // tlpDetalle
@@ -259,15 +261,18 @@
             this.tlpDetalle.Controls.Add(this.cboNaturaleza, 1, 6);
             this.tlpDetalle.Controls.Add(this.lblSaldo, 0, 7);
             this.tlpDetalle.Controls.Add(this.numSaldo, 1, 7);
-            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 8);
-            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 9);
+            this.tlpDetalle.Controls.Add(this.lblEstado, 0, 8);
+            this.tlpDetalle.Controls.Add(this.cboEstado, 1, 8);
+            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 9);
+            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 10);
             this.tlpDetalle.Controls.Add(this.lblDetalleTitulo, 1, 0);
             this.tlpDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDetalle.Location = new System.Drawing.Point(0, 0);
-            this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4);
+            this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlpDetalle.Name = "tlpDetalle";
             this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
-            this.tlpDetalle.RowCount = 11;
+            this.tlpDetalle.RowCount = 12;
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -279,7 +284,7 @@
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDetalle.Size = new System.Drawing.Size(604, 755);
+            this.tlpDetalle.Size = new System.Drawing.Size(604, 741);
             this.tlpDetalle.TabIndex = 0;
             // 
             // lblRuta
@@ -324,7 +329,7 @@
             this.cboTipo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboTipo.ItemHeight = 30;
             this.cboTipo.Location = new System.Drawing.Point(144, 99);
-            this.cboTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.cboTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(436, 36);
             this.cboTipo.TabIndex = 3;
@@ -357,7 +362,7 @@
             this.cboGrupo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboGrupo.ItemHeight = 30;
             this.cboGrupo.Location = new System.Drawing.Point(144, 143);
-            this.cboGrupo.Margin = new System.Windows.Forms.Padding(4);
+            this.cboGrupo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboGrupo.Name = "cboGrupo";
             this.cboGrupo.Size = new System.Drawing.Size(436, 36);
             this.cboGrupo.TabIndex = 5;
@@ -384,7 +389,7 @@
             this.txtCodigo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtCodigo.Location = new System.Drawing.Point(144, 187);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(436, 26);
@@ -411,7 +416,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtNombre.Location = new System.Drawing.Point(144, 221);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.MaxLength = 80;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(436, 26);
@@ -444,7 +449,7 @@
             this.cboNaturaleza.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboNaturaleza.ItemHeight = 30;
             this.cboNaturaleza.Location = new System.Drawing.Point(144, 255);
-            this.cboNaturaleza.Margin = new System.Windows.Forms.Padding(4);
+            this.cboNaturaleza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboNaturaleza.Name = "cboNaturaleza";
             this.cboNaturaleza.Size = new System.Drawing.Size(436, 36);
             this.cboNaturaleza.TabIndex = 11;
@@ -459,7 +464,7 @@
             this.lblSaldo.Location = new System.Drawing.Point(24, 299);
             this.lblSaldo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(103, 29);
+            this.lblSaldo.Size = new System.Drawing.Size(103, 32);
             this.lblSaldo.TabIndex = 12;
             this.lblSaldo.Text = "Saldo:";
             this.lblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -473,8 +478,8 @@
             this.numSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numSaldo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSaldo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.numSaldo.Location = new System.Drawing.Point(144, 299);
-            this.numSaldo.Margin = new System.Windows.Forms.Padding(4);
+            this.numSaldo.Location = new System.Drawing.Point(144, 300);
+            this.numSaldo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numSaldo.Maximum = new decimal(new int[] {
             1215752191,
             23,
@@ -486,9 +491,41 @@
             0,
             -2147352576});
             this.numSaldo.Name = "numSaldo";
-            this.numSaldo.Size = new System.Drawing.Size(436, 29);
+            this.numSaldo.Size = new System.Drawing.Size(436, 30);
             this.numSaldo.TabIndex = 13;
             this.numSaldo.ThousandsSeparator = true;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEstado.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.Color.Sienna;
+            this.lblEstado.Location = new System.Drawing.Point(24, 339);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(103, 36);
+            this.lblEstado.TabIndex = 14;
+            this.lblEstado.Text = "Estado:";
+            this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cboEstado
+            // 
+            this.cboEstado.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstado.BorderColor = System.Drawing.Color.Tan;
+            this.cboEstado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.FocusedColor = System.Drawing.Color.Sienna;
+            this.cboEstado.FocusedState.BorderColor = System.Drawing.Color.Sienna;
+            this.cboEstado.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstado.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.cboEstado.ItemHeight = 30;
+            this.cboEstado.Location = new System.Drawing.Point(144, 339);
+            this.cboEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.Size = new System.Drawing.Size(436, 36);
+            this.cboEstado.TabIndex = 15;
             // 
             // flpBotones
             // 
@@ -500,11 +537,11 @@
             this.flpBotones.Controls.Add(this.btnLimpiar);
             this.flpBotones.Controls.Add(this.btnGuardarCambios);
             this.flpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpBotones.Location = new System.Drawing.Point(20, 342);
+            this.flpBotones.Location = new System.Drawing.Point(20, 389);
             this.flpBotones.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.flpBotones.Name = "flpBotones";
             this.flpBotones.Size = new System.Drawing.Size(564, 114);
-            this.flpBotones.TabIndex = 14;
+            this.flpBotones.TabIndex = 16;
             // 
             // btnAgregar
             // 
@@ -519,7 +556,7 @@
             this.btnAgregar.Image = global::WindowsFormsApp1.Properties.Resources.other_admission_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnAgregar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnAgregar.Location = new System.Drawing.Point(4, 4);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(133, 49);
             this.btnAgregar.TabIndex = 0;
@@ -539,7 +576,7 @@
             this.btnModificar.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnModificar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnModificar.Location = new System.Drawing.Point(145, 4);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(147, 49);
             this.btnModificar.TabIndex = 1;
@@ -559,7 +596,7 @@
             this.btnEliminar.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnEliminar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnEliminar.Location = new System.Drawing.Point(300, 4);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(139, 49);
             this.btnEliminar.TabIndex = 2;
@@ -578,7 +615,7 @@
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.Sienna;
             this.btnLimpiar.Location = new System.Drawing.Point(4, 61);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(125, 49);
             this.btnLimpiar.TabIndex = 3;
@@ -598,7 +635,7 @@
             this.btnGuardarCambios.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnGuardarCambios.ImageSize = new System.Drawing.Size(22, 22);
             this.btnGuardarCambios.Location = new System.Drawing.Point(137, 61);
-            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
             this.btnGuardarCambios.Size = new System.Drawing.Size(180, 49);
             this.btnGuardarCambios.TabIndex = 4;
@@ -612,11 +649,11 @@
             this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMensaje.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
-            this.lblMensaje.Location = new System.Drawing.Point(24, 466);
+            this.lblMensaje.Location = new System.Drawing.Point(24, 513);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(556, 20);
-            this.lblMensaje.TabIndex = 15;
+            this.lblMensaje.TabIndex = 17;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDetalleTitulo
@@ -637,9 +674,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1447, 860);
+            this.ClientSize = new System.Drawing.Size(1447, 846);
             this.Controls.Add(this.tlpFondo);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormAdministrarCuentas";
             this.Text = "Administrar Cuentas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAdministrarCuentas_FormClosing);
@@ -689,6 +726,8 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboNaturaleza;
         private System.Windows.Forms.Label lblSaldo;
         private Guna.UI2.WinForms.Guna2NumericUpDown numSaldo;
+        private System.Windows.Forms.Label lblEstado;
+        private Guna.UI2.WinForms.Guna2ComboBox cboEstado;
         private System.Windows.Forms.FlowLayoutPanel flpBotones;
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
         private Guna.UI2.WinForms.Guna2Button btnModificar;
