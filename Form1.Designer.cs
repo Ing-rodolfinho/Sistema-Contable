@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2Separator12 = new Guna.UI2.WinForms.Guna2Separator();
@@ -50,7 +49,6 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -332,25 +330,6 @@
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "home_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(1, "account_balance_24dp_000000_FILL0_wght400_GRAD0_opsz24 (1).png");
-            this.imageList1.Images.SetKeyName(2, "edit_note_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(3, "menu_book_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(4, "balance_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(5, "update_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(6, "manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(7, "import_contacts_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(8, "monitoring_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(9, "login_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(10, "save_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(11, "text_compare_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(12, "balance_24dp_000000_FILL0_wght400_GRAD0_opsz24.png");
-            this.imageList1.Images.SetKeyName(13, "home_20dp_7A2917_FILL0_wght400_GRAD0_opsz24.png");
-            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.LightPink;
@@ -362,8 +341,7 @@
             this.button6.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.ImageIndex = 0;
-            this.button6.ImageList = this.imageList1;
+            this.button6.Image = global::WindowsFormsApp1.Properties.Resources.home_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button6.Location = new System.Drawing.Point(0, 0);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
@@ -387,8 +365,7 @@
             this.button1.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.ImageIndex = 1;
-            this.button1.ImageList = this.imageList1;
+            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.assignment_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button1.Location = new System.Drawing.Point(0, 48);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
@@ -412,8 +389,7 @@
             this.button11.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.ImageIndex = 10;
-            this.button11.ImageList = this.imageList1;
+            this.button11.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button11.Location = new System.Drawing.Point(0, 480);
             this.button11.Margin = new System.Windows.Forms.Padding(0);
             this.button11.Name = "button11";
@@ -437,8 +413,7 @@
             this.button4.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.ImageIndex = 5;
-            this.button4.ImageList = this.imageList1;
+            this.button4.Image = global::WindowsFormsApp1.Properties.Resources.manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button4.Location = new System.Drawing.Point(0, 432);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
@@ -462,8 +437,7 @@
             this.button2.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.ImageIndex = 6;
-            this.button2.ImageList = this.imageList1;
+            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.format_line_spacing_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button2.Location = new System.Drawing.Point(0, 144);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
@@ -487,8 +461,7 @@
             this.button10.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.ImageIndex = 12;
-            this.button10.ImageList = this.imageList1;
+            this.button10.Image = global::WindowsFormsApp1.Properties.Resources.balance_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button10.Location = new System.Drawing.Point(0, 384);
             this.button10.Margin = new System.Windows.Forms.Padding(0);
             this.button10.Name = "button10";
@@ -512,8 +485,7 @@
             this.button3.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.ImageIndex = 7;
-            this.button3.ImageList = this.imageList1;
+            this.button3.Image = global::WindowsFormsApp1.Properties.Resources.menu_book_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button3.Location = new System.Drawing.Point(0, 192);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
@@ -537,8 +509,7 @@
             this.button9.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.ImageIndex = 8;
-            this.button9.ImageList = this.imageList1;
+            this.button9.Image = global::WindowsFormsApp1.Properties.Resources.fact_check_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button9.Location = new System.Drawing.Point(0, 336);
             this.button9.Margin = new System.Windows.Forms.Padding(0);
             this.button9.Name = "button9";
@@ -562,8 +533,7 @@
             this.button8.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.ImageIndex = 3;
-            this.button8.ImageList = this.imageList1;
+            this.button8.Image = global::WindowsFormsApp1.Properties.Resources.import_contacts_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button8.Location = new System.Drawing.Point(0, 240);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
@@ -587,8 +557,7 @@
             this.button7.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.ImageIndex = 11;
-            this.button7.ImageList = this.imageList1;
+            this.button7.Image = global::WindowsFormsApp1.Properties.Resources.equal_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button7.Location = new System.Drawing.Point(0, 288);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
@@ -612,8 +581,7 @@
             this.button5.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.ImageIndex = 2;
-            this.button5.ImageList = this.imageList1;
+            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.button5.Location = new System.Drawing.Point(0, 96);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
@@ -670,7 +638,9 @@
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MinimumSize = new System.Drawing.Size(1024, 640);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Sistema Contable Empresarial";
@@ -723,6 +693,5 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator5;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator4;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator3;
-        private System.Windows.Forms.ImageList imageList1;
     }
 }

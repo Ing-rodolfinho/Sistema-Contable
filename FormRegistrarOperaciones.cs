@@ -29,7 +29,6 @@ namespace WindowsFormsApp1
         private readonly List<CuentaItem> cuentas = new List<CuentaItem>();
         private JsonObject raizOperaciones;
         private JsonArray asientos;
-        private JsonObject raizCuentas;
 
         private class CuentaItem
         {
@@ -153,11 +152,24 @@ namespace WindowsFormsApp1
             return texto;
         }
 
+        private string RutaOperacionesActual
+        {
+            get { return ResolverRuta(rutaOperaciones, rutaOperacionesProyecto); }
+        }
+
+        private string RutaCuentasActual
+        {
+            get { return ResolverRuta(rutaCuentas, rutaCuentasProyecto); }
+        }
+
         private void CargarCuentas()
         {
             try
             {
-                string ruta = ResolverRuta(rutaCuentas, rutaCuentasProyecto);
+                JsonObject raizCuentas = null;
+                cuentas.Clear();
+
+                string ruta = RutaCuentasActual;
                 if (!File.Exists(ruta))
                 {
                     MessageBox.Show("No se encontró el archivo Cuentas.json.", "Error",
@@ -223,7 +235,10 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string ruta = ResolverRuta(rutaOperaciones, rutaOperacionesProyecto);
+                raizOperaciones = null;
+                asientos = null;
+
+                string ruta = RutaOperacionesActual;
 
                 if (File.Exists(ruta))
                     raizOperaciones = JsonNode.Parse(File.ReadAllText(ruta)) as JsonObject;
@@ -250,22 +265,14 @@ namespace WindowsFormsApp1
 
         private void GuardarOperaciones()
         {
+            if (raizOperaciones == null) throw new InvalidOperationException("No hay operaciones para guardar.");
+
             var opciones = new JsonSerializerOptions { WriteIndented = true };
             string contenido = raizOperaciones.ToJsonString(opciones);
+            string ruta = RutaOperacionesActual;
 
-            File.WriteAllText(rutaOperaciones, contenido);
-            ActualizarCopiaProyecto(contenido, rutaOperaciones, rutaOperacionesProyecto);
-        }
-
-        private void GuardarCuentas()
-        {
-            if (raizCuentas == null) return;
-
-            var opciones = new JsonSerializerOptions { WriteIndented = true };
-            string contenido = raizCuentas.ToJsonString(opciones);
-
-            File.WriteAllText(rutaCuentas, contenido);
-            ActualizarCopiaProyecto(contenido, rutaCuentas, rutaCuentasProyecto);
+            DatosContables.GuardarJsonSeguro(ruta, contenido);
+            ActualizarCopiaProyecto(contenido, ruta, rutaOperacionesProyecto);
         }
 
         private void ActualizarCopiaProyecto(string contenido, string rutaPrincipal, string rutaProyecto)
@@ -276,33 +283,11 @@ namespace WindowsFormsApp1
                 if (string.Equals(Path.GetFullPath(rutaProyecto), Path.GetFullPath(rutaPrincipal),
                     StringComparison.OrdinalIgnoreCase)) return;
 
-                File.WriteAllText(rutaProyecto, contenido);
+                DatosContables.GuardarJsonSeguro(rutaProyecto, contenido);
             }
             catch
             {
             }
-        }
-
-        private JsonObject BuscarCuentaJson(string codigo)
-        {
-            if (!(raizCuentas?["catalogo_cuentas"] is JsonObject catalogo)) return null;
-
-            foreach (KeyValuePair<string, JsonNode> tipo in catalogo)
-            {
-                if (!(tipo.Value is JsonObject grupos)) continue;
-
-                foreach (KeyValuePair<string, JsonNode> grupo in grupos)
-                {
-                    if (!(grupo.Value is JsonArray lista)) continue;
-
-                    foreach (JsonNode nodo in lista)
-                    {
-                        if (nodo is JsonObject cuenta && LeerTexto(cuenta, "codigo") == codigo)
-                            return cuenta;
-                    }
-                }
-            }
-            return null;
         }
 
         private void RefrescarPartidas()
@@ -483,7 +468,6 @@ namespace WindowsFormsApp1
 
                 asientos.Add(nodoAsiento);
                 GuardarOperaciones();
-                ActualizarSaldosCuentas();
                 ActualizarHistorial();
 
                 lblMensaje.Text = "Asiento N° " + numero + " registrado correctamente en operaciones.json.";
@@ -523,28 +507,6 @@ namespace WindowsFormsApp1
             return maximo + 1;
         }
 
-        private void ActualizarSaldosCuentas()
-        {
-            if (raizCuentas == null) return;
-
-            foreach (Partida partida in partidas)
-            {
-                JsonObject cuenta = BuscarCuentaJson(partida.Codigo);
-                if (cuenta == null) continue;
-
-                decimal saldo = LeerDecimal(cuenta, "saldo");
-
-                if (partida.Naturaleza == NaturalezaCredito)
-                    saldo += partida.EsHaber ? partida.Importe : -partida.Importe;
-                else
-                    saldo += partida.EsHaber ? -partida.Importe : partida.Importe;
-
-                cuenta["saldo"] = saldo;
-            }
-
-            GuardarCuentas();
-        }
-
         private void ActualizarHistorial()
         {
             dgvAsientos.Rows.Clear();
@@ -578,8 +540,9 @@ namespace WindowsFormsApp1
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            CargarCuentas();
             CargarOperaciones();
-            lblMensaje.Text = "Historial actualizado desde operaciones.json.";
+            lblMensaje.Text = "Historial y catálogo actualizados desde los archivos.";
         }
 
         private void PrepararNuevoAsiento()

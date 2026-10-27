@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormConsultarCuentasT : Form
+    public partial class FormConsultarCuentasT : FormBase
     {
         private const string NaturalezaDebito = "debito";
         private const string NaturalezaCredito = "credito";
         private const string EtiquetaDebito = "Débito";
         private const string EtiquetaCredito = "Crédito";
+        private const string EtiquetaActiva = "Activa";
+        private const string EtiquetaInactiva = "Inactiva";
         private const string EtiquetaSaldoAnterior = "SALDO ANTERIOR";
 
         private readonly string rutaCuentas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cuentas.json");
@@ -47,7 +49,6 @@ namespace WindowsFormsApp1
             public string Codigo;
             public string Nombre;
             public string Naturaleza;
-            public decimal SaldoActual;
 
             public override string ToString()
             {
@@ -74,7 +75,21 @@ namespace WindowsFormsApp1
 
         private void FormConsultarCuentasT_Load(object sender, EventArgs e)
         {
+            if (dgvCuentasLista != null)
+                dgvCuentasLista.CellDoubleClick += dgvCuentasLista_CellDoubleClick;
+
             CargarDatos();
+        }
+
+        private void dgvCuentasLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvCuentasLista.Rows.Count) return;
+
+            string codigo = Convert.ToString(dgvCuentasLista.Rows[e.RowIndex].Cells[0].Value);
+            if (string.IsNullOrWhiteSpace(codigo)) return;
+
+            txtCodigoCuenta.Text = codigo;
+            ConsultarCuentaT();
         }
 
         private string ResolverRuta(string rutaPrincipal, string rutaProyecto)
@@ -191,6 +206,7 @@ namespace WindowsFormsApp1
 
                                 string nombreCuenta = LeerTexto(cuentaObj, "nombre").Trim();
                                 string etiquetaNaturaleza = naturaleza == NaturalezaCredito ? EtiquetaCredito : EtiquetaDebito;
+                                string estado = LeerTexto(cuentaObj, "estado").Trim().ToLowerInvariant();
 
                                 cuentasLista.Add(new CuentaListaItem
                                 {
@@ -199,15 +215,14 @@ namespace WindowsFormsApp1
                                     Tipo = nombreTipo,
                                     Naturaleza = etiquetaNaturaleza,
                                     NaturalezaClave = naturaleza,
-                                    Estado = "Activa"
+                                    Estado = estado == "inactivo" ? EtiquetaInactiva : EtiquetaActiva
                                 });
 
                                 cuentasMapa.Add(new CuentaItem
                                 {
                                     Codigo = codigo,
                                     Nombre = nombreCuenta,
-                                    Naturaleza = naturaleza,
-                                    SaldoActual = LeerDecimal(cuentaObj, "saldo")
+                                    Naturaleza = naturaleza
                                 });
                             }
                         }
@@ -222,6 +237,8 @@ namespace WindowsFormsApp1
                         dgvCuentasLista.Rows.Add(item.Codigo, item.Nombre, item.Tipo, item.Naturaleza, item.Estado);
                     }
                 }
+
+                ConfigurarAutocompletado();
             }
             catch (Exception ex)
             {
@@ -234,6 +251,9 @@ namespace WindowsFormsApp1
         {
             try
             {
+                raizOperaciones = null;
+                asientos = null;
+
                 string ruta = ResolverRuta(rutaOperaciones, rutaOperacionesProyecto);
                 if (!File.Exists(ruta))
                 {
@@ -246,8 +266,28 @@ namespace WindowsFormsApp1
             }
             catch
             {
+                raizOperaciones = null;
                 asientos = new JsonArray();
             }
+        }
+
+        private void ConfigurarAutocompletado()
+        {
+            if (txtCodigoCuenta == null) return;
+
+            var origen = new AutoCompleteStringCollection();
+            foreach (CuentaListaItem item in cuentasLista.OrderBy(c => c.Codigo))
+            {
+                origen.Add(item.Codigo);
+
+                string texto = item.Codigo + " - " + item.Nombre;
+                if (origen.Contains(texto)) continue;
+                origen.Add(texto);
+            }
+
+            txtCodigoCuenta.AutoCompleteCustomSource = origen;
+            txtCodigoCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void EstablecerRangoFechas()
@@ -297,13 +337,18 @@ namespace WindowsFormsApp1
 
         private void LimpiarConsulta()
         {
+            LimpiarResultados();
+            if (txtCodigoCuenta != null) txtCodigoCuenta.Text = string.Empty;
+        }
+
+        private void LimpiarResultados()
+        {
             if (dgvDebe != null) dgvDebe.Rows.Clear();
             if (dgvHaber != null) dgvHaber.Rows.Clear();
             if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: $ 0.00";
             if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: $ 0.00";
             if (lblResultado != null) lblResultado.Text = "SALDO FINAL: $ 0.00";
             if (lblCuentaTitulo != null) lblCuentaTitulo.Text = "Cuenta T";
-            if (txtCodigoCuenta != null) txtCodigoCuenta.Text = string.Empty;
         }
 
         private void dtpFiltro_ValueChanged(object sender, EventArgs e)
@@ -374,16 +419,20 @@ namespace WindowsFormsApp1
             string codigoIngresado = txtCodigoCuenta != null ? txtCodigoCuenta.Text.Trim() : string.Empty;
             if (string.IsNullOrEmpty(codigoIngresado))
             {
-                LimpiarConsulta();
+                LimpiarResultados();
                 if (lblMensaje != null)
                     lblMensaje.Text = "Ingrese el código de la cuenta en el apartado Cuenta T.";
                 return;
             }
 
+            // Si el usuario eligió una sugerencia "código - nombre", se toma solo el código.
+            int separador = codigoIngresado.IndexOf(" - ", StringComparison.Ordinal);
+            if (separador > 0) codigoIngresado = codigoIngresado.Substring(0, separador).Trim();
+
             CuentaItem cuentaSeleccionada = cuentasMapa.FirstOrDefault(c => string.Equals(c.Codigo, codigoIngresado, StringComparison.OrdinalIgnoreCase));
             if (cuentaSeleccionada == null)
             {
-                LimpiarConsulta();
+                LimpiarResultados();
                 if (lblMensaje != null)
                     lblMensaje.Text = "No se encontró una cuenta con el código " + codigoIngresado + ".";
                 return;
@@ -402,9 +451,7 @@ namespace WindowsFormsApp1
             {
                 List<MovimientoCuentaT> todos = ObtenerMovimientos(cuentaSeleccionada.Codigo);
 
-                decimal saldoActualDeudor = cuentaSeleccionada.Naturaleza == NaturalezaCredito
-                    ? -cuentaSeleccionada.SaldoActual
-                    : cuentaSeleccionada.SaldoActual;
+                decimal saldoActualDeudor = todos.Sum(m => m.Debe - m.Haber);
 
                 decimal efectoEnRango = 0m;
                 foreach (MovimientoCuentaT mov in todos)

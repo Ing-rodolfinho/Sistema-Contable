@@ -155,23 +155,23 @@
             this.tcOperaciones.SelectedIndex = 0;
             this.tcOperaciones.Size = new System.Drawing.Size(1049, 617);
             this.tcOperaciones.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.tcOperaciones.TabButtonHoverState.FillColor = System.Drawing.Color.Tan;
             this.tcOperaciones.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.tcOperaciones.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.tcOperaciones.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.tcOperaciones.TabButtonHoverState.InnerColor = System.Drawing.Color.Tan;
             this.tcOperaciones.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.tcOperaciones.TabButtonIdleState.FillColor = System.Drawing.Color.LavenderBlush;
             this.tcOperaciones.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.tcOperaciones.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
-            this.tcOperaciones.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.tcOperaciones.TabButtonIdleState.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.tcOperaciones.TabButtonIdleState.InnerColor = System.Drawing.Color.LavenderBlush;
             this.tcOperaciones.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
+            this.tcOperaciones.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
             this.tcOperaciones.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.tcOperaciones.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
-            this.tcOperaciones.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.tcOperaciones.TabButtonSelectedState.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.tcOperaciones.TabButtonSelectedState.InnerColor = System.Drawing.Color.SaddleBrown;
             this.tcOperaciones.TabButtonSize = new System.Drawing.Size(180, 40);
             this.tcOperaciones.TabIndex = 1;
-            this.tcOperaciones.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.tcOperaciones.TabMenuBackColor = System.Drawing.Color.LavenderBlush;
             this.tcOperaciones.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // tabNuevo

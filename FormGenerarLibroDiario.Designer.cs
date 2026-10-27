@@ -81,7 +81,7 @@
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerar.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
-            this.btnGenerar.Location = new System.Drawing.Point(640, 50);
+            this.btnGenerar.Location = new System.Drawing.Point(390, 50);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(142, 29);
@@ -95,7 +95,7 @@
             this.lblHasta.AutoSize = true;
             this.lblHasta.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasta.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblHasta.Location = new System.Drawing.Point(448, 54);
+            this.lblHasta.Location = new System.Drawing.Point(200, 54);
             this.lblHasta.Name = "lblHasta";
             this.lblHasta.Size = new System.Drawing.Size(45, 18);
             this.lblHasta.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             this.dtpHasta.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(499, 50);
+            this.dtpHasta.Location = new System.Drawing.Point(249, 50);
             this.dtpHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(122, 25);
@@ -116,7 +116,7 @@
             this.lblDesde.AutoSize = true;
             this.lblDesde.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesde.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblDesde.Location = new System.Drawing.Point(284, 54);
+            this.lblDesde.Location = new System.Drawing.Point(13, 54);
             this.lblDesde.Name = "lblDesde";
             this.lblDesde.Size = new System.Drawing.Size(48, 18);
             this.lblDesde.TabIndex = 2;
@@ -126,7 +126,7 @@
             // 
             this.dtpDesde.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(337, 50);
+            this.dtpDesde.Location = new System.Drawing.Point(62, 50);
             this.dtpDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(122, 25);

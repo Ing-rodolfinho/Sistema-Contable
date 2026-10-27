@@ -51,8 +51,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNaturaleza = new System.Windows.Forms.Label();
             this.cboNaturaleza = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblSaldo = new System.Windows.Forms.Label();
-            this.numSaldo = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.flpBotones = new System.Windows.Forms.FlowLayoutPanel();
@@ -70,7 +68,6 @@
             this.tlpBuscar.SuspendLayout();
             this.panelDetalle.SuspendLayout();
             this.tlpDetalle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSaldo)).BeginInit();
             this.flpBotones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -259,20 +256,17 @@
             this.tlpDetalle.Controls.Add(this.txtNombre, 1, 5);
             this.tlpDetalle.Controls.Add(this.lblNaturaleza, 0, 6);
             this.tlpDetalle.Controls.Add(this.cboNaturaleza, 1, 6);
-            this.tlpDetalle.Controls.Add(this.lblSaldo, 0, 7);
-            this.tlpDetalle.Controls.Add(this.numSaldo, 1, 7);
-            this.tlpDetalle.Controls.Add(this.lblEstado, 0, 8);
-            this.tlpDetalle.Controls.Add(this.cboEstado, 1, 8);
-            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 9);
-            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 10);
+            this.tlpDetalle.Controls.Add(this.lblEstado, 0, 7);
+            this.tlpDetalle.Controls.Add(this.cboEstado, 1, 7);
+            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 8);
+            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 9);
             this.tlpDetalle.Controls.Add(this.lblDetalleTitulo, 1, 0);
             this.tlpDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDetalle.Location = new System.Drawing.Point(0, 0);
             this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlpDetalle.Name = "tlpDetalle";
-            this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
-            this.tlpDetalle.RowCount = 12;
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
+            this.tlpDetalle.RowCount = 11;
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -295,7 +289,7 @@
             this.lblRuta.Font = new System.Drawing.Font("Modern No. 20", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRuta.ForeColor = System.Drawing.Color.Sienna;
             this.lblRuta.Location = new System.Drawing.Point(24, 61);
-            this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 17);
+            this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
             this.lblRuta.Name = "lblRuta";
             this.lblRuta.Size = new System.Drawing.Size(556, 17);
             this.lblRuta.TabIndex = 1;
@@ -455,46 +449,6 @@
             this.cboNaturaleza.TabIndex = 11;
             this.cboNaturaleza.SelectedIndexChanged += new System.EventHandler(this.cboNaturaleza_SelectedIndexChanged);
             // 
-            // lblSaldo
-            // 
-            this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSaldo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblSaldo.Location = new System.Drawing.Point(24, 299);
-            this.lblSaldo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
-            this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(103, 32);
-            this.lblSaldo.TabIndex = 12;
-            this.lblSaldo.Text = "Saldo:";
-            this.lblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numSaldo
-            // 
-            this.numSaldo.BackColor = System.Drawing.Color.Transparent;
-            this.numSaldo.BorderColor = System.Drawing.Color.Tan;
-            this.numSaldo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.numSaldo.DecimalPlaces = 2;
-            this.numSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numSaldo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numSaldo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.numSaldo.Location = new System.Drawing.Point(144, 300);
-            this.numSaldo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numSaldo.Maximum = new decimal(new int[] {
-            1215752191,
-            23,
-            0,
-            131072});
-            this.numSaldo.Minimum = new decimal(new int[] {
-            1215752191,
-            23,
-            0,
-            -2147352576});
-            this.numSaldo.Name = "numSaldo";
-            this.numSaldo.Size = new System.Drawing.Size(436, 30);
-            this.numSaldo.TabIndex = 13;
-            this.numSaldo.ThousandsSeparator = true;
-            // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
@@ -650,7 +604,7 @@
             this.lblMensaje.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
             this.lblMensaje.Location = new System.Drawing.Point(24, 513);
-            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
+            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 2);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(556, 20);
             this.lblMensaje.TabIndex = 17;
@@ -662,7 +616,7 @@
             this.lblDetalleTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalleTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDetalleTitulo.Location = new System.Drawing.Point(144, 15);
-            this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
             this.lblDetalleTitulo.Name = "lblDetalleTitulo";
             this.lblDetalleTitulo.Size = new System.Drawing.Size(238, 31);
             this.lblDetalleTitulo.TabIndex = 0;
@@ -692,7 +646,6 @@
             this.panelDetalle.ResumeLayout(false);
             this.tlpDetalle.ResumeLayout(false);
             this.tlpDetalle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSaldo)).EndInit();
             this.flpBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -724,8 +677,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNaturaleza;
         private Guna.UI2.WinForms.Guna2ComboBox cboNaturaleza;
-        private System.Windows.Forms.Label lblSaldo;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numSaldo;
         private System.Windows.Forms.Label lblEstado;
         private Guna.UI2.WinForms.Guna2ComboBox cboEstado;
         private System.Windows.Forms.FlowLayoutPanel flpBotones;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -9,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormAdministrarCuentas : Form
+    public partial class FormAdministrarCuentas : FormBase
     {
         private const string NaturalezaDebito = "debito";
         private const string NaturalezaCredito = "credito";
@@ -38,13 +37,36 @@ namespace WindowsFormsApp1
             public string Codigo;
             public string Nombre;
             public string Naturaleza;
-            public decimal Saldo;
             public string Estado;
         }
 
         public FormAdministrarCuentas()
         {
             InitializeComponent();
+        }
+
+        private string RutaCuentasActual
+        {
+            get { return DatosContables.ResolverRuta(rutaCuentas, rutaCuentasProyecto); }
+        }
+
+        private static bool CuentaTieneMovimientos(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo)) return false;
+
+            string error;
+            List<AsientoContable> asientos = DatosContables.CargarAsientos(out error);
+            if (!string.IsNullOrEmpty(error)) return false;
+
+            foreach (AsientoContable asiento in asientos)
+            {
+                foreach (PartidaContable partida in asiento.Partidas)
+                {
+                    if (string.Equals(partida.Cuenta, codigo, StringComparison.OrdinalIgnoreCase))
+                        return true;
+                }
+            }
+            return false;
         }
 
         private void FormAdministrarCuentas_Load(object sender, EventArgs e)
@@ -59,14 +81,18 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (!File.Exists(rutaCuentas))
+                raizCatalogo = null;
+                catalogo = null;
+
+                string ruta = RutaCuentasActual;
+                if (!File.Exists(ruta))
                 {
                     MessageBox.Show("No se encontró el archivo Cuentas.json.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                raizCatalogo = JsonNode.Parse(File.ReadAllText(rutaCuentas)) as JsonObject;
+                raizCatalogo = JsonNode.Parse(File.ReadAllText(ruta)) as JsonObject;
                 catalogo = raizCatalogo?["catalogo_cuentas"] as JsonObject;
 
                 if (catalogo == null)
@@ -94,22 +120,28 @@ namespace WindowsFormsApp1
 
         private void GuardarCuentas()
         {
+            if (raizCatalogo == null) throw new InvalidOperationException("No hay datos para guardar.");
+
             var opciones = new JsonSerializerOptions { WriteIndented = true };
             string contenido = raizCatalogo.ToJsonString(opciones);
-            File.WriteAllText(rutaCuentas, contenido);
-            ActualizarCopiaProyecto(contenido);
+            string ruta = RutaCuentasActual;
+
+            DatosContables.GuardarJsonSeguro(ruta, contenido);
+            ActualizarCopiaProyecto(contenido, ruta);
         }
 
-        private void ActualizarCopiaProyecto(string contenido)
+        private void ActualizarCopiaProyecto(string contenido, string rutaGuardada)
         {
             try
             {
-                if (!File.Exists(rutaCuentasProyecto)) return;
+                if (string.Equals(rutaGuardada, rutaCuentasProyecto, StringComparison.OrdinalIgnoreCase)
+                    || !File.Exists(rutaCuentasProyecto))
+                    return;
 
                 var nodo = JsonNode.Parse(File.ReadAllText(rutaCuentasProyecto)) as JsonObject;
                 if (nodo == null || !(nodo["catalogo_cuentas"] is JsonObject)) return;
 
-                File.WriteAllText(rutaCuentasProyecto, contenido);
+                DatosContables.GuardarJsonSeguro(rutaCuentasProyecto, contenido);
             }
             catch
             {
@@ -181,18 +213,6 @@ namespace WindowsFormsApp1
             if (texto.Length == 0) return EstadoActivo;
 
             return texto == EstadoInactivo ? EstadoInactivo : EstadoActivo;
-        }
-
-        private static decimal LeerSaldo(JsonNode cuenta)
-        {
-            if (!(cuenta?["saldo"] is JsonValue valor)) return 0m;
-
-            if (valor.TryGetValue(out decimal numero)) return numero;
-            if (valor.TryGetValue(out string texto)
-                && decimal.TryParse(texto, NumberStyles.Any, CultureInfo.InvariantCulture, out numero))
-                return numero;
-
-            return 0m;
         }
 
         private void ActualizarComboTipos(string seleccion)
@@ -274,8 +294,9 @@ namespace WindowsFormsApp1
                         if (LeerNaturaleza(cuenta) == null)
                             cuenta["naturaleza"] = NaturalezaSugerida(tipo.Key, grupo.Key);
 
-                        if (cuenta["saldo"] == null)
-                            cuenta["saldo"] = 0m;
+                        // El saldo dejó de almacenarse en el catálogo: se calcula con los asientos.
+                        if (cuenta.ContainsKey("saldo"))
+                            cuenta.Remove("saldo");
 
                         if (cuenta["estado"] == null)
                             cuenta["estado"] = EstadoActivo;
@@ -347,7 +368,6 @@ namespace WindowsFormsApp1
                                         Codigo = codigo,
                                         Nombre = nombre,
                                         Naturaleza = naturaleza,
-                                        Saldo = LeerSaldo(cta),
                                         Estado = estado
                                     },
                                     ToolTipText = "Cuenta " + codigo + ": " + nombre
@@ -390,7 +410,6 @@ namespace WindowsFormsApp1
                     txtNombre.Text = cuentaSeleccionada.Nombre;
                     AplicarNaturalezaSeleccionada(cuentaSeleccionada.Naturaleza);
                     AplicarEstadoSeleccionado(cuentaSeleccionada.Estado ?? EstadoActivo);
-                    numSaldo.Value = LimitarSaldo(cuentaSeleccionada.Saldo);
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
                     lblMensaje.Text = "Cuenta consultada: " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre;
                     btnModificar.Enabled = true;
@@ -402,7 +421,7 @@ namespace WindowsFormsApp1
                     ActualizarComboGrupos(cuentaSeleccionada.Tipo, NombreBonito(cuentaSeleccionada.Grupo));
                     txtCodigo.Clear();
                     txtNombre.Clear();
-                    LimpiarNaturalezaYSaldo();
+                    LimpiarNaturaleza();
                     AplicarNaturalezaSugerida();
                     AplicarEstadoDefecto();
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
@@ -416,7 +435,7 @@ namespace WindowsFormsApp1
                     ActualizarComboGrupos(cuentaSeleccionada.Tipo, null);
                     txtCodigo.Clear();
                     txtNombre.Clear();
-                    LimpiarNaturalezaYSaldo();
+                    LimpiarNaturaleza();
                     AplicarNaturalezaSugerida();
                     AplicarEstadoDefecto();
                     lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo);
@@ -498,21 +517,13 @@ namespace WindowsFormsApp1
             cargando = estado;
         }
 
-        private void LimpiarNaturalezaYSaldo()
+        private void LimpiarNaturaleza()
         {
             bool estado = cargando;
             cargando = true;
             cboNaturaleza.Text = "";
             cargando = estado;
-            numSaldo.Value = 0m;
             naturalezaManual = false;
-        }
-
-        private decimal LimitarSaldo(decimal valor)
-        {
-            if (valor < numSaldo.Minimum) return numSaldo.Minimum;
-            if (valor > numSaldo.Maximum) return numSaldo.Maximum;
-            return valor;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -521,10 +532,9 @@ namespace WindowsFormsApp1
         }
 
         private bool ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-            out string nombre, out string naturaleza, out string estado, out decimal saldo)
+            out string nombre, out string naturaleza, out string estado)
         {
             claveTipo = claveGrupo = codigo = nombre = naturaleza = estado = EstadoActivo;
-            saldo = 0m;
 
             if (cboTipo.Text.Trim().Length == 0)
             {
@@ -577,7 +587,6 @@ namespace WindowsFormsApp1
             }
 
             naturaleza = ClaveNaturalezaDesdeTexto(cboNaturaleza.Text);
-            saldo = LimitarSaldo(numSaldo.Value);
             estado = cboEstado != null ? ClaveEstadoDesdeTexto(cboEstado.Text) : EstadoActivo;
 
             claveTipo = ClaveDesdeTexto(cboTipo.Text, catalogo.AsObject().Select(kv => kv.Key));
@@ -668,7 +677,7 @@ namespace WindowsFormsApp1
             try
             {
                 if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-                    out string nombre, out string naturaleza, out string estado, out decimal saldo))
+                    out string nombre, out string naturaleza, out string estado))
                     return;
 
                 if (ExisteCodigo(codigo, claveTipo, claveGrupo, null))
@@ -683,7 +692,6 @@ namespace WindowsFormsApp1
                     ["codigo"] = codigo,
                     ["nombre"] = nombre,
                     ["naturaleza"] = naturaleza,
-                    ["saldo"] = saldo,
                     ["estado"] = estado
                 });
 
@@ -711,10 +719,18 @@ namespace WindowsFormsApp1
                     return;
                 }
                 if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
-                    out string nombre, out string naturaleza, out string estado, out decimal saldo))
+                    out string nombre, out string naturaleza, out string estado))
                     return;
 
                 string codigoAntiguo = cuentaSeleccionada.Codigo;
+                if (!string.Equals(codigo, codigoAntiguo, StringComparison.OrdinalIgnoreCase)
+                    && CuentaTieneMovimientos(codigoAntiguo))
+                {
+                    lblMensaje.Text = "No se puede cambiar el código de la cuenta " + codigoAntiguo
+                        + " porque tiene movimientos registrados en operaciones.json. Puede cambiar el nombre, la naturaleza o el estado.";
+                    return;
+                }
+
                 if (codigo != codigoAntiguo && ExisteCodigo(codigo, claveTipo, claveGrupo, codigoAntiguo))
                 {
                     lblMensaje.Text = "Ya existe una cuenta con el código " + codigo + ".";
@@ -734,7 +750,6 @@ namespace WindowsFormsApp1
                     cuentaVieja["codigo"] = codigo;
                     cuentaVieja["nombre"] = nombre;
                     cuentaVieja["naturaleza"] = naturaleza;
-                    cuentaVieja["saldo"] = saldo;
                     cuentaVieja["estado"] = estado;
                 }
                 else
@@ -745,7 +760,6 @@ namespace WindowsFormsApp1
                         ["codigo"] = codigo,
                         ["nombre"] = nombre,
                         ["naturaleza"] = naturaleza,
-                        ["saldo"] = saldo,
                         ["estado"] = estado
                     });
                 }
@@ -771,6 +785,13 @@ namespace WindowsFormsApp1
                 if (cuentaSeleccionada == null || cuentaSeleccionada.Nivel != "cuenta")
                 {
                     lblMensaje.Text = "Seleccione la cuenta que desea eliminar.";
+                    return;
+                }
+
+                if (CuentaTieneMovimientos(cuentaSeleccionada.Codigo))
+                {
+                    lblMensaje.Text = "No se puede eliminar la cuenta " + cuentaSeleccionada.Codigo
+                        + " porque tiene movimientos registrados en operaciones.json.";
                     return;
                 }
 
@@ -883,7 +904,6 @@ namespace WindowsFormsApp1
             cargando = estado;
             txtCodigo.Clear();
             txtNombre.Clear();
-            numSaldo.Value = 0m;
             naturalezaManual = false;
             cuentaSeleccionada = null;
             btnModificar.Enabled = false;

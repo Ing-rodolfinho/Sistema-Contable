@@ -4,7 +4,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
-
 namespace WindowsFormsApp1
 {
     public partial class Form1 : FormBase
@@ -17,6 +16,27 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            panelContenedor.SizeChanged += panelContenedor_SizeChanged;
+        }
+
+        private void panelContenedor_SizeChanged(object sender, EventArgs e)
+        {
+            AjustarFormularioActivo();
+        }
+
+        private void AjustarFormularioActivo()
+        {
+            if (formularioActivo == null || formularioActivo.IsDisposed) return;
+            if (panelContenedor == null || panelContenedor.IsDisposed) return;
+
+            // Los formularios hijos (TopLevel = false) no obedecen Dock en WinForms;
+            // por eso se ajustan explícitamente al área disponible.
+            Rectangle area = new Rectangle(Point.Empty, panelContenedor.ClientSize);
+            if (formularioActivo.Bounds != area)
+            {
+                formularioActivo.Bounds = area;
+                formularioActivo.PerformLayout();
+            }
         }
 
         private void SuspendTree(Control control)
@@ -41,8 +61,16 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             guna2Button1.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            EstablecerBotonActivo(button6);
-            AbrirFormularioHijo(new FormInicio(), false);
+
+            Rectangle area = Screen.FromControl(this).WorkingArea;
+            int ancho = Math.Min(Width, area.Width - 20);
+            int alto = Math.Min(Height, area.Height - 20);
+            Size = new Size(
+                Math.Max(MinimumSize.Width, ancho),
+                Math.Max(MinimumSize.Height, alto));
+
+            if (AbrirFormularioHijo(new FormInicio(), false))
+                EstablecerBotonActivo(button6);
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -50,31 +78,47 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private bool CerrarFormularioActivo()
         {
-            if (formularioActivo == null || formularioActivo.IsDisposed) return;
+            if (formularioActivo == null || formularioActivo.IsDisposed) return true;
 
             formularioActivo.Close();
+            return formularioActivo.IsDisposed;
+        }
 
-            if (!formularioActivo.IsDisposed)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!CerrarFormularioActivo())
             {
                 e.Cancel = true;
             }
         }
 
-        private void AbrirFormularioHijo(Form formularioHijo)
+        private bool AbrirFormularioHijo(Form formularioHijo)
         {
-            AbrirFormularioHijo(formularioHijo, true);
+            return AbrirFormularioHijo(formularioHijo, true);
         }
 
-        private void AbrirFormularioHijo(Form formularioHijo, bool mostrarCarga)
+        private bool AbrirFormularioHijo(Form formularioHijo, bool mostrarCarga)
         {
-            CambiarFormularioHijo(formularioHijo);
+            if (formularioHijo == null) return false;
+
+            if (!CambiarFormularioHijo(formularioHijo))
+            {
+                formularioHijo.Dispose();
+                return false;
+            }
+
+            return true;
         }
 
-        private void CambiarFormularioHijo(Form formularioHijo)
+        private bool CambiarFormularioHijo(Form formularioHijo)
         {
-            if (panelContenedor == null || panelContenedor.IsDisposed) return;
+            if (panelContenedor == null || panelContenedor.IsDisposed) return false;
+
+            // Primero cerramos el formulario activo: si el usuario cancela
+            // (por cambios sin guardar) no se cambia de pantalla.
+            if (!CerrarFormularioActivo()) return false;
 
             SendMessage(Handle, WM_SETREDRAW, 0, 0);
             SendMessage(panelContenedor.Handle, WM_SETREDRAW, 0, 0);
@@ -87,22 +131,15 @@ namespace WindowsFormsApp1
             formularioHijo.SuspendLayout();
             SuspendTree(formularioHijo);
 
-            if (formularioActivo != null && !formularioActivo.IsDisposed)
-            {
-                panelContenedor.Controls.Remove(formularioActivo);
-                formularioActivo.Close();
-                formularioActivo.Dispose();
-            }
-
             formularioActivo = formularioHijo;
             formularioHijo.TopLevel = false;
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
             formularioHijo.Visible = false;
-            formularioHijo.Anchor = AnchorStyles.None;
 
             panelContenedor.Controls.Clear();
             panelContenedor.Controls.Add(formularioHijo);
+            AjustarFormularioActivo();
 
             formularioHijo.Visible = true;
 
@@ -122,6 +159,8 @@ namespace WindowsFormsApp1
             Invalidate(true);
             panelContenedor.Update();
             Update();
+
+            return true;
         }
 
         private void EstablecerBotonActivo(Button boton)
@@ -141,8 +180,7 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button6);
-            AbrirFormularioHijo(new FormInicio());
+            if (AbrirFormularioHijo(new FormInicio())) EstablecerBotonActivo(button6);
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -162,62 +200,52 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button1);
-            AbrirFormularioHijo(new FormAdministrarCuentas());
+            if (AbrirFormularioHijo(new FormAdministrarCuentas())) EstablecerBotonActivo(button1);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button5);
-            AbrirFormularioHijo(new FormRegistrarOperaciones());
+            if (AbrirFormularioHijo(new FormRegistrarOperaciones())) EstablecerBotonActivo(button5);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button2);
-            AbrirFormularioHijo(new FormConsultarCuentasT());
+            if (AbrirFormularioHijo(new FormConsultarCuentasT())) EstablecerBotonActivo(button2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button3);
-            AbrirFormularioHijo(new FormGenerarLibroDiario());
+            if (AbrirFormularioHijo(new FormGenerarLibroDiario())) EstablecerBotonActivo(button3);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button8);
-            AbrirFormularioHijo(new FormGenerarLibroMayor());
+            if (AbrirFormularioHijo(new FormGenerarLibroMayor())) EstablecerBotonActivo(button8);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button7);
-            AbrirFormularioHijo(new FormGenerarBalanzaDeComprobación());
+            if (AbrirFormularioHijo(new FormGenerarBalanzaDeComprobación())) EstablecerBotonActivo(button7);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button9);
-            AbrirFormularioHijo(new FormGenerarEstadosDeResultados());
+            if (AbrirFormularioHijo(new FormGenerarEstadosDeResultados())) EstablecerBotonActivo(button9);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button10);
-            AbrirFormularioHijo(new FormGenerarBalanceGeneral());
+            if (AbrirFormularioHijo(new FormGenerarBalanceGeneral())) EstablecerBotonActivo(button10);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button4);
-            AbrirFormularioHijo(new FormConsultarMovimientos());
+            if (AbrirFormularioHijo(new FormConsultarMovimientos())) EstablecerBotonActivo(button4);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            EstablecerBotonActivo(button11);
-            AbrirFormularioHijo(new FormRespaldarInformacion());
+            if (AbrirFormularioHijo(new FormRespaldarInformacion())) EstablecerBotonActivo(button11);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormGenerarLibroDiario : Form
+    public partial class FormGenerarLibroDiario : FormBase
     {
         private readonly string rutaOperaciones = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "operaciones.json");
         private readonly string rutaOperacionesProyecto = Path.GetFullPath(
@@ -138,6 +138,9 @@ namespace WindowsFormsApp1
         {
             try
             {
+                raizOperaciones = null;
+                asientos = null;
+
                 string ruta = ResolverRuta(rutaOperaciones, rutaOperacionesProyecto);
 
                 if (File.Exists(ruta))

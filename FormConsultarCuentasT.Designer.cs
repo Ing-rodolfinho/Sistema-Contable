@@ -266,7 +266,7 @@
             this.tlpCuentaT.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tlpCuentaT.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpCuentaT.Controls.Add(this.panelBusquedaCuentaT, 0, 0);
-            this.tlpCuentaT.Controls.Add(this.panelFiltrosFecha, 1, 0);
+            this.tlpCuentaT.Controls.Add(this.panelFiltrosFecha, 2, 0);
             this.tlpCuentaT.Controls.Add(this.lblCuentaTitulo, 0, 1);
             this.tlpCuentaT.Controls.Add(this.lblDebeTitulo, 0, 2);
             this.tlpCuentaT.Controls.Add(this.divisorPanel, 1, 2);
@@ -287,7 +287,6 @@
             this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpCuentaT.SetColumnSpan(this.panelBusquedaCuentaT, 2);
             this.tlpCuentaT.SetColumnSpan(this.lblCuentaTitulo, 3);
             this.tlpCuentaT.SetColumnSpan(this.lblResultado, 3);
             this.tlpCuentaT.SetRowSpan(this.divisorPanel, 4);
@@ -383,7 +382,6 @@
             this.panelFiltrosFecha.FillColor = System.Drawing.Color.White;
             this.panelFiltrosFecha.Location = new System.Drawing.Point(562, 13);
             this.panelFiltrosFecha.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
-            this.tlpCuentaT.SetColumnSpan(this.panelFiltrosFecha, 2);
             this.panelFiltrosFecha.Name = "panelFiltrosFecha";
             this.panelFiltrosFecha.Radius = 10;
             this.panelFiltrosFecha.Size = new System.Drawing.Size(576, 48);
