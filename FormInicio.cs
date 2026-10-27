@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormInicio : Form
+    public partial class FormInicio : FormBase
     {
         public FormInicio()
         {

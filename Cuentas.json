@@ -1,76 +1,182 @@
-﻿{
-	"catalogo_cuentas": {
-		"activos": {
-			"activos_corriente": [
-				{
-					"codigo": "1101",
-					"nombre": "caja"
-				},
-				{
-					"codigo": "1102",
-					"nombre": "Clientes"
-				},
-				{
-					"codigo": "1103",
-					"nombre": "Inventario"
-				}
-			],
-			"activo_no_corriente": [
-				{
-					"codigo": "1201",
-					"nombre": "Mobiliario y equipo de oficina"
-				},
-				{
-					"codigo": "1202",
-					"nombre": "muebles y enseres"
-				},
-				{
-					"codigo": "1203",
-					"nombre": "equipo de transporte"
-				}
-			]
-		},
-		"pasivos": {
-			"pasivo_a_corto_plazo": [
-				{
-					"codigo": "2101",
-					"nombre": "anticipo de clientes"
-				},
-				{
-					"codigo": "2102",
-					"nombre": "Acreedores"
-				}
-			]
-		},
-		"patrimonio_capital": {
-			"cuentas_capital": [
-				{
-					"codigo": "3101",
-					"nombre": "capital inicial"
-				},
-				{
-					"codigo": "3102",
-					"nombre": "Utilidades del ejercicio"
-				}
-			]
-		},
-		"estado_de_resultado": {
-			"ingresos": [
-				{
-					"codigo": "4101",
-					"nombre": "Ventas o ingresos por servicios"
-				}
-			],
-			"gastos": [
-				{
-					"codigo": "5101",
-					"nombre": "Gastos de ventas"
-				},
-				{
-					"codigo": "5102",
-					"nombre": "Gastos de Administracion"
-				}
-			]
-		}
-	}
+{
+  "catalogo_cuentas": {
+    "activos": {
+      "activos_corriente": [
+        {
+          "codigo": "1101",
+          "nombre": "caja",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1102",
+          "nombre": "Clientes",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1103",
+          "nombre": "Inventario",
+          "naturaleza": "debito",
+          "estado": "activo"
+        }
+      ],
+      "activo_no_corriente": [
+        {
+          "codigo": "1201",
+          "nombre": "Mobiliario y equipo de oficina",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1202",
+          "nombre": "muebles y enseres",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1203",
+          "nombre": "equipo de transporte",
+          "naturaleza": "debito",
+          "estado": "activo"
+        }
+      ],
+      "activos_intangibles": [
+        {
+          "codigo": "1301",
+          "nombre": "Patentes",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1302",
+          "nombre": "Marcas",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "1303",
+          "nombre": "Software",
+          "naturaleza": "debito",
+          "estado": "activo"
+        }
+      ]
+    },
+    "pasivos": {
+      "pasivo_a_corto_plazo": [
+        {
+          "codigo": "2101",
+          "nombre": "anticipo de clientes",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "2102",
+          "nombre": "Acreedores",
+          "naturaleza": "credito",
+          "estado": "activo"
+        }
+      ],
+      "pasivo_a_largo_plazo": [
+        {
+          "codigo": "2201",
+          "nombre": "Prestamos a largo plazo",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "2202",
+          "nombre": "Hipoteca por pagar",
+          "naturaleza": "credito",
+          "estado": "activo"
+        }
+      ]
+    },
+    "patrimonio_capital": {
+      "cuentas_capital": [
+        {
+          "codigo": "3101",
+          "nombre": "capital inicial",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "3102",
+          "nombre": "Utilidades del ejercicio",
+          "naturaleza": "credito",
+          "estado": "inactivo"
+        }
+      ],
+      "capital_contribuido": [
+        {
+          "codigo": "3111",
+          "nombre": "Capital social",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "3112",
+          "nombre": "Aportaciones de socios",
+          "naturaleza": "credito",
+          "estado": "activo"
+        }
+      ],
+      "capital_ganado": [
+        {
+          "codigo": "3121",
+          "nombre": "Reserva legal",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "3122",
+          "nombre": "Utilidades retenidas",
+          "naturaleza": "credito",
+          "estado": "activo"
+        }
+      ]
+    },
+    "estado_de_resultado": {
+      "ingresos": [
+        {
+          "codigo": "4101",
+          "nombre": "Ventas o ingresos por servicios",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "4102",
+          "nombre": "Otros ingresos",
+          "naturaleza": "credito",
+          "estado": "activo"
+        }
+      ],
+      "gastos": [
+        {
+          "codigo": "5101",
+          "nombre": "Gastos de ventas",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "5102",
+          "nombre": "Gastos de Administracion",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "5201",
+          "nombre": "Gastos financieros",
+          "naturaleza": "debito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "5202",
+          "nombre": "Gastos generales",
+          "naturaleza": "debito",
+          "estado": "activo"
+        }
+      ]
+    }
+  }
 }

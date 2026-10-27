@@ -1,0 +1,66 @@
+{
+  "asientos": [
+    {
+      "numero_asiento": 1,
+      "fecha": "2026-10-24",
+      "referencia": "bhne-50",
+      "descripcion": "pago de inmoviliario",
+      "partidas": [
+        {
+          "cuenta": "3101",
+          "nombre_cuenta": "capital inicial",
+          "naturaleza": "credito",
+          "debe": 10,
+          "haber": 0
+        },
+        {
+          "cuenta": "3102",
+          "nombre_cuenta": "Utilidades del ejercicio",
+          "naturaleza": "credito",
+          "debe": 10,
+          "haber": 0
+        },
+        {
+          "cuenta": "5101",
+          "nombre_cuenta": "Gastos de ventas",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 20
+        }
+      ],
+      "total_debe": 20,
+      "total_haber": 20
+    },
+    {
+      "numero_asiento": 2,
+      "fecha": "2026-10-24",
+      "referencia": "fghj-hjk",
+      "descripcion": "dxfghj",
+      "partidas": [
+        {
+          "cuenta": "1302",
+          "nombre_cuenta": "Marcas",
+          "naturaleza": "debito",
+          "debe": 10,
+          "haber": 0
+        },
+        {
+          "cuenta": "2201",
+          "nombre_cuenta": "Prestamos a largo plazo",
+          "naturaleza": "credito",
+          "debe": 10,
+          "haber": 0
+        },
+        {
+          "cuenta": "4101",
+          "nombre_cuenta": "Ventas o ingresos por servicios",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 20
+        }
+      ],
+      "total_debe": 20,
+      "total_haber": 20
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+﻿  Determinando los proyectos que se van a restaurar...
+  No hay nada que hacer. Ninguno de los proyectos especificados contiene paquetes para restaurar.
+C:\Program Files\dotnet\sdk\10.0.401\Microsoft.Common.CurrentVersion.targets(3458,5): error MSB3823: Los recursos que no son de cadena requieren que la propiedad GenerateResourceUsePreserializedResources se establezca en true. [C:\Users\rodol\source\repos\Sistema-Contable\WindowsFormsApp1.csproj]
+C:\Program Files\dotnet\sdk\10.0.401\Microsoft.Common.CurrentVersion.targets(3458,5): error MSB3822: Los recursos que no son de cadena requieren el ensamblado System.Resources.Extensions en tiempo de ejecuci├│n, pero no se encontr├│ en las referencias del proyecto. [C:\Users\rodol\source\repos\Sistema-Contable\WindowsFormsApp1.csproj]
+
+ERROR al compilar.
+
+C:\Program Files\dotnet\sdk\10.0.401\Microsoft.Common.CurrentVersion.targets(3458,5): error MSB3823: Los recursos que no son de cadena requieren que la propiedad GenerateResourceUsePreserializedResources se establezca en true. [C:\Users\rodol\source\repos\Sistema-Contable\WindowsFormsApp1.csproj]
+C:\Program Files\dotnet\sdk\10.0.401\Microsoft.Common.CurrentVersion.targets(3458,5): error MSB3822: Los recursos que no son de cadena requieren el ensamblado System.Resources.Extensions en tiempo de ejecuci├│n, pero no se encontr├│ en las referencias del proyecto. [C:\Users\rodol\source\repos\Sistema-Contable\WindowsFormsApp1.csproj]
+    0 Advertencia(s)
+    2 Errores
+
+Tiempo transcurrido 00:00:00.65
