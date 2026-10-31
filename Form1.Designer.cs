@@ -295,7 +295,7 @@
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.SaddleBrown;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.MistyRose;
             this.guna2Button1.Location = new System.Drawing.Point(931, 12);
@@ -311,7 +311,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
             this.label1.Location = new System.Drawing.Point(217, 15);
             this.label1.Name = "label1";
@@ -338,7 +338,7 @@
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.Image = global::WindowsFormsApp1.Properties.Resources.home_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -362,7 +362,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Image = global::WindowsFormsApp1.Properties.Resources.assignment_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -386,7 +386,7 @@
             this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -410,7 +410,7 @@
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Image = global::WindowsFormsApp1.Properties.Resources.manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -434,7 +434,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Image = global::WindowsFormsApp1.Properties.Resources.format_line_spacing_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -458,7 +458,7 @@
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.Image = global::WindowsFormsApp1.Properties.Resources.balance_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -482,7 +482,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Image = global::WindowsFormsApp1.Properties.Resources.menu_book_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -506,7 +506,7 @@
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.Image = global::WindowsFormsApp1.Properties.Resources.fact_check_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -530,7 +530,7 @@
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.Image = global::WindowsFormsApp1.Properties.Resources.import_contacts_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -554,7 +554,7 @@
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Image = global::WindowsFormsApp1.Properties.Resources.equal_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -578,7 +578,7 @@
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
@@ -603,7 +603,7 @@
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Button2.FillColor = System.Drawing.Color.Sienna;
-            this.guna2Button2.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.HoverState.FillColor = System.Drawing.Color.SaddleBrown;
             this.guna2Button2.Image = global::WindowsFormsApp1.Properties.Resources.logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;

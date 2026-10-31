@@ -53,7 +53,7 @@
             this.cboNaturaleza = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.flpBotones = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpBotones = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
             this.btnModificar = new Guna.UI2.WinForms.Guna2Button();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -92,7 +92,7 @@
             // 
             this.lblTitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTitulo.Location = new System.Drawing.Point(500, 22);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 22, 4, 15);
@@ -154,7 +154,7 @@
             // lblArbolTitulo
             // 
             this.lblArbolTitulo.AutoSize = true;
-            this.lblArbolTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArbolTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArbolTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblArbolTitulo.Location = new System.Drawing.Point(24, 15);
             this.lblArbolTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
@@ -183,7 +183,7 @@
             // 
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBuscar.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscar.ForeColor = System.Drawing.Color.Sienna;
             this.lblBuscar.Location = new System.Drawing.Point(4, 0);
             this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 13, 0);
@@ -197,7 +197,7 @@
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBuscar.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtBuscar.Location = new System.Drawing.Point(83, 4);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -211,7 +211,7 @@
             this.treeCuentas.BackColor = System.Drawing.Color.White;
             this.treeCuentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeCuentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeCuentas.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeCuentas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeCuentas.ForeColor = System.Drawing.Color.SaddleBrown;
             this.treeCuentas.FullRowSelect = true;
             this.treeCuentas.HideSelection = false;
@@ -260,13 +260,15 @@
             this.tlpDetalle.Controls.Add(this.cboEstado, 1, 7);
             this.tlpDetalle.Controls.Add(this.flpBotones, 0, 8);
             this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 9);
-            this.tlpDetalle.Controls.Add(this.lblDetalleTitulo, 1, 0);
+            this.tlpDetalle.Controls.Add(this.lblDetalleTitulo, 0, 0);
             this.tlpDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDetalle.Location = new System.Drawing.Point(0, 0);
             this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlpDetalle.Name = "tlpDetalle";
             this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.tlpDetalle.RowCount = 11;
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -274,19 +276,18 @@
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpDetalle.Size = new System.Drawing.Size(604, 741);
             this.tlpDetalle.TabIndex = 0;
             // 
             // lblRuta
             // 
-            this.lblRuta.AutoSize = true;
+            this.lblRuta.AutoEllipsis = true;
+            this.lblRuta.AutoSize = false;
             this.tlpDetalle.SetColumnSpan(this.lblRuta, 2);
             this.lblRuta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblRuta.Font = new System.Drawing.Font("Modern No. 20", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRuta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRuta.ForeColor = System.Drawing.Color.Sienna;
             this.lblRuta.Location = new System.Drawing.Point(24, 61);
             this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
@@ -298,9 +299,9 @@
             // 
             // lblTipo
             // 
-            this.lblTipo.AutoSize = true;
+            this.lblTipo.AutoSize = false;
             this.lblTipo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTipo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipo.ForeColor = System.Drawing.Color.Sienna;
             this.lblTipo.Location = new System.Drawing.Point(24, 99);
             this.lblTipo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -319,7 +320,7 @@
             this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipo.FocusedColor = System.Drawing.Color.Sienna;
             this.cboTipo.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboTipo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboTipo.ItemHeight = 30;
             this.cboTipo.Location = new System.Drawing.Point(144, 99);
@@ -331,9 +332,9 @@
             // 
             // lblGrupo
             // 
-            this.lblGrupo.AutoSize = true;
+            this.lblGrupo.AutoSize = false;
             this.lblGrupo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGrupo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrupo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrupo.ForeColor = System.Drawing.Color.Sienna;
             this.lblGrupo.Location = new System.Drawing.Point(24, 143);
             this.lblGrupo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -352,7 +353,7 @@
             this.cboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrupo.FocusedColor = System.Drawing.Color.Sienna;
             this.cboGrupo.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboGrupo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGrupo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGrupo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboGrupo.ItemHeight = 30;
             this.cboGrupo.Location = new System.Drawing.Point(144, 143);
@@ -364,9 +365,9 @@
             // 
             // lblCodigo
             // 
-            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.AutoSize = false;
             this.lblCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCodigo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.Sienna;
             this.lblCodigo.Location = new System.Drawing.Point(24, 187);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -380,7 +381,7 @@
             // 
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCodigo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtCodigo.Location = new System.Drawing.Point(144, 187);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -391,9 +392,9 @@
             // 
             // lblNombre
             // 
-            this.lblNombre.AutoSize = true;
+            this.lblNombre.AutoSize = false;
             this.lblNombre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNombre.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.Sienna;
             this.lblNombre.Location = new System.Drawing.Point(24, 221);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -407,7 +408,7 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNombre.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtNombre.Location = new System.Drawing.Point(144, 221);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -418,9 +419,9 @@
             // 
             // lblNaturaleza
             // 
-            this.lblNaturaleza.AutoSize = true;
+            this.lblNaturaleza.AutoSize = false;
             this.lblNaturaleza.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNaturaleza.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNaturaleza.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNaturaleza.ForeColor = System.Drawing.Color.Sienna;
             this.lblNaturaleza.Location = new System.Drawing.Point(24, 255);
             this.lblNaturaleza.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -439,7 +440,7 @@
             this.cboNaturaleza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNaturaleza.FocusedColor = System.Drawing.Color.Sienna;
             this.cboNaturaleza.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboNaturaleza.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboNaturaleza.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboNaturaleza.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboNaturaleza.ItemHeight = 30;
             this.cboNaturaleza.Location = new System.Drawing.Point(144, 255);
@@ -451,9 +452,9 @@
             // 
             // lblEstado
             // 
-            this.lblEstado.AutoSize = true;
+            this.lblEstado.AutoSize = false;
             this.lblEstado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEstado.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Sienna;
             this.lblEstado.Location = new System.Drawing.Point(24, 339);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
@@ -472,7 +473,7 @@
             this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstado.FocusedColor = System.Drawing.Color.Sienna;
             this.cboEstado.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboEstado.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstado.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboEstado.ItemHeight = 30;
             this.cboEstado.Location = new System.Drawing.Point(144, 339);
@@ -483,19 +484,26 @@
             // 
             // flpBotones
             // 
-            this.flpBotones.AutoSize = true;
+            this.flpBotones.ColumnCount = 2;
+            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpDetalle.SetColumnSpan(this.flpBotones, 2);
-            this.flpBotones.Controls.Add(this.btnAgregar);
-            this.flpBotones.Controls.Add(this.btnModificar);
-            this.flpBotones.Controls.Add(this.btnEliminar);
-            this.flpBotones.Controls.Add(this.btnLimpiar);
-            this.flpBotones.Controls.Add(this.btnGuardarCambios);
+            this.flpBotones.Controls.Add(this.btnAgregar, 0, 0);
+            this.flpBotones.Controls.Add(this.btnModificar, 1, 0);
+            this.flpBotones.Controls.Add(this.btnEliminar, 0, 1);
+            this.flpBotones.Controls.Add(this.btnLimpiar, 1, 1);
+            this.flpBotones.Controls.Add(this.btnGuardarCambios, 0, 2);
             this.flpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpBotones.Location = new System.Drawing.Point(20, 389);
             this.flpBotones.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.flpBotones.Name = "flpBotones";
-            this.flpBotones.Size = new System.Drawing.Size(564, 114);
+            this.flpBotones.RowCount = 3;
+            this.flpBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.flpBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.flpBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.flpBotones.Size = new System.Drawing.Size(564, 138);
             this.flpBotones.TabIndex = 16;
+            this.tlpDetalle.SetColumnSpan(this.btnGuardarCambios, 2);
             // 
             // btnAgregar
             // 
@@ -504,8 +512,9 @@
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAgregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAgregar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAgregar.FillColor = System.Drawing.Color.Tan;
-            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Image = global::WindowsFormsApp1.Properties.Resources.other_admission_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnAgregar.ImageSize = new System.Drawing.Size(22, 22);
@@ -524,8 +533,9 @@
             this.btnModificar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnModificar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnModificar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnModificar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnModificar.FillColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnModificar.ImageSize = new System.Drawing.Size(22, 22);
@@ -544,8 +554,9 @@
             this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEliminar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEliminar.FillColor = System.Drawing.Color.Sienna;
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnEliminar.ImageSize = new System.Drawing.Size(22, 22);
@@ -565,8 +576,9 @@
             this.btnLimpiar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLimpiar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLimpiar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLimpiar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLimpiar.FillColor = System.Drawing.Color.White;
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.Sienna;
             this.btnLimpiar.Location = new System.Drawing.Point(4, 61);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -583,8 +595,9 @@
             this.btnGuardarCambios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardarCambios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnGuardarCambios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGuardarCambios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnGuardarCambios.FillColor = System.Drawing.Color.SeaGreen;
-            this.btnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarCambios.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarCambios.ForeColor = System.Drawing.Color.White;
             this.btnGuardarCambios.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnGuardarCambios.ImageSize = new System.Drawing.Size(22, 22);
@@ -598,10 +611,11 @@
             // 
             // lblMensaje
             // 
-            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.AutoEllipsis = true;
+            this.lblMensaje.AutoSize = false;
             this.tlpDetalle.SetColumnSpan(this.lblMensaje, 2);
             this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMensaje.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
             this.lblMensaje.Location = new System.Drawing.Point(24, 513);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 2);
@@ -612,8 +626,10 @@
             // 
             // lblDetalleTitulo
             // 
-            this.lblDetalleTitulo.AutoSize = true;
-            this.lblDetalleTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalleTitulo.AutoSize = false;
+            this.tlpDetalle.SetColumnSpan(this.lblDetalleTitulo, 2);
+            this.lblDetalleTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDetalleTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalleTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDetalleTitulo.Location = new System.Drawing.Point(144, 15);
             this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
@@ -679,7 +695,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboNaturaleza;
         private System.Windows.Forms.Label lblEstado;
         private Guna.UI2.WinForms.Guna2ComboBox cboEstado;
-        private System.Windows.Forms.FlowLayoutPanel flpBotones;
+        private System.Windows.Forms.TableLayoutPanel flpBotones;
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
         private Guna.UI2.WinForms.Guna2Button btnModificar;
         private Guna.UI2.WinForms.Guna2Button btnEliminar;

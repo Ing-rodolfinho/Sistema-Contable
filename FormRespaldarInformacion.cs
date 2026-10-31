@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
             BackColor = UiContable.Fondo;
             FormBorderStyle = FormBorderStyle.None;
             Dock = DockStyle.Fill;
-            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
             TableLayoutPanel raiz = UiContable.CrearRaiz(this, "RESPALDAR INFORMACIÓN");
 

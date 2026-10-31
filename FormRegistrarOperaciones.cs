@@ -59,6 +59,11 @@ namespace WindowsFormsApp1
 
         private void FormRegistrarOperaciones_Load(object sender, EventArgs e)
         {
+            PrepararContenido();
+        }
+
+        protected override void OnPrepararContenido()
+        {
             SuspendLayout();
             if (tlpFondo != null) tlpFondo.SuspendLayout();
             SuspendTree(this);
@@ -292,21 +297,29 @@ namespace WindowsFormsApp1
 
         private void RefrescarPartidas()
         {
-            dgvPartidas.Rows.Clear();
-
-            foreach (Partida partida in partidas)
+            dgvPartidas.SuspendLayout();
+            try
             {
-                int indice = dgvPartidas.Rows.Add(
-                    partida.Codigo,
-                    partida.Nombre,
-                    partida.EsHaber ? 0m : partida.Importe,
-                    partida.EsHaber ? partida.Importe : 0m);
+                dgvPartidas.Rows.Clear();
 
-                dgvPartidas.Rows[indice].Tag = partida;
+                foreach (Partida partida in partidas)
+                {
+                    int indice = dgvPartidas.Rows.Add(
+                        partida.Codigo,
+                        partida.Nombre,
+                        partida.EsHaber ? 0m : partida.Importe,
+                        partida.EsHaber ? partida.Importe : 0m);
+
+                    dgvPartidas.Rows[indice].Tag = partida;
+                }
+
+                if (dgvPartidas.Rows.Count > 0)
+                    dgvPartidas.CurrentCell = dgvPartidas.Rows[dgvPartidas.Rows.Count - 1].Cells[0];
             }
-
-            if (dgvPartidas.Rows.Count > 0)
-                dgvPartidas.CurrentCell = dgvPartidas.Rows[dgvPartidas.Rows.Count - 1].Cells[0];
+            finally
+            {
+                dgvPartidas.ResumeLayout();
+            }
 
             ActualizarTotales();
         }
@@ -509,26 +522,119 @@ namespace WindowsFormsApp1
 
         private void ActualizarHistorial()
         {
-            dgvAsientos.Rows.Clear();
-            if (asientos == null) return;
-
-            var lista = new List<JsonObject>();
-            foreach (JsonNode nodo in asientos)
+            dgvAsientos.SuspendLayout();
+            try
             {
-                if (nodo is JsonObject asiento) lista.Add(asiento);
+                dgvAsientos.Rows.Clear();
+                if (asientos == null) return;
+
+                var lista = new List<JsonObject>();
+                foreach (JsonNode nodo in asientos)
+                {
+                    if (nodo is JsonObject asiento) lista.Add(asiento);
+                }
+
+                lista.Sort((a, b) => LeerEntero(a, "numero_asiento").CompareTo(LeerEntero(b, "numero_asiento")));
+
+                foreach (JsonObject asiento in lista)
+                {
+                    dgvAsientos.Rows.Add(
+                        LeerEntero(asiento, "numero_asiento"),
+                        LeerFecha(asiento, "fecha"),
+                        LeerTexto(asiento, "referencia"),
+                        LeerTexto(asiento, "descripcion"),
+                        LeerDecimal(asiento, "total_debe"),
+                        LeerDecimal(asiento, "total_haber"));
+                }
+            }
+            finally
+            {
+                dgvAsientos.ResumeLayout();
             }
 
-            lista.Sort((a, b) => LeerEntero(a, "numero_asiento").CompareTo(LeerEntero(b, "numero_asiento")));
+            ActualizarEstadoEliminar();
+        }
 
-            foreach (JsonObject asiento in lista)
+        private void dgvAsientos_SelectionChanged(object sender, EventArgs e)
+        {
+            ActualizarEstadoEliminar();
+        }
+
+        private void ActualizarEstadoEliminar()
+        {
+            if (btnEliminarAsiento == null) return;
+            btnEliminarAsiento.Enabled = asientos != null && dgvAsientos.CurrentRow != null;
+        }
+
+        private void btnEliminarAsiento_Click(object sender, EventArgs e)
+        {
+            if (asientos == null)
             {
-                dgvAsientos.Rows.Add(
-                    LeerEntero(asiento, "numero_asiento"),
-                    LeerFecha(asiento, "fecha"),
-                    LeerTexto(asiento, "referencia"),
-                    LeerTexto(asiento, "descripcion"),
-                    LeerDecimal(asiento, "total_debe"),
-                    LeerDecimal(asiento, "total_haber"));
+                lblMensaje.Text = "No hay asientos cargados para borrar.";
+                return;
+            }
+
+            DataGridViewRow fila = dgvAsientos.CurrentRow;
+            if (fila == null)
+            {
+                lblMensaje.Text = "Seleccione el asiento que desea borrar.";
+                return;
+            }
+
+            int numero;
+            object valorNumero = fila.Cells[colNumero.Index].Value;
+            if (valorNumero == null || !int.TryParse(
+                Convert.ToString(valorNumero, CultureInfo.InvariantCulture),
+                NumberStyles.Integer, CultureInfo.InvariantCulture, out numero))
+            {
+                lblMensaje.Text = "No se pudo identificar el número del asiento seleccionado.";
+                return;
+            }
+
+            string descripcion = Convert.ToString(
+                fila.Cells[colDescripcion.Index].Value, CultureInfo.InvariantCulture);
+            string detalle = string.IsNullOrWhiteSpace(descripcion) ? "" : "\n" + descripcion;
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Borrar el asiento N° " + numero + "?" + detalle +
+                "\n\nEsta acción no se puede deshacer.",
+                "Borrar asiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
+
+            if (respuesta != DialogResult.Yes) return;
+
+            try
+            {
+                JsonObject encontrado = null;
+                foreach (JsonNode nodo in asientos)
+                {
+                    if (nodo is JsonObject asiento && LeerEntero(asiento, "numero_asiento") == numero)
+                    {
+                        encontrado = asiento;
+                        break;
+                    }
+                }
+
+                if (encontrado == null)
+                {
+                    lblMensaje.Text = "El asiento N° " + numero + " ya no existe en operaciones.json.";
+                    ActualizarHistorial();
+                    return;
+                }
+
+                asientos.Remove(encontrado);
+                GuardarOperaciones();
+
+                if (numNumeroAsiento.Value == numero)
+                    numNumeroAsiento.Value = Math.Min(SiguienteNumeroAsiento(), (int)numNumeroAsiento.Maximum);
+
+                ActualizarHistorial();
+                lblMensaje.Text = "Asiento N° " + numero + " borrado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al borrar el asiento: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

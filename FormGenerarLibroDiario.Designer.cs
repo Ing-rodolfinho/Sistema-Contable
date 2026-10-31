@@ -79,12 +79,12 @@
             this.btnGenerar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.btnGenerar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SaddleBrown;
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerar.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
             this.btnGenerar.Location = new System.Drawing.Point(390, 50);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(142, 29);
+            this.btnGenerar.Size = new System.Drawing.Size(164, 29);
             this.btnGenerar.TabIndex = 5;
             this.btnGenerar.Text = "Generar / Filtrar";
             this.btnGenerar.UseVisualStyleBackColor = false;
@@ -93,7 +93,7 @@
             // lblHasta
             // 
             this.lblHasta.AutoSize = true;
-            this.lblHasta.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHasta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasta.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblHasta.Location = new System.Drawing.Point(200, 54);
             this.lblHasta.Name = "lblHasta";
@@ -103,7 +103,7 @@
             // 
             // dtpHasta
             // 
-            this.dtpHasta.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHasta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpHasta.Location = new System.Drawing.Point(249, 50);
             this.dtpHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -114,7 +114,7 @@
             // lblDesde
             // 
             this.lblDesde.AutoSize = true;
-            this.lblDesde.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesde.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesde.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDesde.Location = new System.Drawing.Point(13, 54);
             this.lblDesde.Name = "lblDesde";
@@ -124,7 +124,7 @@
             // 
             // dtpDesde
             // 
-            this.dtpDesde.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDesde.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDesde.Location = new System.Drawing.Point(62, 50);
             this.dtpDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -135,7 +135,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTitulo.Location = new System.Drawing.Point(13, 12);
             this.lblTitulo.Name = "lblTitulo";
@@ -152,7 +152,7 @@
             this.dgvLibroDiario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightPink;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.SaddleBrown;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Tan;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -171,7 +171,7 @@
             this.colHaber});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.MistyRose;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.SaddleBrown;
@@ -179,13 +179,14 @@
             this.dgvLibroDiario.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLibroDiario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLibroDiario.EnableHeadersVisualStyles = false;
+            this.dgvLibroDiario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLibroDiario.Location = new System.Drawing.Point(0, 88);
             this.dgvLibroDiario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLibroDiario.Name = "dgvLibroDiario";
             this.dgvLibroDiario.ReadOnly = true;
             this.dgvLibroDiario.RowHeadersVisible = false;
             this.dgvLibroDiario.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLibroDiario.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLibroDiario.RowTemplate.Height = 28;
             this.dgvLibroDiario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -202,9 +203,9 @@
             // 
             // colNoAsiento
             // 
-            this.colNoAsiento.FillWeight = 58F;
+            this.colNoAsiento.FillWeight = 66F;
             this.colNoAsiento.HeaderText = "No. Asiento";
-            this.colNoAsiento.MinimumWidth = 6;
+            this.colNoAsiento.MinimumWidth = 92;
             this.colNoAsiento.Name = "colNoAsiento";
             this.colNoAsiento.ReadOnly = true;
             // 
@@ -234,7 +235,7 @@
             // 
             // colDescripcion
             // 
-            this.colDescripcion.FillWeight = 124F;
+            this.colDescripcion.FillWeight = 116F;
             this.colDescripcion.HeaderText = "Descripción";
             this.colDescripcion.MinimumWidth = 6;
             this.colDescripcion.Name = "colDescripcion";
@@ -273,7 +274,7 @@
             // 
             this.lblDiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDiferencia.AutoSize = true;
-            this.lblDiferencia.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiferencia.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiferencia.ForeColor = System.Drawing.Color.SeaGreen;
             this.lblDiferencia.Location = new System.Drawing.Point(831, 16);
             this.lblDiferencia.Name = "lblDiferencia";
@@ -285,7 +286,7 @@
             // 
             this.lblTotalHaber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalHaber.AutoSize = true;
-            this.lblTotalHaber.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalHaber.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalHaber.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalHaber.Location = new System.Drawing.Point(680, 16);
             this.lblTotalHaber.Name = "lblTotalHaber";
@@ -297,7 +298,7 @@
             // 
             this.lblTotalDebe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalDebe.AutoSize = true;
-            this.lblTotalDebe.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDebe.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalDebe.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalDebe.Location = new System.Drawing.Point(537, 16);
             this.lblTotalDebe.Name = "lblTotalDebe";

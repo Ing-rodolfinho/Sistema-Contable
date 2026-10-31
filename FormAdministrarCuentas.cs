@@ -71,8 +71,12 @@ namespace WindowsFormsApp1
 
         private void FormAdministrarCuentas_Load(object sender, EventArgs e)
         {
+            PrepararContenido();
+        }
+
+        protected override void OnPrepararContenido()
+        {
             CargarCuentas();
-            CargarEstados();
             if (cboEstado != null && cboEstado.Text.Trim().Length == 0)
                 cboEstado.Text = EtiquetaActivo;
         }

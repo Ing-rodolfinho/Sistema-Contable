@@ -82,6 +82,7 @@
             this.tlpHistorial = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHistorialEncabezado = new System.Windows.Forms.TableLayoutPanel();
             this.lblHistorialTitulo = new System.Windows.Forms.Label();
+            this.btnEliminarAsiento = new Guna.UI2.WinForms.Guna2Button();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.dgvAsientos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,7 +134,7 @@
             // 
             this.lblTitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTitulo.Location = new System.Drawing.Point(345, 12);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 8);
@@ -147,7 +148,7 @@
             this.tcOperaciones.Controls.Add(this.tabNuevo);
             this.tcOperaciones.Controls.Add(this.tabHistorial);
             this.tcOperaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcOperaciones.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tcOperaciones.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcOperaciones.ItemSize = new System.Drawing.Size(180, 40);
             this.tcOperaciones.Location = new System.Drawing.Point(18, 54);
             this.tcOperaciones.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -249,7 +250,7 @@
             // 
             this.lblNumeroAsiento.AutoSize = true;
             this.lblNumeroAsiento.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNumeroAsiento.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroAsiento.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroAsiento.ForeColor = System.Drawing.Color.Sienna;
             this.lblNumeroAsiento.Location = new System.Drawing.Point(7, 7);
             this.lblNumeroAsiento.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
@@ -263,7 +264,7 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFecha.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.Color.Sienna;
             this.lblFecha.Location = new System.Drawing.Point(160, 7);
             this.lblFecha.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
@@ -277,7 +278,7 @@
             // 
             this.lblReferencia.AutoSize = true;
             this.lblReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReferencia.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReferencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReferencia.ForeColor = System.Drawing.Color.Sienna;
             this.lblReferencia.Location = new System.Drawing.Point(511, 7);
             this.lblReferencia.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
@@ -291,7 +292,7 @@
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDescripcion.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.Sienna;
             this.lblDescripcion.Location = new System.Drawing.Point(763, 7);
             this.lblDescripcion.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
@@ -307,7 +308,7 @@
             this.numNumeroAsiento.BorderColor = System.Drawing.Color.Tan;
             this.numNumeroAsiento.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.numNumeroAsiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.numNumeroAsiento.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numNumeroAsiento.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumeroAsiento.ForeColor = System.Drawing.Color.SaddleBrown;
             this.numNumeroAsiento.Location = new System.Drawing.Point(7, 29);
             this.numNumeroAsiento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -338,7 +339,7 @@
             this.dtpFecha.CustomFormat = "dd/MM/yyyy";
             this.dtpFecha.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtpFecha.FillColor = System.Drawing.Color.White;
-            this.dtpFecha.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.ForeColor = System.Drawing.Color.SaddleBrown;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFecha.Location = new System.Drawing.Point(160, 29);
@@ -354,7 +355,7 @@
             // 
             this.txtReferencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReferencia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtReferencia.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReferencia.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtReferencia.Location = new System.Drawing.Point(511, 31);
             this.txtReferencia.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
@@ -367,7 +368,7 @@
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDescripcion.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtDescripcion.Location = new System.Drawing.Point(763, 31);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
@@ -413,7 +414,7 @@
             // lblPartidasTitulo
             // 
             this.lblPartidasTitulo.AutoSize = true;
-            this.lblPartidasTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPartidasTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPartidasTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblPartidasTitulo.Location = new System.Drawing.Point(7, 7);
             this.lblPartidasTitulo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
@@ -430,7 +431,7 @@
             this.dgvPartidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Tan;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
@@ -445,14 +446,14 @@
             this.colHaber});
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPartidas.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPartidas.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPartidas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvPartidas.Location = new System.Drawing.Point(7, 36);
             this.dgvPartidas.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -465,10 +466,10 @@
             this.dgvPartidas.TabIndex = 1;
             this.dgvPartidas.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvPartidas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
-            this.dgvPartidas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPartidas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.ThemeStyle.HeaderStyle.Height = 22;
             this.dgvPartidas.ThemeStyle.ReadOnly = true;
-            this.dgvPartidas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPartidas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.ThemeStyle.RowsStyle.Height = 26;
             // 
             // colCodigo
@@ -516,7 +517,7 @@
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpCaptura.Controls.Add(this.lblCuenta, 0, 0);
             this.tlpCaptura.Controls.Add(this.cboCuenta, 1, 0);
@@ -538,7 +539,7 @@
             // lblCuenta
             // 
             this.lblCuenta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCuenta.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCuenta.ForeColor = System.Drawing.Color.Sienna;
             this.lblCuenta.Location = new System.Drawing.Point(3, 3);
             this.lblCuenta.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
@@ -557,7 +558,7 @@
             this.cboCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCuenta.FocusedColor = System.Drawing.Color.Sienna;
             this.cboCuenta.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboCuenta.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCuenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCuenta.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboCuenta.ItemHeight = 30;
             this.cboCuenta.Location = new System.Drawing.Point(74, 3);
@@ -568,7 +569,7 @@
             // lblImporte
             // 
             this.lblImporte.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblImporte.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte.ForeColor = System.Drawing.Color.Sienna;
             this.lblImporte.Location = new System.Drawing.Point(414, 3);
             this.lblImporte.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
@@ -585,7 +586,7 @@
             this.numImporte.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.numImporte.DecimalPlaces = 2;
             this.numImporte.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numImporte.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numImporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numImporte.ForeColor = System.Drawing.Color.SaddleBrown;
             this.numImporte.Location = new System.Drawing.Point(485, 3);
             this.numImporte.Maximum = new decimal(new int[] {
@@ -601,7 +602,7 @@
             // lblTipo
             // 
             this.lblTipo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTipo.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipo.ForeColor = System.Drawing.Color.Sienna;
             this.lblTipo.Location = new System.Drawing.Point(698, 3);
             this.lblTipo.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
@@ -620,7 +621,7 @@
             this.cboTipoPartida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPartida.FocusedColor = System.Drawing.Color.Sienna;
             this.cboTipoPartida.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboTipoPartida.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTipoPartida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoPartida.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboTipoPartida.ItemHeight = 30;
             this.cboTipoPartida.Location = new System.Drawing.Point(792, 3);
@@ -644,13 +645,13 @@
             // 
             this.btnAgregarPartida.BorderRadius = 15;
             this.btnAgregarPartida.FillColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnAgregarPartida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarPartida.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPartida.ForeColor = System.Drawing.Color.White;
             this.btnAgregarPartida.Image = global::WindowsFormsApp1.Properties.Resources.assignment_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnAgregarPartida.ImageSize = new System.Drawing.Size(22, 22);
             this.btnAgregarPartida.Location = new System.Drawing.Point(3, 3);
             this.btnAgregarPartida.Name = "btnAgregarPartida";
-            this.btnAgregarPartida.Size = new System.Drawing.Size(128, 36);
+            this.btnAgregarPartida.Size = new System.Drawing.Size(148, 36);
             this.btnAgregarPartida.TabIndex = 0;
             this.btnAgregarPartida.Text = "Agregar Partida";
             this.btnAgregarPartida.Click += new System.EventHandler(this.btnAgregarPartida_Click);
@@ -660,13 +661,13 @@
             this.btnQuitarPartida.BorderRadius = 15;
             this.btnQuitarPartida.CustomBorderColor = System.Drawing.Color.Sienna;
             this.btnQuitarPartida.FillColor = System.Drawing.Color.White;
-            this.btnQuitarPartida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarPartida.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitarPartida.ForeColor = System.Drawing.Color.Sienna;
             this.btnQuitarPartida.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnQuitarPartida.ImageSize = new System.Drawing.Size(22, 22);
             this.btnQuitarPartida.Location = new System.Drawing.Point(137, 3);
             this.btnQuitarPartida.Name = "btnQuitarPartida";
-            this.btnQuitarPartida.Size = new System.Drawing.Size(120, 36);
+            this.btnQuitarPartida.Size = new System.Drawing.Size(139, 36);
             this.btnQuitarPartida.TabIndex = 1;
             this.btnQuitarPartida.Text = "Quitar Partida";
             this.btnQuitarPartida.Click += new System.EventHandler(this.btnQuitarPartida_Click);
@@ -693,7 +694,7 @@
             // 
             this.lblTotalDebe.AutoSize = true;
             this.lblTotalDebe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalDebe.Font = new System.Drawing.Font("Modern No. 20", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDebe.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalDebe.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalDebe.Location = new System.Drawing.Point(3, 3);
             this.lblTotalDebe.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -707,7 +708,7 @@
             // 
             this.lblTotalHaber.AutoSize = true;
             this.lblTotalHaber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalHaber.Font = new System.Drawing.Font("Modern No. 20", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalHaber.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalHaber.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalHaber.Location = new System.Drawing.Point(337, 3);
             this.lblTotalHaber.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -721,7 +722,7 @@
             // 
             this.lblDiferencia.AutoSize = true;
             this.lblDiferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDiferencia.Font = new System.Drawing.Font("Modern No. 20", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiferencia.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiferencia.ForeColor = System.Drawing.Color.Sienna;
             this.lblDiferencia.Location = new System.Drawing.Point(671, 3);
             this.lblDiferencia.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -741,14 +742,13 @@
             this.tlpPie.Location = new System.Drawing.Point(3, 482);
             this.tlpPie.Name = "tlpPie";
             this.tlpPie.RowCount = 2;
-            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tlpPie.Size = new System.Drawing.Size(1017, 72);
             this.tlpPie.TabIndex = 2;
             // 
             // flpBotones
             // 
-            this.flpBotones.AutoSize = true;
             this.flpBotones.Controls.Add(this.btnRegistrarAsiento);
             this.flpBotones.Controls.Add(this.btnNuevoAsiento);
             this.flpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -763,13 +763,13 @@
             // 
             this.btnRegistrarAsiento.BorderRadius = 15;
             this.btnRegistrarAsiento.FillColor = System.Drawing.Color.SeaGreen;
-            this.btnRegistrarAsiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarAsiento.ForeColor = System.Drawing.Color.White;
             this.btnRegistrarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnRegistrarAsiento.ImageSize = new System.Drawing.Size(22, 22);
             this.btnRegistrarAsiento.Location = new System.Drawing.Point(3, 3);
             this.btnRegistrarAsiento.Name = "btnRegistrarAsiento";
-            this.btnRegistrarAsiento.Size = new System.Drawing.Size(142, 37);
+            this.btnRegistrarAsiento.Size = new System.Drawing.Size(158, 37);
             this.btnRegistrarAsiento.TabIndex = 0;
             this.btnRegistrarAsiento.Text = "Registrar Asiento";
             this.btnRegistrarAsiento.Click += new System.EventHandler(this.btnRegistrarAsiento_Click);
@@ -778,22 +778,23 @@
             // 
             this.btnNuevoAsiento.BorderRadius = 15;
             this.btnNuevoAsiento.FillColor = System.Drawing.Color.Tan;
-            this.btnNuevoAsiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoAsiento.ForeColor = System.Drawing.Color.White;
             this.btnNuevoAsiento.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnNuevoAsiento.ImageSize = new System.Drawing.Size(22, 22);
             this.btnNuevoAsiento.Location = new System.Drawing.Point(151, 3);
             this.btnNuevoAsiento.Name = "btnNuevoAsiento";
-            this.btnNuevoAsiento.Size = new System.Drawing.Size(135, 37);
+            this.btnNuevoAsiento.Size = new System.Drawing.Size(143, 37);
             this.btnNuevoAsiento.TabIndex = 1;
             this.btnNuevoAsiento.Text = "Nuevo Asiento";
             this.btnNuevoAsiento.Click += new System.EventHandler(this.btnNuevoAsiento_Click);
             // 
             // lblMensaje
             // 
-            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.AutoEllipsis = true;
+            this.lblMensaje.AutoSize = false;
             this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMensaje.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
             this.lblMensaje.Location = new System.Drawing.Point(3, 46);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -835,11 +836,13 @@
             // 
             // tlpHistorialEncabezado
             // 
-            this.tlpHistorialEncabezado.ColumnCount = 2;
+            this.tlpHistorialEncabezado.ColumnCount = 3;
             this.tlpHistorialEncabezado.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpHistorialEncabezado.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpHistorialEncabezado.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpHistorialEncabezado.Controls.Add(this.lblHistorialTitulo, 0, 0);
-            this.tlpHistorialEncabezado.Controls.Add(this.btnActualizar, 1, 0);
+            this.tlpHistorialEncabezado.Controls.Add(this.btnEliminarAsiento, 1, 0);
+            this.tlpHistorialEncabezado.Controls.Add(this.btnActualizar, 2, 0);
             this.tlpHistorialEncabezado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpHistorialEncabezado.Location = new System.Drawing.Point(3, 3);
             this.tlpHistorialEncabezado.Name = "tlpHistorialEncabezado";
@@ -852,7 +855,7 @@
             // 
             this.lblHistorialTitulo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHistorialTitulo.AutoSize = true;
-            this.lblHistorialTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistorialTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistorialTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblHistorialTitulo.Location = new System.Drawing.Point(3, 10);
             this.lblHistorialTitulo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -861,18 +864,34 @@
             this.lblHistorialTitulo.TabIndex = 0;
             this.lblHistorialTitulo.Text = "Asientos registrados";
             // 
+            // btnEliminarAsiento
+            // 
+            this.btnEliminarAsiento.BorderRadius = 15;
+            this.btnEliminarAsiento.CustomBorderColor = System.Drawing.Color.Sienna;
+            this.btnEliminarAsiento.FillColor = System.Drawing.Color.White;
+            this.btnEliminarAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarAsiento.ForeColor = System.Drawing.Color.Sienna;
+            this.btnEliminarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
+            this.btnEliminarAsiento.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnEliminarAsiento.Location = new System.Drawing.Point(771, 3);
+            this.btnEliminarAsiento.Name = "btnEliminarAsiento";
+            this.btnEliminarAsiento.Size = new System.Drawing.Size(138, 37);
+            this.btnEliminarAsiento.TabIndex = 2;
+            this.btnEliminarAsiento.Text = "Borrar asiento";
+            this.btnEliminarAsiento.Click += new System.EventHandler(this.btnEliminarAsiento_Click);
+            // 
             // btnActualizar
             // 
             this.btnActualizar.BorderRadius = 15;
             this.btnActualizar.CustomBorderColor = System.Drawing.Color.Sienna;
             this.btnActualizar.FillColor = System.Drawing.Color.White;
-            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.Sienna;
             this.btnActualizar.Image = global::WindowsFormsApp1.Properties.Resources.manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnActualizar.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnActualizar.Location = new System.Drawing.Point(912, 3);
+            this.btnActualizar.Location = new System.Drawing.Point(900, 3);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(102, 37);
+            this.btnActualizar.Size = new System.Drawing.Size(114, 37);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -885,7 +904,7 @@
             this.dgvAsientos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle21.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Tan;
             dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
@@ -902,14 +921,14 @@
             this.colTotalHaber});
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAsientos.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgvAsientos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAsientos.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAsientos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvAsientos.Location = new System.Drawing.Point(3, 49);
             this.dgvAsientos.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -922,11 +941,12 @@
             this.dgvAsientos.TabIndex = 1;
             this.dgvAsientos.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvAsientos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
-            this.dgvAsientos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAsientos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.ThemeStyle.HeaderStyle.Height = 22;
             this.dgvAsientos.ThemeStyle.ReadOnly = true;
-            this.dgvAsientos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Modern No. 20", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAsientos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.ThemeStyle.RowsStyle.Height = 26;
+            this.dgvAsientos.SelectionChanged += new System.EventHandler(this.dgvAsientos_SelectionChanged);
             // 
             // colNumero
             // 
@@ -1069,6 +1089,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpHistorial;
         private System.Windows.Forms.TableLayoutPanel tlpHistorialEncabezado;
         private System.Windows.Forms.Label lblHistorialTitulo;
+        private Guna.UI2.WinForms.Guna2Button btnEliminarAsiento;
         private Guna.UI2.WinForms.Guna2Button btnActualizar;
         private Guna.UI2.WinForms.Guna2DataGridView dgvAsientos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumero;

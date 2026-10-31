@@ -94,12 +94,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        private bool AbrirFormularioHijo(Form formularioHijo)
+        private bool AbrirFormularioHijo(FormBase formularioHijo)
         {
             return AbrirFormularioHijo(formularioHijo, true);
         }
 
-        private bool AbrirFormularioHijo(Form formularioHijo, bool mostrarCarga)
+        private bool AbrirFormularioHijo(FormBase formularioHijo, bool mostrarCarga)
         {
             if (formularioHijo == null) return false;
 
@@ -112,11 +112,40 @@ namespace WindowsFormsApp1
             return true;
         }
 
-        private bool CambiarFormularioHijo(Form formularioHijo)
+        private bool CambiarFormularioHijo(FormBase formularioHijo)
         {
             if (panelContenedor == null || panelContenedor.IsDisposed) return false;
 
-            // Primero cerramos el formulario activo: si el usuario cancela
+            formularioHijo.TopLevel = false;
+            formularioHijo.FormBorderStyle = FormBorderStyle.None;
+            formularioHijo.Dock = DockStyle.Fill;
+            formularioHijo.Visible = false;
+
+            // Los datos y el diseño se preparan antes de cerrar la pantalla actual.
+            // El formulario permanece oculto, por lo que el usuario no ve cómo se
+            // van creando o reacomodando los controles.
+            Rectangle area = new Rectangle(Point.Empty, panelContenedor.ClientSize);
+            formularioHijo.Bounds = area;
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                formularioHijo.PrepararContenido();
+                formularioHijo.PerformLayout();
+            }
+            catch (Exception ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("No se pudo abrir la pantalla: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+
+            // Ahora cerramos el formulario activo: si el usuario cancela
             // (por cambios sin guardar) no se cambia de pantalla.
             if (!CerrarFormularioActivo()) return false;
 
@@ -132,14 +161,11 @@ namespace WindowsFormsApp1
             SuspendTree(formularioHijo);
 
             formularioActivo = formularioHijo;
-            formularioHijo.TopLevel = false;
-            formularioHijo.FormBorderStyle = FormBorderStyle.None;
-            formularioHijo.Dock = DockStyle.Fill;
-            formularioHijo.Visible = false;
 
             panelContenedor.Controls.Clear();
             panelContenedor.Controls.Add(formularioHijo);
             AjustarFormularioActivo();
+            formularioHijo.PerformLayout();
 
             formularioHijo.Visible = true;
 
