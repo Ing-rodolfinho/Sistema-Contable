@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             BackColor = UiContable.Fondo;
             FormBorderStyle = FormBorderStyle.None;
             Dock = DockStyle.Fill;
-            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
             TableLayoutPanel raiz = UiContable.CrearRaiz(this, "CONSULTAR MOVIMIENTOS");
 
@@ -63,11 +63,11 @@ namespace WindowsFormsApp1
             dgvMovimientos = UiContable.CrearGrid();
             dgvMovimientos.Columns.AddRange(new DataGridViewColumn[]
             {
-                UiContable.Columna("colFecha", "Fecha", 70F, false),
-                UiContable.Columna("colNumero", "N° Asiento", 60F, true),
+                UiContable.Columna("colFecha", "Fecha", 70F, false, 92),
+                UiContable.Columna("colNumero", "N° Asiento", 60F, true, 86),
                 UiContable.Columna("colReferencia", "Referencia", 85F, false),
                 UiContable.Columna("colDescripcion", "Descripción", 150F, false),
-                UiContable.Columna("colCodigo", "Código", 55F, false),
+                UiContable.Columna("colCodigo", "Código", 55F, false, 62),
                 UiContable.Columna("colCuenta", "Cuenta", 135F, false),
                 UiContable.Columna("colDebe", "Debe", 75F, true),
                 UiContable.Columna("colHaber", "Haber", 75F, true)

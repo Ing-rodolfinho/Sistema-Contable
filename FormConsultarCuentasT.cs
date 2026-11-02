@@ -33,6 +33,8 @@ namespace WindowsFormsApp1
         private JsonObject raizOperaciones;
         private JsonArray asientos;
         private bool cargandoFiltros;
+        private bool filtrosFechaEnDosFilas;
+        private const int AnchoMinimoFiltrosUnaFila = 450;
 
         private class CuentaListaItem
         {
@@ -75,10 +77,78 @@ namespace WindowsFormsApp1
 
         private void FormConsultarCuentasT_Load(object sender, EventArgs e)
         {
+            PrepararContenido();
+        }
+
+        protected override void OnPrepararContenido()
+        {
             if (dgvCuentasLista != null)
                 dgvCuentasLista.CellDoubleClick += dgvCuentasLista_CellDoubleClick;
 
+            AjustarFiltrosFecha();
             CargarDatos();
+        }
+
+        protected override void OnLayout(LayoutEventArgs levent)
+        {
+            base.OnLayout(levent);
+            AjustarFiltrosFecha();
+        }
+
+        /// <summary>
+        /// Cuando el panel de fechas es angosto, el botón Consultar baja a una
+        /// segunda fila. Así los controles nunca se superponen y el formulario
+        /// conserva la misma distribución desde que se muestra.
+        /// </summary>
+        private void AjustarFiltrosFecha()
+        {
+            if (panelFiltrosFecha == null || tlpFiltrosFecha == null || btnConsultar == null)
+                return;
+            if (panelFiltrosFecha.ClientSize.Width <= 0)
+                return;
+
+            bool dosFilas = panelFiltrosFecha.ClientSize.Width < AnchoMinimoFiltrosUnaFila;
+            if (dosFilas == filtrosFechaEnDosFilas)
+                return;
+
+            filtrosFechaEnDosFilas = dosFilas;
+
+            tlpFiltrosFecha.SuspendLayout();
+            panelFiltrosFecha.SuspendLayout();
+            try
+            {
+                if (dosFilas)
+                {
+                    tlpFiltrosFecha.RowCount = 2;
+                    tlpFiltrosFecha.RowStyles.Clear();
+                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+                    tlpFiltrosFecha.SetCellPosition(btnConsultar, new TableLayoutPanelCellPosition(1, 1));
+                    tlpFiltrosFecha.SetColumnSpan(btnConsultar, 3);
+                    panelFiltrosFecha.MinimumSize = new Size(0, 74);
+                    panelFiltrosFecha.MaximumSize = new Size(0, 74);
+                }
+                else
+                {
+                    tlpFiltrosFecha.RowCount = 1;
+                    tlpFiltrosFecha.RowStyles.Clear();
+                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+                    tlpFiltrosFecha.SetCellPosition(btnConsultar, new TableLayoutPanelCellPosition(4, 0));
+                    tlpFiltrosFecha.SetColumnSpan(btnConsultar, 1);
+                    panelFiltrosFecha.MaximumSize = new Size(0, 48);
+                    panelFiltrosFecha.MinimumSize = new Size(0, 48);
+                }
+            }
+            finally
+            {
+                tlpFiltrosFecha.ResumeLayout(true);
+                panelFiltrosFecha.ResumeLayout(true);
+            }
+
+            // El alto de la fila que contiene el panel es automático: hay que
+            // pedirle a la tabla principal que vuelva a medirla al cambiar de modo.
+            if (tlpCuentaT != null)
+                tlpCuentaT.PerformLayout();
         }
 
         private void dgvCuentasLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -231,10 +301,18 @@ namespace WindowsFormsApp1
 
                 if (dgvCuentasLista != null)
                 {
-                    dgvCuentasLista.Rows.Clear();
-                    foreach (CuentaListaItem item in cuentasLista.OrderBy(c => c.Codigo))
+                    dgvCuentasLista.SuspendLayout();
+                    try
                     {
-                        dgvCuentasLista.Rows.Add(item.Codigo, item.Nombre, item.Tipo, item.Naturaleza, item.Estado);
+                        dgvCuentasLista.Rows.Clear();
+                        foreach (CuentaListaItem item in cuentasLista.OrderBy(c => c.Codigo))
+                        {
+                            dgvCuentasLista.Rows.Add(item.Codigo, item.Nombre, item.Tipo, item.Naturaleza, item.Estado);
+                        }
+                    }
+                    finally
+                    {
+                        dgvCuentasLista.ResumeLayout();
                     }
                 }
 
@@ -285,9 +363,24 @@ namespace WindowsFormsApp1
                 origen.Add(texto);
             }
 
-            txtCodigoCuenta.AutoCompleteCustomSource = origen;
-            txtCodigoCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            try
+            {
+                txtCodigoCuenta.AutoCompleteCustomSource = origen;
+                txtCodigoCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+            catch
+            {
+                // El autocompletado depende del servicio de shell de Windows.
+                // Si no está disponible, la consulta sigue funcionando sin él.
+                try
+                {
+                    txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.None;
+                }
+                catch
+                {
+                }
+            }
         }
 
         private void EstablecerRangoFechas()
@@ -471,51 +564,62 @@ namespace WindowsFormsApp1
                     .ThenBy(m => m.NumeroAsiento)
                     .ToList();
 
-                if (dgvDebe != null) dgvDebe.Rows.Clear();
-                if (dgvHaber != null) dgvHaber.Rows.Clear();
+                if (dgvDebe != null) dgvDebe.SuspendLayout();
+                if (dgvHaber != null) dgvHaber.SuspendLayout();
 
-                decimal totalDebe = 0m;
-                decimal totalHaber = 0m;
-
-                AgregarSaldoAnterior(saldoAnteriorDeudor, ref totalDebe, ref totalHaber);
-
-                foreach (MovimientoCuentaT mov in movimientos)
+                try
                 {
-                    if (mov.Debe > 0m)
+                    if (dgvDebe != null) dgvDebe.Rows.Clear();
+                    if (dgvHaber != null) dgvHaber.Rows.Clear();
+
+                    decimal totalDebe = 0m;
+                    decimal totalHaber = 0m;
+
+                    AgregarSaldoAnterior(saldoAnteriorDeudor, ref totalDebe, ref totalHaber);
+
+                    foreach (MovimientoCuentaT mov in movimientos)
                     {
-                        if (dgvDebe != null)
-                            dgvDebe.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
-                                mov.Referencia, mov.Descripcion, mov.Debe.ToString("N2"));
-                        totalDebe += mov.Debe;
+                        if (mov.Debe > 0m)
+                        {
+                            if (dgvDebe != null)
+                                dgvDebe.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
+                                    mov.Referencia, mov.Descripcion, mov.Debe.ToString("N2"));
+                            totalDebe += mov.Debe;
+                        }
+
+                        if (mov.Haber > 0m)
+                        {
+                            if (dgvHaber != null)
+                                dgvHaber.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
+                                    mov.Referencia, mov.Descripcion, mov.Haber.ToString("N2"));
+                            totalHaber += mov.Haber;
+                        }
                     }
 
-                    if (mov.Haber > 0m)
+                    if (lblCuentaTitulo != null)
                     {
-                        if (dgvHaber != null)
-                            dgvHaber.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
-                                mov.Referencia, mov.Descripcion, mov.Haber.ToString("N2"));
-                        totalHaber += mov.Haber;
+                        string etiquetaNaturaleza = cuentaSeleccionada.Naturaleza == NaturalezaCredito
+                            ? EtiquetaCredito
+                            : EtiquetaDebito;
+                        lblCuentaTitulo.Text = "CUENTA T - " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre
+                            + " (" + etiquetaNaturaleza + ")";
                     }
-                }
 
-                if (lblCuentaTitulo != null)
+                    if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: $ " + totalDebe.ToString("N2");
+                    if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: $ " + totalHaber.ToString("N2");
+
+                    decimal saldoFinal = totalDebe - totalHaber;
+                    MostrarResultado(saldoFinal);
+
+                    if (lblMensaje != null)
+                        lblMensaje.Text = "Período: " + desde.ToString("dd/MM/yyyy") + " al "
+                            + hasta.ToString("dd/MM/yyyy") + " | Movimientos: " + movimientos.Count;
+                }
+                finally
                 {
-                    string etiquetaNaturaleza = cuentaSeleccionada.Naturaleza == NaturalezaCredito
-                        ? EtiquetaCredito
-                        : EtiquetaDebito;
-                    lblCuentaTitulo.Text = "CUENTA T - " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre
-                        + " (" + etiquetaNaturaleza + ")";
+                    if (dgvDebe != null) dgvDebe.ResumeLayout();
+                    if (dgvHaber != null) dgvHaber.ResumeLayout();
                 }
-
-                if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: $ " + totalDebe.ToString("N2");
-                if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: $ " + totalHaber.ToString("N2");
-
-                decimal saldoFinal = totalDebe - totalHaber;
-                MostrarResultado(saldoFinal);
-
-                if (lblMensaje != null)
-                    lblMensaje.Text = "Período: " + desde.ToString("dd/MM/yyyy") + " al "
-                        + hasta.ToString("dd/MM/yyyy") + " | Movimientos: " + movimientos.Count;
             }
             catch (Exception ex)
             {

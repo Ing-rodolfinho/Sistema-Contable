@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             BackColor = UiContable.Fondo;
             FormBorderStyle = FormBorderStyle.None;
             Dock = DockStyle.Fill;
-            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
             TableLayoutPanel raiz = UiContable.CrearRaiz(this, "LIBRO MAYOR");
 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             dgvMayor.Columns.AddRange(new DataGridViewColumn[]
             {
                 UiContable.Columna("colCuenta", "Cuenta", 125F, false),
-                UiContable.Columna("colFecha", "Fecha", 60F, false),
+                UiContable.Columna("colFecha", "Fecha", 60F, false, 92),
                 UiContable.Columna("colReferencia", "Referencia", 75F, false),
                 UiContable.Columna("colConcepto", "Concepto", 145F, false),
                 UiContable.Columna("colDebe", "Debe", 68F, true),

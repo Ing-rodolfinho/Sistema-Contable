@@ -20,19 +20,19 @@ namespace WindowsFormsApp1
 
         public static Font Fuente(float tamano)
         {
-            return new Font("Modern No. 20", tamano, FontStyle.Regular, GraphicsUnit.Point);
+            return new Font("Segoe UI", tamano, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         public static Font FuenteNegrita(float tamano)
         {
-            return new Font("Modern No. 20", tamano, FontStyle.Bold, GraphicsUnit.Point);
+            return new Font("Segoe UI Semibold", tamano, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         public static Label CrearTitulo(string texto)
         {
             var etiqueta = new Label();
             etiqueta.AutoSize = true;
-            etiqueta.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            etiqueta.Font = new Font("Georgia", 18F, FontStyle.Regular, GraphicsUnit.Point);
             etiqueta.ForeColor = Acento;
             etiqueta.Text = texto;
             etiqueta.Margin = new Padding(0);
@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
         {
             var etiqueta = new Label();
             etiqueta.AutoSize = true;
-            etiqueta.Font = Fuente(9.75F);
+            etiqueta.Font = Fuente(10F);
             etiqueta.ForeColor = Texto;
             etiqueta.Text = texto;
             etiqueta.Margin = new Padding(0, 9, 6, 0);
@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             etiqueta.AutoEllipsis = true;
             etiqueta.Dock = DockStyle.Fill;
             etiqueta.Height = 28;
-            etiqueta.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            etiqueta.Font = new Font("Segoe UI", 9.5F, FontStyle.Italic, GraphicsUnit.Point);
             etiqueta.ForeColor = Acento;
             etiqueta.TextAlign = ContentAlignment.MiddleLeft;
             etiqueta.Margin = new Padding(2, 6, 2, 0);
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
         {
             var selector = new DateTimePicker();
             selector.Format = DateTimePickerFormat.Short;
-            selector.Font = Fuente(9.75F);
+            selector.Font = Fuente(10F);
             selector.Width = 112;
             selector.Value = valor;
             selector.Margin = new Padding(0, 4, 14, 0);
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1
             combo.FlatStyle = FlatStyle.Flat;
             combo.BackColor = Color.White;
             combo.ForeColor = Texto;
-            combo.Font = Fuente(9.75F);
+            combo.Font = Fuente(10F);
             combo.Width = ancho;
             combo.IntegralHeight = false;
             combo.DropDownHeight = 300;
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
             caja.BorderStyle = BorderStyle.FixedSingle;
             caja.BackColor = Color.White;
             caja.ForeColor = Texto;
-            caja.Font = Fuente(9.75F);
+            caja.Font = Fuente(10F);
             caja.Width = ancho;
             caja.Margin = new Padding(0, 4, 14, 0);
             return caja;
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
             boton.FlatAppearance.MouseDownBackColor = AcentoFuerte;
             boton.BackColor = AcentoMedio;
             boton.ForeColor = Color.White;
-            boton.Font = Fuente(9.75F);
+            boton.Font = FuenteNegrita(10F);
             boton.Cursor = Cursors.Hand;
             boton.Margin = new Padding(0, 4, 10, 0);
             boton.UseVisualStyleBackColor = false;
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
             check.AutoSize = true;
             check.Checked = marcado;
             check.ForeColor = Texto;
-            check.Font = Fuente(9.75F);
+            check.Font = Fuente(10F);
             check.Margin = new Padding(2, 9, 14, 0);
             check.UseVisualStyleBackColor = true;
             return check;
@@ -169,14 +169,14 @@ namespace WindowsFormsApp1
             grid.EnableHeadersVisualStyles = false;
             grid.GridColor = Color.Gainsboro;
             grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            grid.ColumnHeadersHeight = 32;
+            grid.ColumnHeadersHeight = 42;
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grid.RowTemplate.Height = 26;
 
             var estiloEncabezado = new DataGridViewCellStyle();
             estiloEncabezado.BackColor = EncabezadoTabla;
             estiloEncabezado.ForeColor = Acento;
-            estiloEncabezado.Font = Fuente(9F);
+            estiloEncabezado.Font = FuenteNegrita(10F);
             estiloEncabezado.Alignment = DataGridViewContentAlignment.MiddleCenter;
             estiloEncabezado.SelectionBackColor = EncabezadoTabla;
             estiloEncabezado.SelectionForeColor = Acento;
@@ -188,7 +188,7 @@ namespace WindowsFormsApp1
             estiloCuerpo.ForeColor = Color.FromArgb(64, 48, 40);
             estiloCuerpo.SelectionBackColor = RosaSuave;
             estiloCuerpo.SelectionForeColor = Acento;
-            estiloCuerpo.Font = Fuente(9.75F);
+            estiloCuerpo.Font = Fuente(10F);
             grid.DefaultCellStyle = estiloCuerpo;
 
             var estiloAlterno = new DataGridViewCellStyle();
@@ -198,13 +198,13 @@ namespace WindowsFormsApp1
             return grid;
         }
 
-        public static DataGridViewTextBoxColumn Columna(string nombre, string encabezado, float peso, bool derecha)
+        public static DataGridViewTextBoxColumn Columna(string nombre, string encabezado, float peso, bool derecha, int anchoMinimo = 55)
         {
             var columna = new DataGridViewTextBoxColumn();
             columna.Name = nombre;
             columna.HeaderText = encabezado;
             columna.FillWeight = peso;
-            columna.MinimumWidth = 55;
+            columna.MinimumWidth = anchoMinimo;
             columna.ReadOnly = true;
             columna.SortMode = DataGridViewColumnSortMode.NotSortable;
             if (derecha)
@@ -266,7 +266,7 @@ namespace WindowsFormsApp1
 
             foreach (DataGridViewCell celda in fila.Cells)
             {
-                celda.Style.Font = negrita ? FuenteNegrita(9.75F) : Fuente(9.75F);
+                celda.Style.Font = negrita ? FuenteNegrita(10F) : Fuente(10F);
                 if (fondo.HasValue) celda.Style.BackColor = fondo.Value;
             }
         }

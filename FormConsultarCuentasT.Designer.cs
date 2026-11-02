@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+namespace WindowsFormsApp1
 {
     partial class FormConsultarCuentasT
     {
@@ -106,9 +106,9 @@
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 4;
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
+            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64F));
+            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tlpFondo.Size = new System.Drawing.Size(1185, 787);
             this.tlpFondo.TabIndex = 0;
             // 
@@ -116,7 +116,7 @@
             // 
             this.lblTitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTitulo.Location = new System.Drawing.Point(397, 14);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(3, 14, 3, 8);
@@ -159,7 +159,7 @@
             // 
             this.lblCuentasTitulo.AutoSize = true;
             this.lblCuentasTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCuentasTitulo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuentasTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCuentasTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblCuentasTitulo.Location = new System.Drawing.Point(15, 10);
             this.lblCuentasTitulo.Name = "lblCuentasTitulo";
@@ -178,6 +178,7 @@
             this.dgvCuentasLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             headerStyleCuentas.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             headerStyleCuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
+            headerStyleCuentas.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStyleCuentas.ForeColor = System.Drawing.Color.SaddleBrown;
             headerStyleCuentas.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
             headerStyleCuentas.SelectionForeColor = System.Drawing.Color.SaddleBrown;
@@ -192,6 +193,7 @@
             this.colEstado});
             bodyStyleCuentas.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             bodyStyleCuentas.BackColor = System.Drawing.SystemColors.Window;
+            bodyStyleCuentas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             bodyStyleCuentas.ForeColor = System.Drawing.Color.SaddleBrown;
             bodyStyleCuentas.SelectionBackColor = System.Drawing.Color.LavenderBlush;
             bodyStyleCuentas.SelectionForeColor = System.Drawing.Color.SaddleBrown;
@@ -199,6 +201,7 @@
             this.dgvCuentasLista.DefaultCellStyle = bodyStyleCuentas;
             this.dgvCuentasLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCuentasLista.EnableHeadersVisualStyles = false;
+            this.dgvCuentasLista.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCuentasLista.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvCuentasLista.Location = new System.Drawing.Point(15, 45);
             this.dgvCuentasLista.MultiSelect = false;
@@ -212,7 +215,7 @@
             // 
             // colCodigo
             // 
-            this.colCodigo.HeaderText = "Código";
+            this.colCodigo.HeaderText = "C�digo";
             this.colCodigo.Name = "colCodigo";
             this.colCodigo.ReadOnly = true;
             this.colCodigo.Width = 90;
@@ -282,14 +285,14 @@
             this.tlpCuentaT.Padding = new System.Windows.Forms.Padding(14, 10, 14, 12);
             this.tlpCuentaT.RowCount = 6;
             this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tlpCuentaT.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlpCuentaT.SetColumnSpan(this.lblCuentaTitulo, 3);
             this.tlpCuentaT.SetColumnSpan(this.lblResultado, 3);
-            this.tlpCuentaT.SetRowSpan(this.divisorPanel, 4);
+            this.tlpCuentaT.SetRowSpan(this.divisorPanel, 3);
             this.tlpCuentaT.Size = new System.Drawing.Size(1155, 363);
             this.tlpCuentaT.TabIndex = 0;
             // 
@@ -328,7 +331,7 @@
             // 
             this.lblCuentaTBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCuentaTBuscar.AutoSize = true;
-            this.lblCuentaTBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuentaTBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCuentaTBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblCuentaTBuscar.Location = new System.Drawing.Point(13, 15);
             this.lblCuentaTBuscar.Name = "lblCuentaTBuscar";
@@ -348,13 +351,13 @@
             this.txtCodigoCuenta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCodigoCuenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCodigoCuenta.FocusedState.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.txtCodigoCuenta.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtCodigoCuenta.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigoCuenta.HoverState.BorderColor = System.Drawing.Color.SaddleBrown;
             this.txtCodigoCuenta.Location = new System.Drawing.Point(100, 9);
             this.txtCodigoCuenta.Margin = new System.Windows.Forms.Padding(8, 3, 10, 3);
             this.txtCodigoCuenta.Name = "txtCodigoCuenta";
             this.txtCodigoCuenta.PasswordChar = '\0';
-            this.txtCodigoCuenta.PlaceholderText = "Ingrese código de cuenta";
+            this.txtCodigoCuenta.PlaceholderText = "Ingrese c�digo de cuenta";
             this.txtCodigoCuenta.SelectedText = "";
             this.txtCodigoCuenta.Size = new System.Drawing.Size(304, 30);
             this.txtCodigoCuenta.TabIndex = 1;
@@ -364,7 +367,7 @@
             // 
             this.btnBuscarCuentaT.BorderRadius = 8;
             this.btnBuscarCuentaT.FillColor = System.Drawing.Color.SaddleBrown;
-            this.btnBuscarCuentaT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCuentaT.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarCuentaT.ForeColor = System.Drawing.Color.White;
             this.btnBuscarCuentaT.Location = new System.Drawing.Point(417, 8);
             this.btnBuscarCuentaT.Margin = new System.Windows.Forms.Padding(3, 2, 0, 2);
@@ -382,6 +385,7 @@
             this.panelFiltrosFecha.FillColor = System.Drawing.Color.White;
             this.panelFiltrosFecha.Location = new System.Drawing.Point(562, 13);
             this.panelFiltrosFecha.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.panelFiltrosFecha.MinimumSize = new System.Drawing.Size(0, 48);
             this.panelFiltrosFecha.Name = "panelFiltrosFecha";
             this.panelFiltrosFecha.Radius = 10;
             this.panelFiltrosFecha.Size = new System.Drawing.Size(576, 48);
@@ -389,25 +393,23 @@
             // 
             // tlpFiltrosFecha
             // 
-            this.tlpFiltrosFecha.ColumnCount = 7;
+            this.tlpFiltrosFecha.ColumnCount = 5;
             this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFiltrosFecha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tlpFiltrosFecha.Controls.Add(this.lblDesde, 0, 0);
             this.tlpFiltrosFecha.Controls.Add(this.dtpDesde, 1, 0);
             this.tlpFiltrosFecha.Controls.Add(this.lblHasta, 2, 0);
             this.tlpFiltrosFecha.Controls.Add(this.dtpHasta, 3, 0);
-            this.tlpFiltrosFecha.Controls.Add(this.btnConsultar, 6, 0);
+            this.tlpFiltrosFecha.Controls.Add(this.btnConsultar, 4, 0);
             this.tlpFiltrosFecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpFiltrosFecha.Location = new System.Drawing.Point(0, 0);
             this.tlpFiltrosFecha.Name = "tlpFiltrosFecha";
-            this.tlpFiltrosFecha.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+            this.tlpFiltrosFecha.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.tlpFiltrosFecha.RowCount = 1;
-            this.tlpFiltrosFecha.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpFiltrosFecha.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tlpFiltrosFecha.Size = new System.Drawing.Size(576, 48);
             this.tlpFiltrosFecha.TabIndex = 0;
             // 
@@ -415,7 +417,7 @@
             // 
             this.lblDesde.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblDesde.AutoSize = true;
-            this.lblDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesde.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesde.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDesde.Location = new System.Drawing.Point(13, 15);
             this.lblDesde.Name = "lblDesde";
@@ -429,16 +431,17 @@
             this.dtpDesde.BorderRadius = 8;
             this.dtpDesde.Checked = true;
             this.dtpDesde.CustomFormat = "dd/MM/yyyy";
+            this.dtpDesde.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpDesde.FillColor = System.Drawing.Color.White;
-            this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDesde.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.ForeColor = System.Drawing.Color.SaddleBrown;
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDesde.Location = new System.Drawing.Point(70, 9);
-            this.dtpDesde.Margin = new System.Windows.Forms.Padding(6, 3, 10, 3);
+            this.dtpDesde.Location = new System.Drawing.Point(61, 6);
+            this.dtpDesde.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtpDesde.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDesde.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(116, 30);
+            this.dtpDesde.Size = new System.Drawing.Size(100, 28);
             this.dtpDesde.TabIndex = 1;
             this.dtpDesde.Value = new System.DateTime(2026, 1, 1, 0, 0, 0, 0);
             this.dtpDesde.ValueChanged += new System.EventHandler(this.dtpFiltro_ValueChanged);
@@ -447,7 +450,7 @@
             // 
             this.lblHasta.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHasta.AutoSize = true;
-            this.lblHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHasta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasta.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblHasta.Location = new System.Drawing.Point(199, 15);
             this.lblHasta.Name = "lblHasta";
@@ -461,38 +464,42 @@
             this.dtpHasta.BorderRadius = 8;
             this.dtpHasta.Checked = true;
             this.dtpHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpHasta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpHasta.FillColor = System.Drawing.Color.White;
-            this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHasta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.ForeColor = System.Drawing.Color.SaddleBrown;
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpHasta.Location = new System.Drawing.Point(253, 9);
-            this.dtpHasta.Margin = new System.Windows.Forms.Padding(6, 3, 10, 3);
+            this.dtpHasta.Location = new System.Drawing.Point(232, 6);
+            this.dtpHasta.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtpHasta.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpHasta.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(116, 30);
+            this.dtpHasta.Size = new System.Drawing.Size(100, 28);
             this.dtpHasta.TabIndex = 3;
             this.dtpHasta.Value = new System.DateTime(2026, 12, 31, 0, 0, 0, 0);
             this.dtpHasta.ValueChanged += new System.EventHandler(this.dtpFiltro_ValueChanged);
             // 
             // btnConsultar
             // 
+            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnConsultar.BorderRadius = 8;
             this.btnConsultar.FillColor = System.Drawing.Color.SaddleBrown;
-            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.ForeColor = System.Drawing.Color.White;
             this.btnConsultar.Location = new System.Drawing.Point(454, 9);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(109, 30);
+            this.btnConsultar.Size = new System.Drawing.Size(109, 28);
             this.btnConsultar.TabIndex = 4;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // lblCuentaTitulo
             // 
+            this.lblCuentaTitulo.AutoEllipsis = true;
+            this.lblCuentaTitulo.AutoSize = false;
             this.lblCuentaTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCuentaTitulo.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuentaTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCuentaTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblCuentaTitulo.Location = new System.Drawing.Point(17, 70);
             this.lblCuentaTitulo.Name = "lblCuentaTitulo";
@@ -505,7 +512,7 @@
             // 
             this.lblDebeTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
             this.lblDebeTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDebeTitulo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebeTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDebeTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDebeTitulo.Location = new System.Drawing.Point(17, 104);
             this.lblDebeTitulo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 2);
@@ -528,7 +535,7 @@
             // 
             this.lblHaberTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
             this.lblHaberTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHaberTitulo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHaberTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHaberTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblHaberTitulo.Location = new System.Drawing.Point(596, 104);
             this.lblHaberTitulo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 2);
@@ -548,6 +555,7 @@
             this.dgvDebe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             headerStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             headerStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
+            headerStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             headerStyle.ForeColor = System.Drawing.Color.SaddleBrown;
             headerStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
             headerStyle.SelectionForeColor = System.Drawing.Color.SaddleBrown;
@@ -562,6 +570,7 @@
             this.colDebeImporte});
             bodyStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             bodyStyle.BackColor = System.Drawing.SystemColors.Window;
+            bodyStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             bodyStyle.ForeColor = System.Drawing.Color.SaddleBrown;
             bodyStyle.SelectionBackColor = System.Drawing.Color.LavenderBlush;
             bodyStyle.SelectionForeColor = System.Drawing.Color.SaddleBrown;
@@ -569,6 +578,7 @@
             this.dgvDebe.DefaultCellStyle = bodyStyle;
             this.dgvDebe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDebe.EnableHeadersVisualStyles = false;
+            this.dgvDebe.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDebe.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvDebe.Location = new System.Drawing.Point(17, 137);
             this.dgvDebe.MultiSelect = false;
@@ -589,10 +599,10 @@
             // 
             // colDebeAsiento
             // 
-            this.colDebeAsiento.HeaderText = "N°";
+            this.colDebeAsiento.HeaderText = "N�";
             this.colDebeAsiento.Name = "colDebeAsiento";
             this.colDebeAsiento.ReadOnly = true;
-            this.colDebeAsiento.Width = 42;
+            this.colDebeAsiento.Width = 50;
             // 
             // colDebeReferencia
             // 
@@ -638,6 +648,7 @@
             this.dgvHaber.DefaultCellStyle = bodyStyle;
             this.dgvHaber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHaber.EnableHeadersVisualStyles = false;
+            this.dgvHaber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHaber.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvHaber.Location = new System.Drawing.Point(596, 137);
             this.dgvHaber.MultiSelect = false;
@@ -658,10 +669,10 @@
             // 
             // colHaberAsiento
             // 
-            this.colHaberAsiento.HeaderText = "N°";
+            this.colHaberAsiento.HeaderText = "N�";
             this.colHaberAsiento.Name = "colHaberAsiento";
             this.colHaberAsiento.ReadOnly = true;
-            this.colHaberAsiento.Width = 42;
+            this.colHaberAsiento.Width = 50;
             // 
             // colHaberReferencia
             // 
@@ -689,10 +700,10 @@
             // lblTotalDebe
             // 
             this.lblTotalDebe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalDebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDebe.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalDebe.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalDebe.Location = new System.Drawing.Point(17, 300);
-            this.lblTotalDebe.Margin = new System.Windows.Forms.Padding(3, 6, 3, 4);
+            this.lblTotalDebe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblTotalDebe.Name = "lblTotalDebe";
             this.lblTotalDebe.Size = new System.Drawing.Size(555, 20);
             this.lblTotalDebe.TabIndex = 8;
@@ -702,10 +713,10 @@
             // lblTotalHaber
             // 
             this.lblTotalHaber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalHaber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalHaber.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalHaber.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblTotalHaber.Location = new System.Drawing.Point(596, 300);
-            this.lblTotalHaber.Margin = new System.Windows.Forms.Padding(3, 6, 3, 4);
+            this.lblTotalHaber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblTotalHaber.Name = "lblTotalHaber";
             this.lblTotalHaber.Size = new System.Drawing.Size(539, 20);
             this.lblTotalHaber.TabIndex = 9;
@@ -714,8 +725,9 @@
             // 
             // lblResultado
             // 
+            this.lblResultado.AutoSize = false;
             this.lblResultado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultado.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResultado.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblResultado.Location = new System.Drawing.Point(17, 327);
             this.lblResultado.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -727,8 +739,10 @@
             // 
             // lblMensaje
             // 
-            this.lblMensaje.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.AutoEllipsis = true;
+            this.lblMensaje.AutoSize = false;
+            this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblMensaje.Location = new System.Drawing.Point(18, 757);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(18, 3, 3, 10);

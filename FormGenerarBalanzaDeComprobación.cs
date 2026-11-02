@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             BackColor = UiContable.Fondo;
             FormBorderStyle = FormBorderStyle.None;
             Dock = DockStyle.Fill;
-            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
             TableLayoutPanel raiz = UiContable.CrearRaiz(this, "BALANZA DE COMPROBACIÓN");
 
@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             dgvBalanza = UiContable.CrearGrid();
             dgvBalanza.Columns.AddRange(new DataGridViewColumn[]
             {
-                UiContable.Columna("colCodigo", "Código", 55F, false),
+                UiContable.Columna("colCodigo", "Código", 55F, false, 62),
                 UiContable.Columna("colCuenta", "Cuenta", 175F, false),
                 UiContable.Columna("colDebe", "Debe del período", 90F, true),
                 UiContable.Columna("colHaber", "Haber del período", 90F, true),

@@ -88,7 +88,7 @@
             // 
             this.labelTitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.labelTitulo.Location = new System.Drawing.Point(282, 385);
             this.labelTitulo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 18);
@@ -100,7 +100,7 @@
             // labelParrafo
             // 
             this.labelParrafo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelParrafo.Font = new System.Drawing.Font("Modern No. 20", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelParrafo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelParrafo.ForeColor = System.Drawing.Color.Sienna;
             this.labelParrafo.Location = new System.Drawing.Point(163, 444);
             this.labelParrafo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 30);

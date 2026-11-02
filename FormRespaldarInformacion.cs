@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
             BackColor = UiContable.Fondo;
             FormBorderStyle = FormBorderStyle.None;
             Dock = DockStyle.Fill;
-            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 
             TableLayoutPanel raiz = UiContable.CrearRaiz(this, "RESPALDAR INFORMACIÓN");
 
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             lblResumen = new Label();
             lblResumen.AutoSize = false;
             lblResumen.Dock = DockStyle.Fill;
-            lblResumen.Height = 74;
+            lblResumen.Height = 96;
             lblResumen.Font = UiContable.Fuente(10F);
             lblResumen.ForeColor = UiContable.Texto;
             lblResumen.BackColor = Color.White;
@@ -166,10 +166,10 @@ namespace WindowsFormsApp1
 
                     DateTime fecha = Directory.GetLastWriteTime(carpeta);
                     string detalleCuentas = File.Exists(cuentas)
-                        ? new FileInfo(cuentas).Length / 1024.0 + " KB"
+                        ? (new FileInfo(cuentas).Length / 1024.0).ToString("N1") + " KB"
                         : "falta";
                     string detalleOperaciones = File.Exists(operaciones)
-                        ? new FileInfo(operaciones).Length / 1024.0 + " KB"
+                        ? (new FileInfo(operaciones).Length / 1024.0).ToString("N1") + " KB"
                         : "falta";
 
                     decimal totalKb = 0m;
@@ -177,7 +177,7 @@ namespace WindowsFormsApp1
                     if (File.Exists(operaciones)) totalKb += (decimal)new FileInfo(operaciones).Length / 1024m;
 
                     int fila = dgvRespaldos.Rows.Add(
-                        fecha.ToString("dd/MM/yyyy HH:mm:ss"),
+                        fecha.ToString("dd/MM/yyyy HH:mm"),
                         nombre,
                         detalleCuentas,
                         detalleOperaciones,
