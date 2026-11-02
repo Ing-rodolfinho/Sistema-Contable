@@ -298,11 +298,11 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.SaddleBrown;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.MistyRose;
-            this.guna2Button1.Location = new System.Drawing.Point(931, 12);
+            this.guna2Button1.Location = new System.Drawing.Point(915, 12);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedColor = System.Drawing.Color.Tan;
-            this.guna2Button1.Size = new System.Drawing.Size(141, 37);
+            this.guna2Button1.Size = new System.Drawing.Size(157, 37);
             this.guna2Button1.TabIndex = 0;
             this.guna2Button1.Text = "dd/MM/yyyy";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -561,10 +561,10 @@
             this.button7.Location = new System.Drawing.Point(0, 288);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button7.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.button7.Size = new System.Drawing.Size(288, 42);
             this.button7.TabIndex = 7;
-            this.button7.Text = "  Balanza de Comprobación";
+            this.button7.Text = " Balanza de Comprobación";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = false;

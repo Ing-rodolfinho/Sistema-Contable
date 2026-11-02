@@ -24,6 +24,83 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        private FlowLayoutPanel barraFiltros;
+        private FlowLayoutPanel barraTotales;
+
+        protected override void OnPrepararContenido()
+        {
+            ConstruirBarraFiltros();
+            ConstruirBarraTotales();
+        }
+
+        private void ConstruirBarraFiltros()
+        {
+            if (barraFiltros != null) return;
+
+            barraFiltros = new FlowLayoutPanel();
+            barraFiltros.Dock = DockStyle.Bottom;
+            barraFiltros.Height = 30;
+            barraFiltros.WrapContents = false;
+            barraFiltros.FlowDirection = FlowDirection.LeftToRight;
+            barraFiltros.BackColor = Color.Transparent;
+            barraFiltros.Padding = new Padding(13, 0, 0, 0);
+
+            panelSuperior.SuspendLayout();
+            panelSuperior.Controls.Remove(lblDesde);
+            panelSuperior.Controls.Remove(dtpDesde);
+            panelSuperior.Controls.Remove(lblHasta);
+            panelSuperior.Controls.Remove(dtpHasta);
+            panelSuperior.Controls.Remove(btnGenerar);
+
+            lblDesde.Margin = new Padding(0, 6, 6, 0);
+            lblHasta.Margin = new Padding(0, 6, 6, 0);
+            dtpDesde.Width = 124;
+            dtpHasta.Width = 124;
+            dtpDesde.Margin = new Padding(0, 3, 16, 0);
+            dtpHasta.Margin = new Padding(0, 3, 16, 0);
+            btnGenerar.Margin = new Padding(0, 3, 0, 0);
+
+            barraFiltros.Controls.Add(lblDesde);
+            barraFiltros.Controls.Add(dtpDesde);
+            barraFiltros.Controls.Add(lblHasta);
+            barraFiltros.Controls.Add(dtpHasta);
+            barraFiltros.Controls.Add(btnGenerar);
+            panelSuperior.Controls.Add(barraFiltros);
+            panelSuperior.ResumeLayout(true);
+        }
+
+        private void ConstruirBarraTotales()
+        {
+            if (barraTotales != null) return;
+
+            barraTotales = new FlowLayoutPanel();
+            barraTotales.Dock = DockStyle.Right;
+            barraTotales.AutoSize = true;
+            barraTotales.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            barraTotales.WrapContents = false;
+            barraTotales.FlowDirection = FlowDirection.LeftToRight;
+            barraTotales.BackColor = Color.Transparent;
+            barraTotales.Padding = new Padding(0, 10, 18, 0);
+
+            panelTotales.SuspendLayout();
+            panelTotales.Controls.Remove(lblTotalDebe);
+            panelTotales.Controls.Remove(lblTotalHaber);
+            panelTotales.Controls.Remove(lblDiferencia);
+
+            lblTotalDebe.Anchor = AnchorStyles.None;
+            lblTotalHaber.Anchor = AnchorStyles.None;
+            lblDiferencia.Anchor = AnchorStyles.None;
+            lblTotalDebe.Margin = new Padding(0, 0, 18, 0);
+            lblTotalHaber.Margin = new Padding(0, 0, 18, 0);
+            lblDiferencia.Margin = new Padding(0);
+
+            barraTotales.Controls.Add(lblTotalDebe);
+            barraTotales.Controls.Add(lblTotalHaber);
+            barraTotales.Controls.Add(lblDiferencia);
+            panelTotales.Controls.Add(barraTotales);
+            panelTotales.ResumeLayout(true);
+        }
+
         private void FormGenerarLibroDiario_Load(object sender, EventArgs e)
         {
             InicializarFechas();

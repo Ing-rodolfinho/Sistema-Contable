@@ -363,9 +363,24 @@ namespace WindowsFormsApp1
                 origen.Add(texto);
             }
 
-            txtCodigoCuenta.AutoCompleteCustomSource = origen;
-            txtCodigoCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            try
+            {
+                txtCodigoCuenta.AutoCompleteCustomSource = origen;
+                txtCodigoCuenta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+            catch
+            {
+                // El autocompletado depende del servicio de shell de Windows.
+                // Si no está disponible, la consulta sigue funcionando sin él.
+                try
+                {
+                    txtCodigoCuenta.AutoCompleteSource = AutoCompleteSource.None;
+                }
+                catch
+                {
+                }
+            }
         }
 
         private void EstablecerRangoFechas()

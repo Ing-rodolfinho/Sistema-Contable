@@ -122,12 +122,13 @@
             this.tlpFondo.Controls.Add(this.tcOperaciones, 0, 1);
             this.tlpFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
+            this.tlpFondo.Margin = new System.Windows.Forms.Padding(4);
             this.tlpFondo.Name = "tlpFondo";
-            this.tlpFondo.Padding = new System.Windows.Forms.Padding(15, 8, 15, 16);
+            this.tlpFondo.Padding = new System.Windows.Forms.Padding(20, 10, 20, 20);
             this.tlpFondo.RowCount = 2;
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFondo.Size = new System.Drawing.Size(1085, 687);
+            this.tlpFondo.Size = new System.Drawing.Size(1447, 846);
             this.tlpFondo.TabIndex = 0;
             // 
             // lblTitulo
@@ -136,10 +137,10 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblTitulo.Location = new System.Drawing.Point(345, 12);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 8);
+            this.lblTitulo.Location = new System.Drawing.Point(492, 15);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(395, 34);
+            this.lblTitulo.Size = new System.Drawing.Size(462, 39);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "REGISTRAR OPERACIONES";
             // 
@@ -150,11 +151,11 @@
             this.tcOperaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcOperaciones.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcOperaciones.ItemSize = new System.Drawing.Size(180, 40);
-            this.tcOperaciones.Location = new System.Drawing.Point(18, 54);
-            this.tcOperaciones.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.tcOperaciones.Location = new System.Drawing.Point(24, 64);
+            this.tcOperaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tcOperaciones.Name = "tcOperaciones";
             this.tcOperaciones.SelectedIndex = 0;
-            this.tcOperaciones.Size = new System.Drawing.Size(1049, 617);
+            this.tcOperaciones.Size = new System.Drawing.Size(1399, 762);
             this.tcOperaciones.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tcOperaciones.TabButtonHoverState.FillColor = System.Drawing.Color.Tan;
             this.tcOperaciones.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -180,10 +181,10 @@
             this.tabNuevo.BackColor = System.Drawing.Color.White;
             this.tabNuevo.Controls.Add(this.tlpNuevo);
             this.tabNuevo.Location = new System.Drawing.Point(4, 44);
-            this.tabNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabNuevo.Name = "tabNuevo";
-            this.tabNuevo.Padding = new System.Windows.Forms.Padding(9, 6, 9, 6);
-            this.tabNuevo.Size = new System.Drawing.Size(1041, 569);
+            this.tabNuevo.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.tabNuevo.Size = new System.Drawing.Size(1391, 714);
             this.tabNuevo.TabIndex = 0;
             this.tabNuevo.Text = "Nuevo Asiento";
             this.tabNuevo.UseVisualStyleBackColor = true;
@@ -197,14 +198,14 @@
             this.tlpNuevo.Controls.Add(this.panelPartidas, 0, 1);
             this.tlpNuevo.Controls.Add(this.tlpPie, 0, 2);
             this.tlpNuevo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpNuevo.Location = new System.Drawing.Point(9, 6);
+            this.tlpNuevo.Location = new System.Drawing.Point(12, 7);
             this.tlpNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.tlpNuevo.Name = "tlpNuevo";
             this.tlpNuevo.RowCount = 3;
             this.tlpNuevo.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpNuevo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpNuevo.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpNuevo.Size = new System.Drawing.Size(1023, 557);
+            this.tlpNuevo.Size = new System.Drawing.Size(1367, 700);
             this.tlpNuevo.TabIndex = 0;
             // 
             // panelEncabezado
@@ -213,12 +214,12 @@
             this.panelEncabezado.Controls.Add(this.tlpEncabezado);
             this.panelEncabezado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEncabezado.FillColor = System.Drawing.Color.White;
-            this.panelEncabezado.Location = new System.Drawing.Point(3, 3);
-            this.panelEncabezado.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
+            this.panelEncabezado.Location = new System.Drawing.Point(4, 4);
+            this.panelEncabezado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelEncabezado.Name = "panelEncabezado";
             this.panelEncabezado.Radius = 20;
             this.panelEncabezado.ShadowColor = System.Drawing.Color.Black;
-            this.panelEncabezado.Size = new System.Drawing.Size(1017, 94);
+            this.panelEncabezado.Size = new System.Drawing.Size(1359, 116);
             this.panelEncabezado.TabIndex = 0;
             // 
             // tlpEncabezado
@@ -238,12 +239,13 @@
             this.tlpEncabezado.Controls.Add(this.txtDescripcion, 3, 1);
             this.tlpEncabezado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpEncabezado.Location = new System.Drawing.Point(0, 0);
+            this.tlpEncabezado.Margin = new System.Windows.Forms.Padding(4);
             this.tlpEncabezado.Name = "tlpEncabezado";
-            this.tlpEncabezado.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpEncabezado.Padding = new System.Windows.Forms.Padding(5);
             this.tlpEncabezado.RowCount = 2;
-            this.tlpEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tlpEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tlpEncabezado.Size = new System.Drawing.Size(1017, 94);
+            this.tlpEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tlpEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tlpEncabezado.Size = new System.Drawing.Size(1359, 116);
             this.tlpEncabezado.TabIndex = 0;
             // 
             // lblNumeroAsiento
@@ -252,10 +254,10 @@
             this.lblNumeroAsiento.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNumeroAsiento.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroAsiento.ForeColor = System.Drawing.Color.Sienna;
-            this.lblNumeroAsiento.Location = new System.Drawing.Point(7, 7);
-            this.lblNumeroAsiento.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.lblNumeroAsiento.Location = new System.Drawing.Point(9, 9);
+            this.lblNumeroAsiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 2);
             this.lblNumeroAsiento.Name = "lblNumeroAsiento";
-            this.lblNumeroAsiento.Size = new System.Drawing.Size(147, 16);
+            this.lblNumeroAsiento.Size = new System.Drawing.Size(196, 20);
             this.lblNumeroAsiento.TabIndex = 0;
             this.lblNumeroAsiento.Text = "Número de asiento:";
             this.lblNumeroAsiento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -266,10 +268,10 @@
             this.lblFecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.Color.Sienna;
-            this.lblFecha.Location = new System.Drawing.Point(160, 7);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.lblFecha.Location = new System.Drawing.Point(213, 9);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 2);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(345, 16);
+            this.lblFecha.Size = new System.Drawing.Size(461, 20);
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "Fecha:";
             this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,10 +282,10 @@
             this.lblReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReferencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReferencia.ForeColor = System.Drawing.Color.Sienna;
-            this.lblReferencia.Location = new System.Drawing.Point(511, 7);
-            this.lblReferencia.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.lblReferencia.Location = new System.Drawing.Point(682, 9);
+            this.lblReferencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 2);
             this.lblReferencia.Name = "lblReferencia";
-            this.lblReferencia.Size = new System.Drawing.Size(246, 16);
+            this.lblReferencia.Size = new System.Drawing.Size(329, 20);
             this.lblReferencia.TabIndex = 2;
             this.lblReferencia.Text = "Referencia / Factura:";
             this.lblReferencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,10 +296,10 @@
             this.lblDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.Sienna;
-            this.lblDescripcion.Location = new System.Drawing.Point(763, 7);
-            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.lblDescripcion.Location = new System.Drawing.Point(1019, 9);
+            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 2);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(247, 16);
+            this.lblDescripcion.Size = new System.Drawing.Size(331, 20);
             this.lblDescripcion.TabIndex = 3;
             this.lblDescripcion.Text = "Descripción:";
             this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -310,8 +312,8 @@
             this.numNumeroAsiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.numNumeroAsiento.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumeroAsiento.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.numNumeroAsiento.Location = new System.Drawing.Point(7, 29);
-            this.numNumeroAsiento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numNumeroAsiento.Location = new System.Drawing.Point(9, 36);
+            this.numNumeroAsiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numNumeroAsiento.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -323,7 +325,7 @@
             0,
             0});
             this.numNumeroAsiento.Name = "numNumeroAsiento";
-            this.numNumeroAsiento.Size = new System.Drawing.Size(147, 24);
+            this.numNumeroAsiento.Size = new System.Drawing.Size(196, 32);
             this.numNumeroAsiento.TabIndex = 4;
             this.numNumeroAsiento.Value = new decimal(new int[] {
             1,
@@ -342,12 +344,12 @@
             this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.ForeColor = System.Drawing.Color.SaddleBrown;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFecha.Location = new System.Drawing.Point(160, 29);
-            this.dtpFecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtpFecha.Location = new System.Drawing.Point(213, 36);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFecha.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFecha.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(345, 24);
+            this.dtpFecha.Size = new System.Drawing.Size(461, 30);
             this.dtpFecha.TabIndex = 5;
             this.dtpFecha.Value = new System.DateTime(2026, 1, 1, 0, 0, 0, 0);
             // 
@@ -357,11 +359,11 @@
             this.txtReferencia.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReferencia.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtReferencia.Location = new System.Drawing.Point(511, 31);
-            this.txtReferencia.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.txtReferencia.Location = new System.Drawing.Point(682, 38);
+            this.txtReferencia.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.txtReferencia.MaxLength = 50;
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(246, 22);
+            this.txtReferencia.Size = new System.Drawing.Size(329, 30);
             this.txtReferencia.TabIndex = 6;
             // 
             // txtDescripcion
@@ -370,11 +372,11 @@
             this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtDescripcion.Location = new System.Drawing.Point(763, 31);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.txtDescripcion.Location = new System.Drawing.Point(1019, 38);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.txtDescripcion.MaxLength = 200;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(247, 22);
+            this.txtDescripcion.Size = new System.Drawing.Size(331, 30);
             this.txtDescripcion.TabIndex = 7;
             // 
             // panelPartidas
@@ -383,12 +385,12 @@
             this.panelPartidas.Controls.Add(this.tlpPartidas);
             this.panelPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPartidas.FillColor = System.Drawing.Color.White;
-            this.panelPartidas.Location = new System.Drawing.Point(3, 108);
-            this.panelPartidas.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
+            this.panelPartidas.Location = new System.Drawing.Point(4, 134);
+            this.panelPartidas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelPartidas.Name = "panelPartidas";
             this.panelPartidas.Radius = 20;
             this.panelPartidas.ShadowColor = System.Drawing.Color.Black;
-            this.panelPartidas.Size = new System.Drawing.Size(1017, 363);
+            this.panelPartidas.Size = new System.Drawing.Size(1359, 459);
             this.panelPartidas.TabIndex = 1;
             // 
             // tlpPartidas
@@ -401,14 +403,15 @@
             this.tlpPartidas.Controls.Add(this.tlpTotales, 0, 3);
             this.tlpPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPartidas.Location = new System.Drawing.Point(0, 0);
+            this.tlpPartidas.Margin = new System.Windows.Forms.Padding(4);
             this.tlpPartidas.Name = "tlpPartidas";
-            this.tlpPartidas.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpPartidas.Padding = new System.Windows.Forms.Padding(5);
             this.tlpPartidas.RowCount = 4;
             this.tlpPartidas.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpPartidas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpPartidas.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpPartidas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPartidas.Size = new System.Drawing.Size(1017, 363);
+            this.tlpPartidas.Size = new System.Drawing.Size(1359, 459);
             this.tlpPartidas.TabIndex = 0;
             // 
             // lblPartidasTitulo
@@ -416,10 +419,10 @@
             this.lblPartidasTitulo.AutoSize = true;
             this.lblPartidasTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPartidasTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblPartidasTitulo.Location = new System.Drawing.Point(7, 7);
-            this.lblPartidasTitulo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.lblPartidasTitulo.Location = new System.Drawing.Point(9, 9);
+            this.lblPartidasTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 7);
             this.lblPartidasTitulo.Name = "lblPartidasTitulo";
-            this.lblPartidasTitulo.Size = new System.Drawing.Size(171, 23);
+            this.lblPartidasTitulo.Size = new System.Drawing.Size(252, 31);
             this.lblPartidasTitulo.TabIndex = 0;
             this.lblPartidasTitulo.Text = "Partidas del asiento";
             // 
@@ -437,7 +440,7 @@
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPartidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvPartidas.ColumnHeadersHeight = 22;
+            this.dgvPartidas.ColumnHeadersHeight = 32;
             this.dgvPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvPartidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -455,19 +458,19 @@
             this.dgvPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPartidas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
-            this.dgvPartidas.Location = new System.Drawing.Point(7, 36);
-            this.dgvPartidas.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.dgvPartidas.Location = new System.Drawing.Point(9, 47);
+            this.dgvPartidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 4);
             this.dgvPartidas.Name = "dgvPartidas";
             this.dgvPartidas.ReadOnly = true;
             this.dgvPartidas.RowHeadersVisible = false;
             this.dgvPartidas.RowHeadersWidth = 51;
             this.dgvPartidas.RowTemplate.Height = 26;
-            this.dgvPartidas.Size = new System.Drawing.Size(1003, 204);
+            this.dgvPartidas.Size = new System.Drawing.Size(1341, 255);
             this.dgvPartidas.TabIndex = 1;
             this.dgvPartidas.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvPartidas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
             this.dgvPartidas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPartidas.ThemeStyle.HeaderStyle.Height = 22;
+            this.dgvPartidas.ThemeStyle.HeaderStyle.Height = 32;
             this.dgvPartidas.ThemeStyle.ReadOnly = true;
             this.dgvPartidas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.ThemeStyle.RowsStyle.Height = 26;
@@ -476,7 +479,7 @@
             // 
             this.colCodigo.FillWeight = 15F;
             this.colCodigo.HeaderText = "Código";
-            this.colCodigo.MinimumWidth = 6;
+            this.colCodigo.MinimumWidth = 62;
             this.colCodigo.Name = "colCodigo";
             this.colCodigo.ReadOnly = true;
             // 
@@ -484,7 +487,7 @@
             // 
             this.colCuenta.FillWeight = 45F;
             this.colCuenta.HeaderText = "Cuenta";
-            this.colCuenta.MinimumWidth = 6;
+            this.colCuenta.MinimumWidth = 60;
             this.colCuenta.Name = "colCuenta";
             this.colCuenta.ReadOnly = true;
             // 
@@ -495,7 +498,7 @@
             this.colDebe.DefaultCellStyle = dataGridViewCellStyle18;
             this.colDebe.FillWeight = 20F;
             this.colDebe.HeaderText = "Débito";
-            this.colDebe.MinimumWidth = 6;
+            this.colDebe.MinimumWidth = 60;
             this.colDebe.Name = "colDebe";
             this.colDebe.ReadOnly = true;
             // 
@@ -506,18 +509,18 @@
             this.colHaber.DefaultCellStyle = dataGridViewCellStyle19;
             this.colHaber.FillWeight = 20F;
             this.colHaber.HeaderText = "Crédito";
-            this.colHaber.MinimumWidth = 6;
+            this.colHaber.MinimumWidth = 64;
             this.colHaber.Name = "colHaber";
             this.colHaber.ReadOnly = true;
             // 
             // tlpCaptura
             // 
             this.tlpCaptura.ColumnCount = 6;
-            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tlpCaptura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpCaptura.Controls.Add(this.lblCuenta, 0, 0);
             this.tlpCaptura.Controls.Add(this.cboCuenta, 1, 0);
@@ -527,13 +530,13 @@
             this.tlpCaptura.Controls.Add(this.cboTipoPartida, 5, 0);
             this.tlpCaptura.Controls.Add(this.flpCapturaBotones, 0, 1);
             this.tlpCaptura.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpCaptura.Location = new System.Drawing.Point(7, 243);
-            this.tlpCaptura.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.tlpCaptura.Location = new System.Drawing.Point(9, 306);
+            this.tlpCaptura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tlpCaptura.Name = "tlpCaptura";
             this.tlpCaptura.RowCount = 2;
-            this.tlpCaptura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tlpCaptura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tlpCaptura.Size = new System.Drawing.Size(1003, 78);
+            this.tlpCaptura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tlpCaptura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpCaptura.Size = new System.Drawing.Size(1341, 102);
             this.tlpCaptura.TabIndex = 2;
             // 
             // lblCuenta
@@ -541,10 +544,10 @@
             this.lblCuenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCuenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCuenta.ForeColor = System.Drawing.Color.Sienna;
-            this.lblCuenta.Location = new System.Drawing.Point(3, 3);
-            this.lblCuenta.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
+            this.lblCuenta.Location = new System.Drawing.Point(4, 4);
+            this.lblCuenta.Margin = new System.Windows.Forms.Padding(4, 4, 11, 4);
             this.lblCuenta.Name = "lblCuenta";
-            this.lblCuenta.Size = new System.Drawing.Size(60, 26);
+            this.lblCuenta.Size = new System.Drawing.Size(80, 44);
             this.lblCuenta.TabIndex = 0;
             this.lblCuenta.Text = "Cuenta:";
             this.lblCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -561,9 +564,10 @@
             this.cboCuenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCuenta.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboCuenta.ItemHeight = 30;
-            this.cboCuenta.Location = new System.Drawing.Point(74, 3);
+            this.cboCuenta.Location = new System.Drawing.Point(99, 4);
+            this.cboCuenta.Margin = new System.Windows.Forms.Padding(4);
             this.cboCuenta.Name = "cboCuenta";
-            this.cboCuenta.Size = new System.Drawing.Size(334, 36);
+            this.cboCuenta.Size = new System.Drawing.Size(439, 36);
             this.cboCuenta.TabIndex = 3;
             // 
             // lblImporte
@@ -571,10 +575,10 @@
             this.lblImporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblImporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte.ForeColor = System.Drawing.Color.Sienna;
-            this.lblImporte.Location = new System.Drawing.Point(414, 3);
-            this.lblImporte.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
+            this.lblImporte.Location = new System.Drawing.Point(546, 4);
+            this.lblImporte.Margin = new System.Windows.Forms.Padding(4, 4, 11, 4);
             this.lblImporte.Name = "lblImporte";
-            this.lblImporte.Size = new System.Drawing.Size(60, 26);
+            this.lblImporte.Size = new System.Drawing.Size(80, 44);
             this.lblImporte.TabIndex = 1;
             this.lblImporte.Text = "Importe:";
             this.lblImporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -588,14 +592,15 @@
             this.numImporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numImporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numImporte.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.numImporte.Location = new System.Drawing.Point(485, 3);
+            this.numImporte.Location = new System.Drawing.Point(641, 5);
+            this.numImporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numImporte.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
             this.numImporte.Name = "numImporte";
-            this.numImporte.Size = new System.Drawing.Size(207, 26);
+            this.numImporte.Size = new System.Drawing.Size(271, 42);
             this.numImporte.TabIndex = 4;
             this.numImporte.ThousandsSeparator = true;
             // 
@@ -604,10 +609,10 @@
             this.lblTipo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblTipo.Location = new System.Drawing.Point(698, 3);
-            this.lblTipo.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
+            this.lblTipo.Location = new System.Drawing.Point(920, 4);
+            this.lblTipo.Margin = new System.Windows.Forms.Padding(4, 4, 11, 4);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(83, 26);
+            this.lblTipo.Size = new System.Drawing.Size(129, 44);
             this.lblTipo.TabIndex = 2;
             this.lblTipo.Text = "Debe / Haber:";
             this.lblTipo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -624,9 +629,10 @@
             this.cboTipoPartida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoPartida.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboTipoPartida.ItemHeight = 30;
-            this.cboTipoPartida.Location = new System.Drawing.Point(792, 3);
+            this.cboTipoPartida.Location = new System.Drawing.Point(1064, 4);
+            this.cboTipoPartida.Margin = new System.Windows.Forms.Padding(4);
             this.cboTipoPartida.Name = "cboTipoPartida";
-            this.cboTipoPartida.Size = new System.Drawing.Size(208, 36);
+            this.cboTipoPartida.Size = new System.Drawing.Size(273, 36);
             this.cboTipoPartida.TabIndex = 5;
             // 
             // flpCapturaBotones
@@ -635,10 +641,10 @@
             this.flpCapturaBotones.Controls.Add(this.btnAgregarPartida);
             this.flpCapturaBotones.Controls.Add(this.btnQuitarPartida);
             this.flpCapturaBotones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpCapturaBotones.Location = new System.Drawing.Point(0, 35);
-            this.flpCapturaBotones.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flpCapturaBotones.Location = new System.Drawing.Point(0, 56);
+            this.flpCapturaBotones.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.flpCapturaBotones.Name = "flpCapturaBotones";
-            this.flpCapturaBotones.Size = new System.Drawing.Size(1003, 43);
+            this.flpCapturaBotones.Size = new System.Drawing.Size(1341, 46);
             this.flpCapturaBotones.TabIndex = 6;
             // 
             // btnAgregarPartida
@@ -649,9 +655,10 @@
             this.btnAgregarPartida.ForeColor = System.Drawing.Color.White;
             this.btnAgregarPartida.Image = global::WindowsFormsApp1.Properties.Resources.assignment_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnAgregarPartida.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnAgregarPartida.Location = new System.Drawing.Point(3, 3);
+            this.btnAgregarPartida.Location = new System.Drawing.Point(4, 4);
+            this.btnAgregarPartida.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarPartida.Name = "btnAgregarPartida";
-            this.btnAgregarPartida.Size = new System.Drawing.Size(148, 36);
+            this.btnAgregarPartida.Size = new System.Drawing.Size(197, 44);
             this.btnAgregarPartida.TabIndex = 0;
             this.btnAgregarPartida.Text = "Agregar Partida";
             this.btnAgregarPartida.Click += new System.EventHandler(this.btnAgregarPartida_Click);
@@ -665,9 +672,10 @@
             this.btnQuitarPartida.ForeColor = System.Drawing.Color.Sienna;
             this.btnQuitarPartida.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnQuitarPartida.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnQuitarPartida.Location = new System.Drawing.Point(137, 3);
+            this.btnQuitarPartida.Location = new System.Drawing.Point(209, 4);
+            this.btnQuitarPartida.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuitarPartida.Name = "btnQuitarPartida";
-            this.btnQuitarPartida.Size = new System.Drawing.Size(139, 36);
+            this.btnQuitarPartida.Size = new System.Drawing.Size(185, 44);
             this.btnQuitarPartida.TabIndex = 1;
             this.btnQuitarPartida.Text = "Quitar Partida";
             this.btnQuitarPartida.Click += new System.EventHandler(this.btnQuitarPartida_Click);
@@ -682,12 +690,12 @@
             this.tlpTotales.Controls.Add(this.lblTotalHaber, 1, 0);
             this.tlpTotales.Controls.Add(this.lblDiferencia, 2, 0);
             this.tlpTotales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpTotales.Location = new System.Drawing.Point(7, 327);
-            this.tlpTotales.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.tlpTotales.Location = new System.Drawing.Point(9, 415);
+            this.tlpTotales.Margin = new System.Windows.Forms.Padding(4, 7, 4, 0);
             this.tlpTotales.Name = "tlpTotales";
             this.tlpTotales.RowCount = 1;
             this.tlpTotales.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpTotales.Size = new System.Drawing.Size(1003, 32);
+            this.tlpTotales.Size = new System.Drawing.Size(1341, 39);
             this.tlpTotales.TabIndex = 3;
             // 
             // lblTotalDebe
@@ -696,10 +704,10 @@
             this.lblTotalDebe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTotalDebe.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalDebe.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblTotalDebe.Location = new System.Drawing.Point(3, 3);
-            this.lblTotalDebe.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.lblTotalDebe.Location = new System.Drawing.Point(4, 4);
+            this.lblTotalDebe.Margin = new System.Windows.Forms.Padding(4);
             this.lblTotalDebe.Name = "lblTotalDebe";
-            this.lblTotalDebe.Size = new System.Drawing.Size(328, 26);
+            this.lblTotalDebe.Size = new System.Drawing.Size(439, 31);
             this.lblTotalDebe.TabIndex = 0;
             this.lblTotalDebe.Text = "Total Debe: 0.00";
             this.lblTotalDebe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -710,10 +718,10 @@
             this.lblTotalHaber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTotalHaber.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalHaber.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblTotalHaber.Location = new System.Drawing.Point(337, 3);
-            this.lblTotalHaber.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.lblTotalHaber.Location = new System.Drawing.Point(451, 4);
+            this.lblTotalHaber.Margin = new System.Windows.Forms.Padding(4);
             this.lblTotalHaber.Name = "lblTotalHaber";
-            this.lblTotalHaber.Size = new System.Drawing.Size(328, 26);
+            this.lblTotalHaber.Size = new System.Drawing.Size(439, 31);
             this.lblTotalHaber.TabIndex = 1;
             this.lblTotalHaber.Text = "Total Haber: 0.00";
             this.lblTotalHaber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -724,10 +732,10 @@
             this.lblDiferencia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDiferencia.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiferencia.ForeColor = System.Drawing.Color.Sienna;
-            this.lblDiferencia.Location = new System.Drawing.Point(671, 3);
-            this.lblDiferencia.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.lblDiferencia.Location = new System.Drawing.Point(898, 4);
+            this.lblDiferencia.Margin = new System.Windows.Forms.Padding(4);
             this.lblDiferencia.Name = "lblDiferencia";
-            this.lblDiferencia.Size = new System.Drawing.Size(329, 26);
+            this.lblDiferencia.Size = new System.Drawing.Size(439, 31);
             this.lblDiferencia.TabIndex = 2;
             this.lblDiferencia.Text = "Diferencia: 0.00";
             this.lblDiferencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -739,12 +747,13 @@
             this.tlpPie.Controls.Add(this.flpBotones, 0, 0);
             this.tlpPie.Controls.Add(this.lblMensaje, 0, 1);
             this.tlpPie.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPie.Location = new System.Drawing.Point(3, 482);
+            this.tlpPie.Location = new System.Drawing.Point(4, 607);
+            this.tlpPie.Margin = new System.Windows.Forms.Padding(4);
             this.tlpPie.Name = "tlpPie";
             this.tlpPie.RowCount = 2;
-            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tlpPie.Size = new System.Drawing.Size(1017, 72);
+            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tlpPie.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpPie.Size = new System.Drawing.Size(1359, 89);
             this.tlpPie.TabIndex = 2;
             // 
             // flpBotones
@@ -755,7 +764,7 @@
             this.flpBotones.Location = new System.Drawing.Point(0, 0);
             this.flpBotones.Margin = new System.Windows.Forms.Padding(0);
             this.flpBotones.Name = "flpBotones";
-            this.flpBotones.Size = new System.Drawing.Size(1017, 43);
+            this.flpBotones.Size = new System.Drawing.Size(1359, 53);
             this.flpBotones.TabIndex = 0;
             this.flpBotones.WrapContents = false;
             // 
@@ -767,9 +776,10 @@
             this.btnRegistrarAsiento.ForeColor = System.Drawing.Color.White;
             this.btnRegistrarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnRegistrarAsiento.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnRegistrarAsiento.Location = new System.Drawing.Point(3, 3);
+            this.btnRegistrarAsiento.Location = new System.Drawing.Point(4, 4);
+            this.btnRegistrarAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarAsiento.Name = "btnRegistrarAsiento";
-            this.btnRegistrarAsiento.Size = new System.Drawing.Size(158, 37);
+            this.btnRegistrarAsiento.Size = new System.Drawing.Size(211, 46);
             this.btnRegistrarAsiento.TabIndex = 0;
             this.btnRegistrarAsiento.Text = "Registrar Asiento";
             this.btnRegistrarAsiento.Click += new System.EventHandler(this.btnRegistrarAsiento_Click);
@@ -782,9 +792,10 @@
             this.btnNuevoAsiento.ForeColor = System.Drawing.Color.White;
             this.btnNuevoAsiento.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnNuevoAsiento.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnNuevoAsiento.Location = new System.Drawing.Point(151, 3);
+            this.btnNuevoAsiento.Location = new System.Drawing.Point(223, 4);
+            this.btnNuevoAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevoAsiento.Name = "btnNuevoAsiento";
-            this.btnNuevoAsiento.Size = new System.Drawing.Size(143, 37);
+            this.btnNuevoAsiento.Size = new System.Drawing.Size(191, 46);
             this.btnNuevoAsiento.TabIndex = 1;
             this.btnNuevoAsiento.Text = "Nuevo Asiento";
             this.btnNuevoAsiento.Click += new System.EventHandler(this.btnNuevoAsiento_Click);
@@ -792,14 +803,13 @@
             // lblMensaje
             // 
             this.lblMensaje.AutoEllipsis = true;
-            this.lblMensaje.AutoSize = false;
             this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
-            this.lblMensaje.Location = new System.Drawing.Point(3, 46);
-            this.lblMensaje.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.lblMensaje.Location = new System.Drawing.Point(4, 57);
+            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(1011, 26);
+            this.lblMensaje.Size = new System.Drawing.Size(1351, 32);
             this.lblMensaje.TabIndex = 1;
             this.lblMensaje.Text = "Complete los datos del asiento y agregue las partidas.";
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -809,10 +819,10 @@
             this.tabHistorial.BackColor = System.Drawing.Color.White;
             this.tabHistorial.Controls.Add(this.tlpHistorial);
             this.tabHistorial.Location = new System.Drawing.Point(4, 44);
-            this.tabHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabHistorial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabHistorial.Name = "tabHistorial";
-            this.tabHistorial.Padding = new System.Windows.Forms.Padding(9, 6, 9, 6);
-            this.tabHistorial.Size = new System.Drawing.Size(1041, 587);
+            this.tabHistorial.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
+            this.tabHistorial.Size = new System.Drawing.Size(1391, 714);
             this.tabHistorial.TabIndex = 1;
             this.tabHistorial.Text = "Asientos Registrados";
             this.tabHistorial.UseVisualStyleBackColor = true;
@@ -825,13 +835,13 @@
             this.tlpHistorial.Controls.Add(this.tlpHistorialEncabezado, 0, 0);
             this.tlpHistorial.Controls.Add(this.dgvAsientos, 0, 1);
             this.tlpHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpHistorial.Location = new System.Drawing.Point(9, 6);
+            this.tlpHistorial.Location = new System.Drawing.Point(12, 7);
             this.tlpHistorial.Margin = new System.Windows.Forms.Padding(0);
             this.tlpHistorial.Name = "tlpHistorial";
             this.tlpHistorial.RowCount = 2;
             this.tlpHistorial.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpHistorial.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHistorial.Size = new System.Drawing.Size(1023, 575);
+            this.tlpHistorial.Size = new System.Drawing.Size(1367, 700);
             this.tlpHistorial.TabIndex = 0;
             // 
             // tlpHistorialEncabezado
@@ -844,11 +854,12 @@
             this.tlpHistorialEncabezado.Controls.Add(this.btnEliminarAsiento, 1, 0);
             this.tlpHistorialEncabezado.Controls.Add(this.btnActualizar, 2, 0);
             this.tlpHistorialEncabezado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpHistorialEncabezado.Location = new System.Drawing.Point(3, 3);
+            this.tlpHistorialEncabezado.Location = new System.Drawing.Point(4, 4);
+            this.tlpHistorialEncabezado.Margin = new System.Windows.Forms.Padding(4);
             this.tlpHistorialEncabezado.Name = "tlpHistorialEncabezado";
             this.tlpHistorialEncabezado.RowCount = 1;
             this.tlpHistorialEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpHistorialEncabezado.Size = new System.Drawing.Size(1017, 43);
+            this.tlpHistorialEncabezado.Size = new System.Drawing.Size(1359, 53);
             this.tlpHistorialEncabezado.TabIndex = 0;
             // 
             // lblHistorialTitulo
@@ -857,10 +868,10 @@
             this.lblHistorialTitulo.AutoSize = true;
             this.lblHistorialTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistorialTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblHistorialTitulo.Location = new System.Drawing.Point(3, 10);
-            this.lblHistorialTitulo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.lblHistorialTitulo.Location = new System.Drawing.Point(4, 11);
+            this.lblHistorialTitulo.Margin = new System.Windows.Forms.Padding(4);
             this.lblHistorialTitulo.Name = "lblHistorialTitulo";
-            this.lblHistorialTitulo.Size = new System.Drawing.Size(178, 23);
+            this.lblHistorialTitulo.Size = new System.Drawing.Size(259, 31);
             this.lblHistorialTitulo.TabIndex = 0;
             this.lblHistorialTitulo.Text = "Asientos registrados";
             // 
@@ -873,9 +884,10 @@
             this.btnEliminarAsiento.ForeColor = System.Drawing.Color.Sienna;
             this.btnEliminarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnEliminarAsiento.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnEliminarAsiento.Location = new System.Drawing.Point(771, 3);
+            this.btnEliminarAsiento.Location = new System.Drawing.Point(1011, 4);
+            this.btnEliminarAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarAsiento.Name = "btnEliminarAsiento";
-            this.btnEliminarAsiento.Size = new System.Drawing.Size(138, 37);
+            this.btnEliminarAsiento.Size = new System.Drawing.Size(184, 46);
             this.btnEliminarAsiento.TabIndex = 2;
             this.btnEliminarAsiento.Text = "Borrar asiento";
             this.btnEliminarAsiento.Click += new System.EventHandler(this.btnEliminarAsiento_Click);
@@ -889,9 +901,10 @@
             this.btnActualizar.ForeColor = System.Drawing.Color.Sienna;
             this.btnActualizar.Image = global::WindowsFormsApp1.Properties.Resources.manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnActualizar.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnActualizar.Location = new System.Drawing.Point(900, 3);
+            this.btnActualizar.Location = new System.Drawing.Point(1203, 4);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(114, 37);
+            this.btnActualizar.Size = new System.Drawing.Size(152, 46);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -910,7 +923,7 @@
             dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAsientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.dgvAsientos.ColumnHeadersHeight = 22;
+            this.dgvAsientos.ColumnHeadersHeight = 32;
             this.dgvAsientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvAsientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNumero,
@@ -930,19 +943,19 @@
             this.dgvAsientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAsientos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
-            this.dgvAsientos.Location = new System.Drawing.Point(3, 49);
-            this.dgvAsientos.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.dgvAsientos.Location = new System.Drawing.Point(4, 61);
+            this.dgvAsientos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 4);
             this.dgvAsientos.Name = "dgvAsientos";
             this.dgvAsientos.ReadOnly = true;
             this.dgvAsientos.RowHeadersVisible = false;
             this.dgvAsientos.RowHeadersWidth = 51;
             this.dgvAsientos.RowTemplate.Height = 26;
-            this.dgvAsientos.Size = new System.Drawing.Size(1017, 523);
+            this.dgvAsientos.Size = new System.Drawing.Size(1359, 635);
             this.dgvAsientos.TabIndex = 1;
             this.dgvAsientos.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvAsientos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
             this.dgvAsientos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAsientos.ThemeStyle.HeaderStyle.Height = 22;
+            this.dgvAsientos.ThemeStyle.HeaderStyle.Height = 32;
             this.dgvAsientos.ThemeStyle.ReadOnly = true;
             this.dgvAsientos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.ThemeStyle.RowsStyle.Height = 26;
@@ -952,7 +965,7 @@
             // 
             this.colNumero.FillWeight = 10F;
             this.colNumero.HeaderText = "Nº";
-            this.colNumero.MinimumWidth = 6;
+            this.colNumero.MinimumWidth = 55;
             this.colNumero.Name = "colNumero";
             this.colNumero.ReadOnly = true;
             // 
@@ -960,7 +973,7 @@
             // 
             this.colFecha.FillWeight = 12F;
             this.colFecha.HeaderText = "Fecha";
-            this.colFecha.MinimumWidth = 6;
+            this.colFecha.MinimumWidth = 92;
             this.colFecha.Name = "colFecha";
             this.colFecha.ReadOnly = true;
             // 
@@ -968,7 +981,7 @@
             // 
             this.colReferencia.FillWeight = 18F;
             this.colReferencia.HeaderText = "Referencia / Factura";
-            this.colReferencia.MinimumWidth = 6;
+            this.colReferencia.MinimumWidth = 145;
             this.colReferencia.Name = "colReferencia";
             this.colReferencia.ReadOnly = true;
             // 
@@ -976,7 +989,7 @@
             // 
             this.colDescripcion.FillWeight = 35F;
             this.colDescripcion.HeaderText = "Descripción";
-            this.colDescripcion.MinimumWidth = 6;
+            this.colDescripcion.MinimumWidth = 60;
             this.colDescripcion.Name = "colDescripcion";
             this.colDescripcion.ReadOnly = true;
             // 
@@ -987,7 +1000,7 @@
             this.colTotalDebe.DefaultCellStyle = dataGridViewCellStyle22;
             this.colTotalDebe.FillWeight = 12F;
             this.colTotalDebe.HeaderText = "Total Débito";
-            this.colTotalDebe.MinimumWidth = 6;
+            this.colTotalDebe.MinimumWidth = 100;
             this.colTotalDebe.Name = "colTotalDebe";
             this.colTotalDebe.ReadOnly = true;
             // 
@@ -998,16 +1011,17 @@
             this.colTotalHaber.DefaultCellStyle = dataGridViewCellStyle23;
             this.colTotalHaber.FillWeight = 12F;
             this.colTotalHaber.HeaderText = "Total Crédito";
-            this.colTotalHaber.MinimumWidth = 6;
+            this.colTotalHaber.MinimumWidth = 100;
             this.colTotalHaber.Name = "colTotalHaber";
             this.colTotalHaber.ReadOnly = true;
             // 
             // FormRegistrarOperaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 687);
+            this.ClientSize = new System.Drawing.Size(1447, 846);
             this.Controls.Add(this.tlpFondo);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormRegistrarOperaciones";
             this.Text = "Registrar Operaciones";
             this.Load += new System.EventHandler(this.FormRegistrarOperaciones_Load);
@@ -1030,7 +1044,6 @@
             this.tlpTotales.ResumeLayout(false);
             this.tlpTotales.PerformLayout();
             this.tlpPie.ResumeLayout(false);
-            this.tlpPie.PerformLayout();
             this.flpBotones.ResumeLayout(false);
             this.tabHistorial.ResumeLayout(false);
             this.tlpHistorial.ResumeLayout(false);

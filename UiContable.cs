@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
             grid.EnableHeadersVisualStyles = false;
             grid.GridColor = Color.Gainsboro;
             grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            grid.ColumnHeadersHeight = 32;
+            grid.ColumnHeadersHeight = 42;
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grid.RowTemplate.Height = 26;
 
@@ -198,13 +198,13 @@ namespace WindowsFormsApp1
             return grid;
         }
 
-        public static DataGridViewTextBoxColumn Columna(string nombre, string encabezado, float peso, bool derecha)
+        public static DataGridViewTextBoxColumn Columna(string nombre, string encabezado, float peso, bool derecha, int anchoMinimo = 55)
         {
             var columna = new DataGridViewTextBoxColumn();
             columna.Name = nombre;
             columna.HeaderText = encabezado;
             columna.FillWeight = peso;
-            columna.MinimumWidth = 55;
+            columna.MinimumWidth = anchoMinimo;
             columna.ReadOnly = true;
             columna.SortMode = DataGridViewColumnSortMode.NotSortable;
             if (derecha)

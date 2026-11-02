@@ -197,7 +197,7 @@
             // 
             this.colFecha.FillWeight = 72F;
             this.colFecha.HeaderText = "Fecha";
-            this.colFecha.MinimumWidth = 6;
+            this.colFecha.MinimumWidth = 92;
             this.colFecha.Name = "colFecha";
             this.colFecha.ReadOnly = true;
             // 
@@ -213,7 +213,7 @@
             // 
             this.colCodigo.FillWeight = 58F;
             this.colCodigo.HeaderText = "Código";
-            this.colCodigo.MinimumWidth = 6;
+            this.colCodigo.MinimumWidth = 62;
             this.colCodigo.Name = "colCodigo";
             this.colCodigo.ReadOnly = true;
             // 

@@ -267,8 +267,8 @@
             this.tlpDetalle.Name = "tlpDetalle";
             this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.tlpDetalle.RowCount = 11;
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -276,7 +276,7 @@
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpDetalle.Size = new System.Drawing.Size(604, 741);
             this.tlpDetalle.TabIndex = 0;
@@ -290,7 +290,7 @@
             this.lblRuta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRuta.ForeColor = System.Drawing.Color.Sienna;
             this.lblRuta.Location = new System.Drawing.Point(24, 61);
-            this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
+            this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRuta.Name = "lblRuta";
             this.lblRuta.Size = new System.Drawing.Size(556, 17);
             this.lblRuta.TabIndex = 1;
@@ -618,7 +618,7 @@
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
             this.lblMensaje.Location = new System.Drawing.Point(24, 513);
-            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(556, 20);
             this.lblMensaje.TabIndex = 17;
@@ -632,7 +632,7 @@
             this.lblDetalleTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalleTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lblDetalleTitulo.Location = new System.Drawing.Point(144, 15);
-            this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 6);
+            this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetalleTitulo.Name = "lblDetalleTitulo";
             this.lblDetalleTitulo.Size = new System.Drawing.Size(238, 31);
             this.lblDetalleTitulo.TabIndex = 0;

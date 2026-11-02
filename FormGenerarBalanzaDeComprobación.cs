@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             dgvBalanza = UiContable.CrearGrid();
             dgvBalanza.Columns.AddRange(new DataGridViewColumn[]
             {
-                UiContable.Columna("colCodigo", "Código", 55F, false),
+                UiContable.Columna("colCodigo", "Código", 55F, false, 62),
                 UiContable.Columna("colCuenta", "Cuenta", 175F, false),
                 UiContable.Columna("colDebe", "Debe del período", 90F, true),
                 UiContable.Columna("colHaber", "Haber del período", 90F, true),
