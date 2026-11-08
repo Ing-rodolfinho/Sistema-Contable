@@ -19,6 +19,12 @@
           "nombre": "Inventario",
           "naturaleza": "debito",
           "estado": "activo"
+        },
+        {
+          "codigo": "1104",
+          "nombre": "Bancos",
+          "naturaleza": "debito",
+          "estado": "activo"
         }
       ],
       "activo_no_corriente": [
@@ -87,6 +93,12 @@
         {
           "codigo": "2202",
           "nombre": "Hipoteca por pagar",
+          "naturaleza": "credito",
+          "estado": "activo"
+        },
+        {
+          "codigo": "2203",
+          "nombre": "Proveedores",
           "naturaleza": "credito",
           "estado": "activo"
         }

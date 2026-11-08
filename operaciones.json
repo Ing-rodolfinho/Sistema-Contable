@@ -1,3 +1,100 @@
 {
-  "asientos": []
+  "asientos": [
+    {
+      "numero_asiento": 1,
+      "fecha": "2026-11-08",
+      "referencia": "RIEG-1",
+      "descripcion": "cargo a banco por 10000 y abono a capital social por 10000",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 100000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "3111",
+          "nombre_cuenta": "Capital social",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 100000.00
+        }
+      ],
+      "total_debe": 100000.00,
+      "total_haber": 100000.00
+    },
+    {
+      "numero_asiento": 2,
+      "fecha": "2026-11-08",
+      "referencia": "RIEG-2",
+      "descripcion": "cargo a imventario por 50000 y abono a proveedores por 50000",
+      "partidas": [
+        {
+          "cuenta": "1103",
+          "nombre_cuenta": "Inventario",
+          "naturaleza": "debito",
+          "debe": 50000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "2203",
+          "nombre_cuenta": "Proveedores",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 50000.00
+        }
+      ],
+      "total_debe": 50000.00,
+      "total_haber": 50000.00
+    },
+    {
+      "numero_asiento": 3,
+      "fecha": "2026-11-08",
+      "referencia": "RIEG-3",
+      "descripcion": "cargo a bancos por 30000 y abono a ingresos por 30000",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 30000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "4102",
+          "nombre_cuenta": "Otros ingresos",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 30000.00
+        }
+      ],
+      "total_debe": 30000.00,
+      "total_haber": 30000.00
+    },
+    {
+      "numero_asiento": 4,
+      "fecha": "2026-11-08",
+      "referencia": "RIEG-4",
+      "descripcion": "cargo a gastos por 10000 y abono a bancos por 10000",
+      "partidas": [
+        {
+          "cuenta": "5201",
+          "nombre_cuenta": "Gastos financieros",
+          "naturaleza": "debito",
+          "debe": 10000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 10000.00
+        }
+      ],
+      "total_debe": 10000.00,
+      "total_haber": 10000.00
+    }
+  ]
 }

@@ -273,5 +273,10 @@ namespace WindowsFormsApp1
         {
             if (AbrirFormularioHijo(new FormRespaldarInformacion())) EstablecerBotonActivo(button11);
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (AbrirFormularioHijo(new FormPagoVentas())) EstablecerBotonActivo(button12);
+        }
     }
 }

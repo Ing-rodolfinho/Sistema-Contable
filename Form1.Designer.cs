@@ -60,6 +60,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.tableLayoutPanel2.Controls.Add(this.button8, 0, 10);
             this.tableLayoutPanel2.Controls.Add(this.button7, 0, 12);
             this.tableLayoutPanel2.Controls.Add(this.button5, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.button12, 0, 22);
             this.tableLayoutPanel2.Controls.Add(this.guna2Button2, 0, 23);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 170);
@@ -594,6 +596,30 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.LightPink;
+            this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button12.Image = global::WindowsFormsApp1.Properties.Resources.fact_check_24dp_000000_FILL0_wght400_GRAD0_opsz24;
+            this.button12.Location = new System.Drawing.Point(0, 528);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button12.Size = new System.Drawing.Size(288, 42);
+            this.button12.TabIndex = 12;
+            this.button12.Text = "  Cobro de Ventas";
+            this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // guna2Button2
             // 
             this.guna2Button2.BorderRadius = 15;
@@ -669,6 +695,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
