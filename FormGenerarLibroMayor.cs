@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,12 +11,6 @@ namespace WindowsFormsApp1
         private readonly List<CuentaContable> cuentas = new List<CuentaContable>();
         private readonly List<AsientoContable> asientos = new List<AsientoContable>();
 
-        private DateTimePicker dtpDesde;
-        private DateTimePicker dtpHasta;
-        private ComboBox cboCuenta;
-        private CheckBox chkOcultarVacios;
-        private DataGridView dgvMayor;
-        private Label lblEstado;
         private bool cargando;
 
         private sealed class MovimientoMayor
@@ -29,57 +23,6 @@ namespace WindowsFormsApp1
         public FormGenerarLibroMayor()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Libro Mayor";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "LIBRO MAYOR");
-
-            FlowLayoutPanel filtros = UiContable.CrearBarra();
-            filtros.Controls.Add(UiContable.Etiqueta("Desde:"));
-            dtpDesde = UiContable.CrearFecha(DateTime.Today.AddMonths(-1));
-            dtpDesde.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpDesde);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Hasta:"));
-            dtpHasta = UiContable.CrearFecha(DateTime.Today);
-            dtpHasta.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpHasta);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Cuenta:"));
-            cboCuenta = UiContable.CrearCombo(330);
-            cboCuenta.SelectedIndexChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(cboCuenta);
-
-            chkOcultarVacios = UiContable.CrearCheck("Ocultar cuentas sin saldo ni movimientos", true);
-            chkOcultarVacios.CheckedChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(chkOcultarVacios);
-
-            filtros.Controls.Add(UiContable.CrearBoton("Generar libro mayor", btnGenerar_Click));
-            raiz.Controls.Add(filtros, 0, 1);
-
-            dgvMayor = UiContable.CrearGrid();
-            dgvMayor.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colCuenta", "Cuenta", 125F, false),
-                UiContable.Columna("colFecha", "Fecha", 60F, false, 92),
-                UiContable.Columna("colReferencia", "Referencia", 75F, false),
-                UiContable.Columna("colConcepto", "Concepto", 145F, false),
-                UiContable.Columna("colDebe", "Debe", 68F, true),
-                UiContable.Columna("colHaber", "Haber", 68F, true),
-                UiContable.Columna("colSaldo", "Saldo", 78F, true)
-            });
-            UiContable.AgregarContenido(raiz, UiContable.CrearTarjeta(dgvMayor));
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)

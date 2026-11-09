@@ -42,6 +42,8 @@
             this.guna2Separator4 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Separator13 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Separator14 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel3 = new System.Windows.Forms.Panel();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -60,7 +62,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,6 +89,8 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.guna2Separator14, 0, 25);
+            this.tableLayoutPanel2.Controls.Add(this.guna2Separator13, 0, 23);
             this.tableLayoutPanel2.Controls.Add(this.guna2Separator12, 0, 21);
             this.tableLayoutPanel2.Controls.Add(this.guna2Separator11, 0, 19);
             this.tableLayoutPanel2.Controls.Add(this.guna2Separator10, 0, 17);
@@ -99,8 +104,8 @@
             this.tableLayoutPanel2.Controls.Add(this.guna2Separator2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.button6, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button11, 0, 20);
-            this.tableLayoutPanel2.Controls.Add(this.button4, 0, 18);
+            this.tableLayoutPanel2.Controls.Add(this.button11, 0, 24);
+            this.tableLayoutPanel2.Controls.Add(this.button4, 0, 22);
             this.tableLayoutPanel2.Controls.Add(this.button2, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.button10, 0, 16);
             this.tableLayoutPanel2.Controls.Add(this.button3, 0, 8);
@@ -108,37 +113,41 @@
             this.tableLayoutPanel2.Controls.Add(this.button8, 0, 10);
             this.tableLayoutPanel2.Controls.Add(this.button7, 0, 12);
             this.tableLayoutPanel2.Controls.Add(this.button5, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.button12, 0, 22);
-            this.tableLayoutPanel2.Controls.Add(this.guna2Button2, 0, 23);
+            this.tableLayoutPanel2.Controls.Add(this.button13, 0, 18);
+            this.tableLayoutPanel2.Controls.Add(this.button14, 0, 20);
+            this.tableLayoutPanel2.Controls.Add(this.guna2Button2, 0, 26);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 170);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 24;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
+            this.tableLayoutPanel2.RowCount = 27;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692309F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(288, 586);
             this.tableLayoutPanel2.TabIndex = 14;
             // 
@@ -151,6 +160,26 @@
             this.guna2Separator12.Name = "guna2Separator12";
             this.guna2Separator12.Size = new System.Drawing.Size(288, 6);
             this.guna2Separator12.TabIndex = 25;
+            // 
+            // guna2Separator13
+            // 
+            this.guna2Separator13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Separator13.FillColor = System.Drawing.Color.FromArgb(160, 139, 90, 69);
+            this.guna2Separator13.Location = new System.Drawing.Point(0, 498);
+            this.guna2Separator13.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Separator13.Name = "guna2Separator13";
+            this.guna2Separator13.Size = new System.Drawing.Size(288, 6);
+            this.guna2Separator13.TabIndex = 26;
+            // 
+            // guna2Separator14
+            // 
+            this.guna2Separator14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Separator14.FillColor = System.Drawing.Color.FromArgb(160, 139, 90, 69);
+            this.guna2Separator14.Location = new System.Drawing.Point(0, 540);
+            this.guna2Separator14.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Separator14.Name = "guna2Separator14";
+            this.guna2Separator14.Size = new System.Drawing.Size(288, 6);
+            this.guna2Separator14.TabIndex = 27;
             // 
             // guna2Separator11
             // 
@@ -596,29 +625,53 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button12
+            // button13
             // 
-            this.button12.BackColor = System.Drawing.Color.LightPink;
-            this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Image = global::WindowsFormsApp1.Properties.Resources.fact_check_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.button12.Location = new System.Drawing.Point(0, 528);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button12.Size = new System.Drawing.Size(288, 42);
-            this.button12.TabIndex = 12;
-            this.button12.Text = "  Cobro de Ventas";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button13.BackColor = System.Drawing.Color.LightPink;
+            this.button13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.Image = global::WindowsFormsApp1.Properties.Resources.balance_24dp_000000_FILL0_wght400_GRAD0_opsz24;
+            this.button13.Location = new System.Drawing.Point(0, 378);
+            this.button13.Margin = new System.Windows.Forms.Padding(0);
+            this.button13.Name = "button13";
+            this.button13.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button13.Size = new System.Drawing.Size(288, 42);
+            this.button13.TabIndex = 13;
+            this.button13.Text = "  Flujo de Efectivo";
+            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.LightPink;
+            this.button14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.Image = global::WindowsFormsApp1.Properties.Resources.equal_24dp_000000_FILL0_wght400_GRAD0_opsz24;
+            this.button14.Location = new System.Drawing.Point(0, 420);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button14.Size = new System.Drawing.Size(288, 42);
+            this.button14.TabIndex = 14;
+            this.button14.Text = "  Variación de Capital";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // guna2Button2
             // 
@@ -695,7 +748,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -711,6 +765,8 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator12;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator13;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator14;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator11;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator10;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator9;

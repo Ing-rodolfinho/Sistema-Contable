@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,46 +10,11 @@ namespace WindowsFormsApp1
         private readonly List<CuentaContable> cuentas = new List<CuentaContable>();
         private readonly List<AsientoContable> asientos = new List<AsientoContable>();
 
-        private DateTimePicker dtpFecha;
-        private DataGridView dgvBalance;
-        private Label lblEstado;
         private bool cargando;
 
         public FormGenerarBalanceGeneral()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Balance General";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "BALANCE GENERAL");
-
-            FlowLayoutPanel filtros = UiContable.CrearBarra();
-            filtros.Controls.Add(UiContable.Etiqueta("Al:"));
-            dtpFecha = UiContable.CrearFecha(DateTime.Today);
-            dtpFecha.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpFecha);
-
-            filtros.Controls.Add(UiContable.CrearBoton("Generar balance", btnGenerar_Click));
-            raiz.Controls.Add(filtros, 0, 1);
-
-            dgvBalance = UiContable.CrearGrid();
-            dgvBalance.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colConcepto", "Concepto", 300F, false),
-                UiContable.Columna("colImporte", "Importe", 110F, true)
-            });
-            UiContable.AgregarContenido(raiz, UiContable.CrearTarjeta(dgvBalance));
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)

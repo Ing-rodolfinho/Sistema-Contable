@@ -20,16 +20,12 @@ namespace WindowsFormsApp1
         private const string EtiquetaInactiva = "Inactiva";
         private const string EtiquetaSaldoAnterior = "SALDO ANTERIOR";
 
-        private readonly string rutaCuentas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cuentas.json");
-        private readonly string rutaCuentasProyecto = Path.GetFullPath(
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Cuentas.json"));
         private readonly string rutaOperaciones = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "operaciones.json");
         private readonly string rutaOperacionesProyecto = Path.GetFullPath(
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "operaciones.json"));
 
         private readonly List<CuentaListaItem> cuentasLista = new List<CuentaListaItem>();
         private readonly List<CuentaItem> cuentasMapa = new List<CuentaItem>();
-        private JsonObject raizCuentas;
         private JsonObject raizOperaciones;
         private JsonArray asientos;
         private bool cargandoFiltros;
@@ -241,62 +237,40 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string ruta = ResolverRuta(rutaCuentas, rutaCuentasProyecto);
-                if (!File.Exists(ruta))
-                {
-                    MessageBox.Show("No se encontró el archivo Cuentas.json.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                raizCuentas = JsonNode.Parse(File.ReadAllText(ruta)) as JsonObject;
                 cuentasLista.Clear();
                 cuentasMapa.Clear();
 
-                if (raizCuentas?["catalogo_cuentas"] is JsonObject catalogo)
+                string error;
+                List<CuentaContable> catalogo = DatosContables.CargarCuentas(out error);
+
+                if (!string.IsNullOrEmpty(error))
                 {
-                    foreach (KeyValuePair<string, JsonNode> tipo in catalogo)
+                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                foreach (CuentaContable cuenta in catalogo)
+                {
+                    string etiquetaNaturaleza = cuenta.Naturaleza == NaturalezaCredito
+                        ? EtiquetaCredito
+                        : EtiquetaDebito;
+
+                    cuentasLista.Add(new CuentaListaItem
                     {
-                        string nombreTipo = NombreBonito(tipo.Key);
-                        if (!(tipo.Value is JsonObject grupos)) continue;
+                        Codigo = cuenta.Codigo,
+                        Nombre = cuenta.Nombre,
+                        Tipo = cuenta.TipoNombre,
+                        Naturaleza = etiquetaNaturaleza,
+                        NaturalezaClave = cuenta.Naturaleza,
+                        Estado = cuenta.EsActiva ? EtiquetaActiva : EtiquetaInactiva
+                    });
 
-                        foreach (KeyValuePair<string, JsonNode> grupo in grupos)
-                        {
-                            if (!(grupo.Value is JsonArray lista)) continue;
-
-                            foreach (JsonNode nodo in lista)
-                            {
-                                if (!(nodo is JsonObject cuentaObj)) continue;
-
-                                string codigo = LeerTexto(cuentaObj, "codigo").Trim();
-                                if (codigo.Length == 0) continue;
-
-                                string naturaleza = LeerTexto(cuentaObj, "naturaleza").Trim().ToLowerInvariant();
-                                if (naturaleza != NaturalezaCredito) naturaleza = NaturalezaDebito;
-
-                                string nombreCuenta = LeerTexto(cuentaObj, "nombre").Trim();
-                                string etiquetaNaturaleza = naturaleza == NaturalezaCredito ? EtiquetaCredito : EtiquetaDebito;
-                                string estado = LeerTexto(cuentaObj, "estado").Trim().ToLowerInvariant();
-
-                                cuentasLista.Add(new CuentaListaItem
-                                {
-                                    Codigo = codigo,
-                                    Nombre = nombreCuenta,
-                                    Tipo = nombreTipo,
-                                    Naturaleza = etiquetaNaturaleza,
-                                    NaturalezaClave = naturaleza,
-                                    Estado = estado == "inactivo" ? EtiquetaInactiva : EtiquetaActiva
-                                });
-
-                                cuentasMapa.Add(new CuentaItem
-                                {
-                                    Codigo = codigo,
-                                    Nombre = nombreCuenta,
-                                    Naturaleza = naturaleza
-                                });
-                            }
-                        }
-                    }
+                    cuentasMapa.Add(new CuentaItem
+                    {
+                        Codigo = cuenta.Codigo,
+                        Nombre = cuenta.Nombre,
+                        Naturaleza = cuenta.Naturaleza
+                    });
                 }
 
                 if (dgvCuentasLista != null)
@@ -438,9 +412,9 @@ namespace WindowsFormsApp1
         {
             if (dgvDebe != null) dgvDebe.Rows.Clear();
             if (dgvHaber != null) dgvHaber.Rows.Clear();
-            if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: $ 0.00";
-            if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: $ 0.00";
-            if (lblResultado != null) lblResultado.Text = "SALDO FINAL: $ 0.00";
+            if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: " + DatosContables.FormatearMonto(0m);
+            if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: " + DatosContables.FormatearMonto(0m);
+            if (lblResultado != null) lblResultado.Text = "SALDO FINAL: " + DatosContables.FormatearMonto(0m);
             if (lblCuentaTitulo != null) lblCuentaTitulo.Text = "Cuenta T";
         }
 
@@ -583,7 +557,7 @@ namespace WindowsFormsApp1
                         {
                             if (dgvDebe != null)
                                 dgvDebe.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
-                                    mov.Referencia, mov.Descripcion, mov.Debe.ToString("N2"));
+                                    mov.Referencia, mov.Descripcion, DatosContables.FormatearMonto(mov.Debe));
                             totalDebe += mov.Debe;
                         }
 
@@ -591,7 +565,7 @@ namespace WindowsFormsApp1
                         {
                             if (dgvHaber != null)
                                 dgvHaber.Rows.Add(mov.FechaTexto, mov.NumeroAsiento.ToString(),
-                                    mov.Referencia, mov.Descripcion, mov.Haber.ToString("N2"));
+                                    mov.Referencia, mov.Descripcion, DatosContables.FormatearMonto(mov.Haber));
                             totalHaber += mov.Haber;
                         }
                     }
@@ -605,8 +579,8 @@ namespace WindowsFormsApp1
                             + " (" + etiquetaNaturaleza + ")";
                     }
 
-                    if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: $ " + totalDebe.ToString("N2");
-                    if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: $ " + totalHaber.ToString("N2");
+                    if (lblTotalDebe != null) lblTotalDebe.Text = "Total Debe: " + DatosContables.FormatearMonto(totalDebe);
+                    if (lblTotalHaber != null) lblTotalHaber.Text = "Total Haber: " + DatosContables.FormatearMonto(totalHaber);
 
                     decimal saldoFinal = totalDebe - totalHaber;
                     MostrarResultado(saldoFinal);
@@ -633,14 +607,14 @@ namespace WindowsFormsApp1
             if (saldoAnteriorDeudor > 0m)
             {
                 if (dgvDebe != null)
-                    dgvDebe.Rows.Add("", "", EtiquetaSaldoAnterior, "", saldoAnteriorDeudor.ToString("N2"));
+                    dgvDebe.Rows.Add("", "", EtiquetaSaldoAnterior, "", DatosContables.FormatearMonto(saldoAnteriorDeudor));
                 totalDebe += saldoAnteriorDeudor;
             }
             else if (saldoAnteriorDeudor < 0m)
             {
                 decimal saldoAcreedor = -saldoAnteriorDeudor;
                 if (dgvHaber != null)
-                    dgvHaber.Rows.Add("", "", EtiquetaSaldoAnterior, "", saldoAcreedor.ToString("N2"));
+                    dgvHaber.Rows.Add("", "", EtiquetaSaldoAnterior, "", DatosContables.FormatearMonto(saldoAcreedor));
                 totalHaber += saldoAcreedor;
             }
         }
@@ -652,17 +626,17 @@ namespace WindowsFormsApp1
             if (saldoFinalDeudor > 0m)
             {
                 lblResultado.ForeColor = Color.SaddleBrown;
-                lblResultado.Text = "SALDO FINAL DEUDOR: $ " + saldoFinalDeudor.ToString("N2");
+                lblResultado.Text = "SALDO FINAL DEUDOR: " + DatosContables.FormatearMonto(saldoFinalDeudor);
             }
             else if (saldoFinalDeudor < 0m)
             {
                 lblResultado.ForeColor = Color.SeaGreen;
-                lblResultado.Text = "SALDO FINAL ACREEDOR: $ " + (-saldoFinalDeudor).ToString("N2");
+                lblResultado.Text = "SALDO FINAL ACREEDOR: " + DatosContables.FormatearMonto(-saldoFinalDeudor);
             }
             else
             {
                 lblResultado.ForeColor = Color.SaddleBrown;
-                lblResultado.Text = "SALDO FINAL: $ 0.00";
+                lblResultado.Text = "SALDO FINAL: " + DatosContables.FormatearMonto(0m);
             }
         }
 

@@ -75,7 +75,12 @@ namespace WindowsFormsApp1
 
         private void button13_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (AbrirFormularioHijo(new FormGenerarEstadoFlujoEfectivo())) EstablecerBotonActivo(button13);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (AbrirFormularioHijo(new FormGenerarEstadoVariacionCapital())) EstablecerBotonActivo(button14);
         }
 
         private bool CerrarFormularioActivo()
@@ -274,9 +279,5 @@ namespace WindowsFormsApp1
             if (AbrirFormularioHijo(new FormRespaldarInformacion())) EstablecerBotonActivo(button11);
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            if (AbrirFormularioHijo(new FormPagoVentas())) EstablecerBotonActivo(button12);
-        }
     }
 }

@@ -280,7 +280,7 @@
             this.lblDiferencia.Name = "lblDiferencia";
             this.lblDiferencia.Size = new System.Drawing.Size(81, 18);
             this.lblDiferencia.TabIndex = 2;
-            this.lblDiferencia.Text = "Diferencia: 0.00";
+            this.lblDiferencia.Text = "Diferencia: C$ 0.00";
             // 
             // lblTotalHaber
             // 
@@ -292,7 +292,7 @@
             this.lblTotalHaber.Name = "lblTotalHaber";
             this.lblTotalHaber.Size = new System.Drawing.Size(97, 18);
             this.lblTotalHaber.TabIndex = 1;
-            this.lblTotalHaber.Text = "Total Haber: 0.00";
+            this.lblTotalHaber.Text = "Total Haber: C$ 0.00";
             // 
             // lblTotalDebe
             // 
@@ -304,7 +304,7 @@
             this.lblTotalDebe.Name = "lblTotalDebe";
             this.lblTotalDebe.Size = new System.Drawing.Size(93, 18);
             this.lblTotalDebe.TabIndex = 0;
-            this.lblTotalDebe.Text = "Total Debe: 0.00";
+            this.lblTotalDebe.Text = "Total Debe: C$ 0.00";
             // 
             // FormGenerarLibroDiario
             // 
