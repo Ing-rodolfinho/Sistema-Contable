@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,56 +11,11 @@ namespace WindowsFormsApp1
         private readonly List<CuentaContable> cuentas = new List<CuentaContable>();
         private readonly List<AsientoContable> asientos = new List<AsientoContable>();
 
-        private DateTimePicker dtpDesde;
-        private DateTimePicker dtpHasta;
-        private DataGridView dgvBalanza;
-        private Label lblEstado;
         private bool cargando;
 
         public FormGenerarBalanzaDeComprobación()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Balanza de Comprobación";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "BALANZA DE COMPROBACIÓN");
-
-            FlowLayoutPanel filtros = UiContable.CrearBarra();
-            filtros.Controls.Add(UiContable.Etiqueta("Desde:"));
-            dtpDesde = UiContable.CrearFecha(DateTime.Today.AddMonths(-1));
-            dtpDesde.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpDesde);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Hasta:"));
-            dtpHasta = UiContable.CrearFecha(DateTime.Today);
-            dtpHasta.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpHasta);
-
-            filtros.Controls.Add(UiContable.CrearBoton("Generar balanza", btnGenerar_Click));
-            raiz.Controls.Add(filtros, 0, 1);
-
-            dgvBalanza = UiContable.CrearGrid();
-            dgvBalanza.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colCodigo", "Código", 55F, false, 62),
-                UiContable.Columna("colCuenta", "Cuenta", 175F, false),
-                UiContable.Columna("colDebe", "Debe del período", 90F, true),
-                UiContable.Columna("colHaber", "Haber del período", 90F, true),
-                UiContable.Columna("colSaldoDeudor", "Saldo deudor", 95F, true),
-                UiContable.Columna("colSaldoAcreedor", "Saldo acreedor", 95F, true)
-            });
-            UiContable.AgregarContenido(raiz, UiContable.CrearTarjeta(dgvBalanza));
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)

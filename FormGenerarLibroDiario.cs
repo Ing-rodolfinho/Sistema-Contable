@@ -306,8 +306,8 @@ namespace WindowsFormsApp1
                         totalDebe += debe;
                         totalHaber += haber;
 
-                        string debeStr = debe == 0m ? string.Empty : debe.ToString("N2", CultureInfo.CurrentCulture);
-                        string haberStr = haber == 0m ? string.Empty : haber.ToString("N2", CultureInfo.CurrentCulture);
+                        string debeStr = DatosContables.MontoCelda(debe);
+                        string haberStr = DatosContables.MontoCelda(haber);
 
                         dgvLibroDiario.Rows.Add(
                             fecha,
@@ -334,9 +334,9 @@ namespace WindowsFormsApp1
         {
             decimal diferencia = totalDebe - totalHaber;
 
-            lblTotalDebe.Text = "Total Debe: " + totalDebe.ToString("N2", CultureInfo.CurrentCulture);
-            lblTotalHaber.Text = "Total Haber: " + totalHaber.ToString("N2", CultureInfo.CurrentCulture);
-            lblDiferencia.Text = "Diferencia: " + diferencia.ToString("N2", CultureInfo.CurrentCulture);
+            lblTotalDebe.Text = "Total Debe: " + DatosContables.FormatearMonto(totalDebe);
+            lblTotalHaber.Text = "Total Haber: " + DatosContables.FormatearMonto(totalHaber);
+            lblDiferencia.Text = "Diferencia: " + DatosContables.FormatearMonto(diferencia);
             lblDiferencia.ForeColor = Math.Abs(diferencia) < 0.0001m ? Color.SeaGreen : Color.Firebrick;
         }
     }

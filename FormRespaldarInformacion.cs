@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,75 +14,10 @@ namespace WindowsFormsApp1
         private readonly string carpetaRespaldos = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Sistema Contable", "Respaldos");
 
-        private DataGridView dgvRespaldos;
-        private Label lblResumen;
-        private Label lblEstado;
-        private Button btnCrear;
-        private Button btnRestaurar;
-        private Button btnAbrirCarpeta;
 
         public FormRespaldarInformacion()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Respaldar Información";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "RESPALDAR INFORMACIÓN");
-
-            FlowLayoutPanel acciones = UiContable.CrearBarra();
-            btnCrear = UiContable.CrearBoton("Crear respaldo", btnCrear_Click);
-            btnRestaurar = UiContable.CrearBoton("Restaurar seleccionado", btnRestaurar_Click);
-            btnAbrirCarpeta = UiContable.CrearBoton("Abrir carpeta de respaldos", btnAbrirCarpeta_Click);
-            acciones.Controls.Add(btnCrear);
-            acciones.Controls.Add(btnRestaurar);
-            acciones.Controls.Add(btnAbrirCarpeta);
-            acciones.Controls.Add(UiContable.CrearBoton("Actualizar", btnActualizar_Click));
-            raiz.Controls.Add(acciones, 0, 1);
-
-            var contenido = new TableLayoutPanel();
-            contenido.Dock = DockStyle.Fill;
-            contenido.ColumnCount = 1;
-            contenido.RowCount = 2;
-            contenido.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            contenido.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            contenido.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-
-            lblResumen = new Label();
-            lblResumen.AutoSize = false;
-            lblResumen.Dock = DockStyle.Fill;
-            lblResumen.Height = 96;
-            lblResumen.Font = UiContable.Fuente(10F);
-            lblResumen.ForeColor = UiContable.Texto;
-            lblResumen.BackColor = Color.White;
-            lblResumen.Padding = new Padding(14, 8, 14, 8);
-            lblResumen.TextAlign = ContentAlignment.MiddleLeft;
-            lblResumen.Margin = new Padding(0, 0, 0, 10);
-            contenido.Controls.Add(lblResumen, 0, 0);
-
-            dgvRespaldos = UiContable.CrearGrid();
-            dgvRespaldos.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colFecha", "Fecha del respaldo", 130F, false),
-                UiContable.Columna("colCarpeta", "Carpeta", 260F, false),
-                UiContable.Columna("colCuentas", "Cuentas", 90F, false),
-                UiContable.Columna("colOperaciones", "Operaciones", 100F, false),
-                UiContable.Columna("colTamano", "Tamaño", 90F, true)
-            });
-            dgvRespaldos.CellDoubleClick += dgvRespaldos_CellDoubleClick;
-            contenido.Controls.Add(UiContable.CrearTarjeta(dgvRespaldos), 0, 1);
-
-            raiz.Controls.Add(contenido, 0, 2);
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)

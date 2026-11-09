@@ -622,7 +622,7 @@ namespace WindowsFormsApp1
             // colDebeImporte
             // 
             amountStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            amountStyle.Format = "N2";
+            amountStyle.Format = "'C$' #,##0.00";
             this.colDebeImporte.DefaultCellStyle = amountStyle;
             this.colDebeImporte.HeaderText = "Importe";
             this.colDebeImporte.Name = "colDebeImporte";
@@ -707,7 +707,7 @@ namespace WindowsFormsApp1
             this.lblTotalDebe.Name = "lblTotalDebe";
             this.lblTotalDebe.Size = new System.Drawing.Size(555, 20);
             this.lblTotalDebe.TabIndex = 8;
-            this.lblTotalDebe.Text = "Total Debe: $ 0.00";
+            this.lblTotalDebe.Text = "Total Debe: C$ 0.00";
             this.lblTotalDebe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTotalHaber
@@ -720,7 +720,7 @@ namespace WindowsFormsApp1
             this.lblTotalHaber.Name = "lblTotalHaber";
             this.lblTotalHaber.Size = new System.Drawing.Size(539, 20);
             this.lblTotalHaber.TabIndex = 9;
-            this.lblTotalHaber.Text = "Total Haber: $ 0.00";
+            this.lblTotalHaber.Text = "Total Haber: C$ 0.00";
             this.lblTotalHaber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblResultado
@@ -734,7 +734,7 @@ namespace WindowsFormsApp1
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(1121, 24);
             this.lblResultado.TabIndex = 10;
-            this.lblResultado.Text = "SALDO FINAL: $ 0.00";
+            this.lblResultado.Text = "SALDO FINAL: C$ 0.00";
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMensaje

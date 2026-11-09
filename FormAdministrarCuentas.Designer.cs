@@ -43,8 +43,6 @@
             this.lblRuta = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.cboTipo = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblGrupo = new System.Windows.Forms.Label();
-            this.cboGrupo = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -80,7 +78,7 @@
             this.tlpFondo.Controls.Add(this.tlpPrincipal, 0, 1);
             this.tlpFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
-            this.tlpFondo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpFondo.Margin = new System.Windows.Forms.Padding(4);
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 2;
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -94,10 +92,10 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblTitulo.Location = new System.Drawing.Point(500, 22);
+            this.lblTitulo.Location = new System.Drawing.Point(510, 22);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 22, 4, 15);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(446, 42);
+            this.lblTitulo.Size = new System.Drawing.Size(427, 39);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "ADMINISTRAR CUENTAS";
             // 
@@ -109,12 +107,12 @@
             this.tlpPrincipal.Controls.Add(this.panelArbol, 0, 0);
             this.tlpPrincipal.Controls.Add(this.panelDetalle, 1, 0);
             this.tlpPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPrincipal.Location = new System.Drawing.Point(20, 79);
+            this.tlpPrincipal.Location = new System.Drawing.Point(20, 76);
             this.tlpPrincipal.Margin = new System.Windows.Forms.Padding(20, 0, 20, 18);
             this.tlpPrincipal.Name = "tlpPrincipal";
             this.tlpPrincipal.RowCount = 1;
             this.tlpPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPrincipal.Size = new System.Drawing.Size(1407, 749);
+            this.tlpPrincipal.Size = new System.Drawing.Size(1407, 752);
             this.tlpPrincipal.TabIndex = 1;
             // 
             // panelArbol
@@ -128,7 +126,7 @@
             this.panelArbol.Name = "panelArbol";
             this.panelArbol.Radius = 20;
             this.panelArbol.ShadowColor = System.Drawing.Color.Black;
-            this.panelArbol.Size = new System.Drawing.Size(769, 741);
+            this.panelArbol.Size = new System.Drawing.Size(769, 744);
             this.panelArbol.TabIndex = 0;
             // 
             // tlpArbol
@@ -140,14 +138,14 @@
             this.tlpArbol.Controls.Add(this.treeCuentas, 0, 2);
             this.tlpArbol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpArbol.Location = new System.Drawing.Point(0, 0);
-            this.tlpArbol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpArbol.Margin = new System.Windows.Forms.Padding(4);
             this.tlpArbol.Name = "tlpArbol";
             this.tlpArbol.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
             this.tlpArbol.RowCount = 3;
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpArbol.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpArbol.Size = new System.Drawing.Size(769, 741);
+            this.tlpArbol.Size = new System.Drawing.Size(769, 744);
             this.tlpArbol.TabIndex = 0;
             this.tlpArbol.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpArbol_Paint);
             // 
@@ -159,7 +157,7 @@
             this.lblArbolTitulo.Location = new System.Drawing.Point(24, 15);
             this.lblArbolTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
             this.lblArbolTitulo.Name = "lblArbolTitulo";
-            this.lblArbolTitulo.Size = new System.Drawing.Size(240, 31);
+            this.lblArbolTitulo.Size = new System.Drawing.Size(260, 31);
             this.lblArbolTitulo.TabIndex = 0;
             this.lblArbolTitulo.Text = "Catálogo de Cuentas";
             // 
@@ -188,7 +186,7 @@
             this.lblBuscar.Location = new System.Drawing.Point(4, 0);
             this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 13, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(62, 36);
+            this.lblBuscar.Size = new System.Drawing.Size(64, 36);
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar:";
             this.lblBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,10 +197,10 @@
             this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtBuscar.Location = new System.Drawing.Point(83, 4);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(85, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(642, 26);
+            this.txtBuscar.Size = new System.Drawing.Size(640, 30);
             this.txtBuscar.TabIndex = 1;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -219,10 +217,10 @@
             this.treeCuentas.ItemHeight = 24;
             this.treeCuentas.LineColor = System.Drawing.Color.Sienna;
             this.treeCuentas.Location = new System.Drawing.Point(24, 108);
-            this.treeCuentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeCuentas.Margin = new System.Windows.Forms.Padding(4);
             this.treeCuentas.Name = "treeCuentas";
             this.treeCuentas.ShowNodeToolTips = true;
-            this.treeCuentas.Size = new System.Drawing.Size(721, 614);
+            this.treeCuentas.Size = new System.Drawing.Size(721, 617);
             this.treeCuentas.TabIndex = 2;
             this.treeCuentas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCuentas_AfterSelect);
             // 
@@ -237,7 +235,7 @@
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Radius = 20;
             this.panelDetalle.ShadowColor = System.Drawing.Color.Black;
-            this.panelDetalle.Size = new System.Drawing.Size(604, 741);
+            this.panelDetalle.Size = new System.Drawing.Size(604, 744);
             this.panelDetalle.TabIndex = 1;
             // 
             // tlpDetalle
@@ -248,25 +246,23 @@
             this.tlpDetalle.Controls.Add(this.lblRuta, 0, 1);
             this.tlpDetalle.Controls.Add(this.lblTipo, 0, 2);
             this.tlpDetalle.Controls.Add(this.cboTipo, 1, 2);
-            this.tlpDetalle.Controls.Add(this.lblGrupo, 0, 3);
-            this.tlpDetalle.Controls.Add(this.cboGrupo, 1, 3);
-            this.tlpDetalle.Controls.Add(this.lblCodigo, 0, 4);
-            this.tlpDetalle.Controls.Add(this.txtCodigo, 1, 4);
-            this.tlpDetalle.Controls.Add(this.lblNombre, 0, 5);
-            this.tlpDetalle.Controls.Add(this.txtNombre, 1, 5);
-            this.tlpDetalle.Controls.Add(this.lblNaturaleza, 0, 6);
-            this.tlpDetalle.Controls.Add(this.cboNaturaleza, 1, 6);
-            this.tlpDetalle.Controls.Add(this.lblEstado, 0, 7);
-            this.tlpDetalle.Controls.Add(this.cboEstado, 1, 7);
-            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 8);
-            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 9);
+            this.tlpDetalle.Controls.Add(this.lblCodigo, 0, 3);
+            this.tlpDetalle.Controls.Add(this.txtCodigo, 1, 3);
+            this.tlpDetalle.Controls.Add(this.lblNombre, 0, 4);
+            this.tlpDetalle.Controls.Add(this.txtNombre, 1, 4);
+            this.tlpDetalle.Controls.Add(this.lblNaturaleza, 0, 5);
+            this.tlpDetalle.Controls.Add(this.cboNaturaleza, 1, 5);
+            this.tlpDetalle.Controls.Add(this.lblEstado, 0, 6);
+            this.tlpDetalle.Controls.Add(this.cboEstado, 1, 6);
+            this.tlpDetalle.Controls.Add(this.flpBotones, 0, 7);
+            this.tlpDetalle.Controls.Add(this.lblMensaje, 0, 8);
             this.tlpDetalle.Controls.Add(this.lblDetalleTitulo, 0, 0);
             this.tlpDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDetalle.Location = new System.Drawing.Point(0, 0);
-            this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.tlpDetalle.Name = "tlpDetalle";
             this.tlpDetalle.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.tlpDetalle.RowCount = 11;
+            this.tlpDetalle.RowCount = 10;
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -275,35 +271,32 @@
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tlpDetalle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDetalle.Size = new System.Drawing.Size(604, 741);
+            this.tlpDetalle.Size = new System.Drawing.Size(604, 744);
             this.tlpDetalle.TabIndex = 0;
             // 
             // lblRuta
             // 
             this.lblRuta.AutoEllipsis = true;
-            this.lblRuta.AutoSize = false;
             this.tlpDetalle.SetColumnSpan(this.lblRuta, 2);
             this.lblRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRuta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRuta.ForeColor = System.Drawing.Color.Sienna;
-            this.lblRuta.Location = new System.Drawing.Point(24, 61);
+            this.lblRuta.Location = new System.Drawing.Point(24, 44);
             this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRuta.Name = "lblRuta";
-            this.lblRuta.Size = new System.Drawing.Size(556, 17);
+            this.lblRuta.Size = new System.Drawing.Size(556, 28);
             this.lblRuta.TabIndex = 1;
             this.lblRuta.Text = "Seleccione una cuenta en el árbol para consultarla";
             this.lblRuta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTipo
             // 
-            this.lblTipo.AutoSize = false;
             this.lblTipo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblTipo.Location = new System.Drawing.Point(24, 99);
+            this.lblTipo.Location = new System.Drawing.Point(24, 76);
             this.lblTipo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(103, 36);
@@ -323,56 +316,22 @@
             this.cboTipo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipo.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboTipo.ItemHeight = 30;
-            this.cboTipo.Location = new System.Drawing.Point(144, 99);
-            this.cboTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTipo.Location = new System.Drawing.Point(144, 76);
+            this.cboTipo.Margin = new System.Windows.Forms.Padding(4);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(436, 36);
             this.cboTipo.TabIndex = 3;
             this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
-            // lblGrupo
-            // 
-            this.lblGrupo.AutoSize = false;
-            this.lblGrupo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGrupo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrupo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblGrupo.Location = new System.Drawing.Point(24, 143);
-            this.lblGrupo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
-            this.lblGrupo.Name = "lblGrupo";
-            this.lblGrupo.Size = new System.Drawing.Size(103, 36);
-            this.lblGrupo.TabIndex = 4;
-            this.lblGrupo.Text = "Grupo:";
-            this.lblGrupo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cboGrupo
-            // 
-            this.cboGrupo.BackColor = System.Drawing.Color.Transparent;
-            this.cboGrupo.BorderColor = System.Drawing.Color.Tan;
-            this.cboGrupo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboGrupo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGrupo.FocusedColor = System.Drawing.Color.Sienna;
-            this.cboGrupo.FocusedState.BorderColor = System.Drawing.Color.Sienna;
-            this.cboGrupo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboGrupo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.cboGrupo.ItemHeight = 30;
-            this.cboGrupo.Location = new System.Drawing.Point(144, 143);
-            this.cboGrupo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboGrupo.Name = "cboGrupo";
-            this.cboGrupo.Size = new System.Drawing.Size(436, 36);
-            this.cboGrupo.TabIndex = 5;
-            this.cboGrupo.SelectedIndexChanged += new System.EventHandler(this.cboGrupo_SelectedIndexChanged);
-            // 
             // lblCodigo
             // 
-            this.lblCodigo.AutoSize = false;
             this.lblCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblCodigo.Location = new System.Drawing.Point(24, 187);
+            this.lblCodigo.Location = new System.Drawing.Point(24, 120);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(103, 26);
+            this.lblCodigo.Size = new System.Drawing.Size(103, 30);
             this.lblCodigo.TabIndex = 6;
             this.lblCodigo.Text = "Código:";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -383,23 +342,22 @@
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtCodigo.Location = new System.Drawing.Point(144, 187);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Location = new System.Drawing.Point(144, 120);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(436, 26);
+            this.txtCodigo.Size = new System.Drawing.Size(436, 30);
             this.txtCodigo.TabIndex = 7;
             // 
             // lblNombre
             // 
-            this.lblNombre.AutoSize = false;
             this.lblNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.Sienna;
-            this.lblNombre.Location = new System.Drawing.Point(24, 221);
+            this.lblNombre.Location = new System.Drawing.Point(24, 158);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(103, 26);
+            this.lblNombre.Size = new System.Drawing.Size(103, 30);
             this.lblNombre.TabIndex = 8;
             this.lblNombre.Text = "Nombre:";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -410,20 +368,19 @@
             this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txtNombre.Location = new System.Drawing.Point(144, 221);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Location = new System.Drawing.Point(144, 158);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 80;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(436, 26);
+            this.txtNombre.Size = new System.Drawing.Size(436, 30);
             this.txtNombre.TabIndex = 9;
             // 
             // lblNaturaleza
             // 
-            this.lblNaturaleza.AutoSize = false;
             this.lblNaturaleza.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNaturaleza.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNaturaleza.ForeColor = System.Drawing.Color.Sienna;
-            this.lblNaturaleza.Location = new System.Drawing.Point(24, 255);
+            this.lblNaturaleza.Location = new System.Drawing.Point(24, 196);
             this.lblNaturaleza.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblNaturaleza.Name = "lblNaturaleza";
             this.lblNaturaleza.Size = new System.Drawing.Size(103, 36);
@@ -443,8 +400,8 @@
             this.cboNaturaleza.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboNaturaleza.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboNaturaleza.ItemHeight = 30;
-            this.cboNaturaleza.Location = new System.Drawing.Point(144, 255);
-            this.cboNaturaleza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNaturaleza.Location = new System.Drawing.Point(144, 196);
+            this.cboNaturaleza.Margin = new System.Windows.Forms.Padding(4);
             this.cboNaturaleza.Name = "cboNaturaleza";
             this.cboNaturaleza.Size = new System.Drawing.Size(436, 36);
             this.cboNaturaleza.TabIndex = 11;
@@ -452,11 +409,10 @@
             // 
             // lblEstado
             // 
-            this.lblEstado.AutoSize = false;
             this.lblEstado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Sienna;
-            this.lblEstado.Location = new System.Drawing.Point(24, 339);
+            this.lblEstado.Location = new System.Drawing.Point(24, 240);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(103, 36);
@@ -476,8 +432,8 @@
             this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstado.ForeColor = System.Drawing.Color.SaddleBrown;
             this.cboEstado.ItemHeight = 30;
-            this.cboEstado.Location = new System.Drawing.Point(144, 339);
-            this.cboEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboEstado.Location = new System.Drawing.Point(144, 240);
+            this.cboEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(436, 36);
             this.cboEstado.TabIndex = 15;
@@ -485,16 +441,16 @@
             // flpBotones
             // 
             this.flpBotones.ColumnCount = 2;
-            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpDetalle.SetColumnSpan(this.flpBotones, 2);
+            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.flpBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.flpBotones.Controls.Add(this.btnAgregar, 0, 0);
             this.flpBotones.Controls.Add(this.btnModificar, 1, 0);
             this.flpBotones.Controls.Add(this.btnEliminar, 0, 1);
             this.flpBotones.Controls.Add(this.btnLimpiar, 1, 1);
             this.flpBotones.Controls.Add(this.btnGuardarCambios, 0, 2);
             this.flpBotones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpBotones.Location = new System.Drawing.Point(20, 389);
+            this.flpBotones.Location = new System.Drawing.Point(20, 290);
             this.flpBotones.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.flpBotones.Name = "flpBotones";
             this.flpBotones.RowCount = 3;
@@ -503,7 +459,6 @@
             this.flpBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.flpBotones.Size = new System.Drawing.Size(564, 138);
             this.flpBotones.TabIndex = 16;
-            this.tlpDetalle.SetColumnSpan(this.btnGuardarCambios, 2);
             // 
             // btnAgregar
             // 
@@ -519,9 +474,9 @@
             this.btnAgregar.Image = global::WindowsFormsApp1.Properties.Resources.other_admission_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnAgregar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnAgregar.Location = new System.Drawing.Point(4, 4);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(133, 49);
+            this.btnAgregar.Size = new System.Drawing.Size(274, 38);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -539,10 +494,10 @@
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnModificar.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnModificar.Location = new System.Drawing.Point(145, 4);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificar.Location = new System.Drawing.Point(286, 4);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(147, 49);
+            this.btnModificar.Size = new System.Drawing.Size(274, 38);
             this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -560,10 +515,10 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnEliminar.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnEliminar.Location = new System.Drawing.Point(300, 4);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(4, 50);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(139, 49);
+            this.btnEliminar.Size = new System.Drawing.Size(274, 38);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -580,10 +535,10 @@
             this.btnLimpiar.FillColor = System.Drawing.Color.White;
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.Sienna;
-            this.btnLimpiar.Location = new System.Drawing.Point(4, 61);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Location = new System.Drawing.Point(286, 50);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(125, 49);
+            this.btnLimpiar.Size = new System.Drawing.Size(274, 38);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -591,6 +546,7 @@
             // btnGuardarCambios
             // 
             this.btnGuardarCambios.BorderRadius = 15;
+            this.flpBotones.SetColumnSpan(this.btnGuardarCambios, 2);
             this.btnGuardarCambios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardarCambios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardarCambios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -601,10 +557,10 @@
             this.btnGuardarCambios.ForeColor = System.Drawing.Color.White;
             this.btnGuardarCambios.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
             this.btnGuardarCambios.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnGuardarCambios.Location = new System.Drawing.Point(137, 61);
-            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarCambios.Location = new System.Drawing.Point(4, 96);
+            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
-            this.btnGuardarCambios.Size = new System.Drawing.Size(180, 49);
+            this.btnGuardarCambios.Size = new System.Drawing.Size(556, 38);
             this.btnGuardarCambios.TabIndex = 4;
             this.btnGuardarCambios.Text = "Guardar Cambios";
             this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
@@ -612,29 +568,27 @@
             // lblMensaje
             // 
             this.lblMensaje.AutoEllipsis = true;
-            this.lblMensaje.AutoSize = false;
             this.tlpDetalle.SetColumnSpan(this.lblMensaje, 2);
             this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Sienna;
-            this.lblMensaje.Location = new System.Drawing.Point(24, 513);
+            this.lblMensaje.Location = new System.Drawing.Point(24, 438);
             this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(556, 20);
+            this.lblMensaje.Size = new System.Drawing.Size(556, 26);
             this.lblMensaje.TabIndex = 17;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDetalleTitulo
             // 
-            this.lblDetalleTitulo.AutoSize = false;
             this.tlpDetalle.SetColumnSpan(this.lblDetalleTitulo, 2);
             this.lblDetalleTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDetalleTitulo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalleTitulo.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblDetalleTitulo.Location = new System.Drawing.Point(144, 15);
+            this.lblDetalleTitulo.Location = new System.Drawing.Point(24, 10);
             this.lblDetalleTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetalleTitulo.Name = "lblDetalleTitulo";
-            this.lblDetalleTitulo.Size = new System.Drawing.Size(238, 31);
+            this.lblDetalleTitulo.Size = new System.Drawing.Size(556, 34);
             this.lblDetalleTitulo.TabIndex = 0;
             this.lblDetalleTitulo.Text = "Detalle de la Cuenta";
             this.lblDetalleTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -646,7 +600,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1447, 846);
             this.Controls.Add(this.tlpFondo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAdministrarCuentas";
             this.Text = "Administrar Cuentas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAdministrarCuentas_FormClosing);
@@ -685,8 +639,6 @@
         private System.Windows.Forms.Label lblRuta;
         private System.Windows.Forms.Label lblTipo;
         private Guna.UI2.WinForms.Guna2ComboBox cboTipo;
-        private System.Windows.Forms.Label lblGrupo;
-        private Guna.UI2.WinForms.Guna2ComboBox cboGrupo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblNombre;

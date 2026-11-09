@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,71 +11,11 @@ namespace WindowsFormsApp1
         private readonly List<CuentaContable> cuentas = new List<CuentaContable>();
         private readonly List<AsientoContable> asientos = new List<AsientoContable>();
 
-        private DateTimePicker dtpDesde;
-        private DateTimePicker dtpHasta;
-        private ComboBox cboCuenta;
-        private TextBox txtBuscar;
-        private DataGridView dgvMovimientos;
-        private Label lblEstado;
         private bool cargando;
 
         public FormConsultarMovimientos()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Consultar Movimientos";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "CONSULTAR MOVIMIENTOS");
-
-            FlowLayoutPanel filtros = UiContable.CrearBarra();
-            filtros.Controls.Add(UiContable.Etiqueta("Desde:"));
-            dtpDesde = UiContable.CrearFecha(DateTime.Today.AddMonths(-1));
-            dtpDesde.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpDesde);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Hasta:"));
-            dtpHasta = UiContable.CrearFecha(DateTime.Today);
-            dtpHasta.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpHasta);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Cuenta:"));
-            cboCuenta = UiContable.CrearCombo(330);
-            cboCuenta.SelectedIndexChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(cboCuenta);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Buscar:"));
-            txtBuscar = UiContable.CrearTexto(220);
-            txtBuscar.MaxLength = 150;
-            txtBuscar.KeyDown += txtBuscar_KeyDown;
-            filtros.Controls.Add(txtBuscar);
-
-            filtros.Controls.Add(UiContable.CrearBoton("Buscar movimientos", btnBuscar_Click));
-            raiz.Controls.Add(filtros, 0, 1);
-
-            dgvMovimientos = UiContable.CrearGrid();
-            dgvMovimientos.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colFecha", "Fecha", 70F, false, 92),
-                UiContable.Columna("colNumero", "N° Asiento", 60F, true, 86),
-                UiContable.Columna("colReferencia", "Referencia", 85F, false),
-                UiContable.Columna("colDescripcion", "Descripción", 150F, false),
-                UiContable.Columna("colCodigo", "Código", 55F, false, 62),
-                UiContable.Columna("colCuenta", "Cuenta", 135F, false),
-                UiContable.Columna("colDebe", "Debe", 75F, true),
-                UiContable.Columna("colHaber", "Haber", 75F, true)
-            });
-            UiContable.AgregarContenido(raiz, UiContable.CrearTarjeta(dgvMovimientos));
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)

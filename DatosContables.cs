@@ -31,37 +31,32 @@ namespace WindowsFormsApp1
 
         public bool EsActivo
         {
-            get { return (TipoClave ?? string.Empty).IndexOf("activo", StringComparison.OrdinalIgnoreCase) >= 0; }
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoActivo); }
         }
 
         public bool EsPasivo
         {
-            get { return (TipoClave ?? string.Empty).IndexOf("pasivo", StringComparison.OrdinalIgnoreCase) >= 0; }
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoPasivo); }
         }
 
         public bool EsPatrimonio
         {
-            get { return (TipoClave ?? string.Empty).IndexOf("patrimonio", StringComparison.OrdinalIgnoreCase) >= 0; }
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoCapitalPatrimonio); }
         }
 
         public bool EsIngreso
         {
-            get
-            {
-                string grupo = (GrupoClave ?? string.Empty).ToLowerInvariant();
-                return grupo.IndexOf("ingreso", StringComparison.Ordinal) >= 0;
-            }
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoIngresos); }
+        }
+
+        public bool EsCosto
+        {
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoCostos); }
         }
 
         public bool EsGasto
         {
-            get
-            {
-                string grupo = (GrupoClave ?? string.Empty).ToLowerInvariant();
-                return grupo.IndexOf("gasto", StringComparison.Ordinal) >= 0
-                    || grupo.IndexOf("egreso", StringComparison.Ordinal) >= 0
-                    || grupo.IndexOf("costo", StringComparison.Ordinal) >= 0;
-            }
+            get { return DatosContables.TipoEs(TipoClave, DatosContables.TipoGastos); }
         }
 
         public override string ToString()
@@ -110,6 +105,90 @@ namespace WindowsFormsApp1
         public const string NaturalezaCredito = "credito";
         public const string EstadoActivo = "activo";
         public const string EstadoInactivo = "inactivo";
+
+        public const string TipoActivo = "activo";
+        public const string TipoPasivo = "pasivo";
+        public const string TipoCapitalPatrimonio = "capital_patrimonio";
+        public const string TipoIngresos = "ingresos";
+        public const string TipoCostos = "costos";
+        public const string TipoGastos = "gastos";
+        public const string SimboloMoneda = "C$";
+
+        public static readonly string[] TiposCuenta =
+        {
+            TipoActivo,
+            TipoPasivo,
+            TipoCapitalPatrimonio,
+            TipoIngresos,
+            TipoCostos,
+            TipoGastos
+        };
+
+        public static string NormalizarTipo(string clave)
+        {
+            if (string.IsNullOrWhiteSpace(clave)) return null;
+
+            string k = NormalizarTexto(clave).Replace(' ', '_');
+
+            if (k == "activo" || k == "activos" || k == "activo_corriente" || k == "activos_corriente"
+                || k == "activo_no_corriente" || k == "activos_no_corriente"
+                || k == "activo_intangible" || k == "activos_intangible" || k == "activos_intangibles")
+                return TipoActivo;
+
+            if (k == "pasivo" || k == "pasivos" || k == "pasivo_corriente" || k == "pasivos_corrientes"
+                || k == "pasivo_a_corto_plazo" || k == "pasivo_a_largo_plazo"
+                || k == "pasivo_no_corriente" || k == "pasivos_no_corrientes")
+                return TipoPasivo;
+
+            if (k == "capital" || k == "capital_patrimonio" || k == "patrimonio"
+                || k == "patrimonio_capital" || k == "cuentas_capital"
+                || k == "capital_contribuido" || k == "capital_ganado")
+                return TipoCapitalPatrimonio;
+
+            if (k == "ingreso" || k == "ingresos" || k == "estado_de_resultado_ingresos")
+                return TipoIngresos;
+
+            if (k == "costo" || k == "costos" || k == "costo_de_venta" || k == "costos_de_venta"
+                || k == "costo_de_ventas" || k == "costos_de_ventas")
+                return TipoCostos;
+
+            if (k == "gasto" || k == "gastos" || k == "egreso" || k == "egresos"
+                || k == "estado_de_resultado_gastos")
+                return TipoGastos;
+
+            return null;
+        }
+
+        public static bool TipoEs(string tipoClave, string tipoCanonico)
+        {
+            string normalizado = NormalizarTipo(tipoClave);
+            if (normalizado == null) normalizado = tipoClave;
+            return string.Equals(normalizado, tipoCanonico, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static string EtiquetaTipo(string clave)
+        {
+            switch (NormalizarTipo(clave) ?? clave)
+            {
+                case TipoActivo: return "Activo";
+                case TipoPasivo: return "Pasivo";
+                case TipoCapitalPatrimonio: return "Capital/Patrimonio";
+                case TipoIngresos: return "Ingresos";
+                case TipoCostos: return "Costos";
+                case TipoGastos: return "Gastos";
+                default: return NombreBonito(clave);
+            }
+        }
+
+        public static string NormalizarTexto(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto)) return string.Empty;
+
+            string resultado = texto.Trim().ToLowerInvariant();
+            resultado = resultado.Replace('á', 'a').Replace('é', 'e').Replace('í', 'i')
+                .Replace('ó', 'o').Replace('ú', 'u').Replace('ü', 'u');
+            return resultado;
+        }
 
         public static readonly string RutaCuentasPrincipal =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cuentas.json");
@@ -226,12 +305,16 @@ namespace WindowsFormsApp1
 
         public static string FormatearMonto(decimal valor)
         {
-            return valor.ToString("N2", CultureInfo.CurrentCulture);
+            decimal redondeado = Math.Round(valor, 2, MidpointRounding.AwayFromZero);
+            string signo = redondeado < 0m ? "-" : string.Empty;
+            return signo + SimboloMoneda + " "
+                + Math.Abs(redondeado).ToString("N2", CultureInfo.CurrentCulture);
         }
 
         public static string MontoCelda(decimal valor)
         {
-            return valor == 0m ? string.Empty : valor.ToString("N2", CultureInfo.CurrentCulture);
+            decimal redondeado = Math.Round(valor, 2, MidpointRounding.AwayFromZero);
+            return redondeado == 0m ? string.Empty : FormatearMonto(redondeado);
         }
 
         public static List<CuentaContable> CargarCuentas(out string error)
@@ -257,44 +340,7 @@ namespace WindowsFormsApp1
                     return lista;
                 }
 
-                foreach (KeyValuePair<string, JsonNode> tipo in catalogo)
-                {
-                    JsonObject grupos = tipo.Value as JsonObject;
-                    if (grupos == null) continue;
-
-                    foreach (KeyValuePair<string, JsonNode> grupo in grupos)
-                    {
-                        JsonArray cuentas = grupo.Value as JsonArray;
-                        if (cuentas == null) continue;
-
-                        foreach (JsonNode nodo in cuentas)
-                        {
-                            JsonObject obj = nodo as JsonObject;
-                            if (obj == null) continue;
-
-                            string codigo = LeerTexto(obj, "codigo").Trim();
-                            if (codigo.Length == 0) continue;
-
-                            string naturaleza = LeerTexto(obj, "naturaleza").Trim().ToLowerInvariant();
-                            if (naturaleza != NaturalezaCredito) naturaleza = NaturalezaDebito;
-
-                            string estado = LeerTexto(obj, "estado").Trim().ToLowerInvariant();
-                            if (estado != EstadoInactivo) estado = EstadoActivo;
-
-                            lista.Add(new CuentaContable
-                            {
-                                Codigo = codigo,
-                                Nombre = LeerTexto(obj, "nombre").Trim(),
-                                Naturaleza = naturaleza,
-                                Estado = estado,
-                                TipoClave = tipo.Key,
-                                TipoNombre = NombreBonito(tipo.Key),
-                                GrupoClave = grupo.Key,
-                                GrupoNombre = NombreBonito(grupo.Key)
-                            });
-                        }
-                    }
-                }
+                LeerCatalogo(catalogo, lista);
             }
             catch (Exception ex)
             {
@@ -302,6 +348,73 @@ namespace WindowsFormsApp1
             }
 
             return lista;
+        }
+
+        /// <summary>
+        /// Lee el catálogo tanto en el formato plano nuevo (tipo -> arreglo)
+        /// como en el formato viejo (tipo -> grupo -> arreglo).
+        /// </summary>
+        private static void LeerCatalogo(JsonObject catalogo, List<CuentaContable> lista)
+        {
+            foreach (KeyValuePair<string, JsonNode> tipo in catalogo)
+            {
+                string tipoCanonico = NormalizarTipo(tipo.Key);
+
+                if (tipo.Value is JsonArray cuentasPlanas)
+                {
+                    if (tipoCanonico == null) continue;
+                    LeerCuentas(cuentasPlanas, tipoCanonico, lista);
+                    continue;
+                }
+
+                if (!(tipo.Value is JsonObject grupos)) continue;
+
+                foreach (KeyValuePair<string, JsonNode> grupo in grupos)
+                {
+                    if (!(grupo.Value is JsonArray cuentas)) continue;
+
+                    string canonico = NormalizarTipo(grupo.Key);
+                    if (canonico == null) canonico = tipoCanonico;
+                    if (canonico == null) continue;
+
+                    LeerCuentas(cuentas, canonico, lista);
+                }
+            }
+        }
+
+        private static void LeerCuentas(JsonArray cuentas, string tipoCanonico, List<CuentaContable> lista)
+        {
+            foreach (JsonNode nodo in cuentas)
+            {
+                JsonObject obj = nodo as JsonObject;
+                if (obj == null) continue;
+
+                string codigo = LeerTexto(obj, "codigo").Trim();
+                if (codigo.Length == 0) continue;
+
+                // Si un archivo viejo repite el mismo código en varios grupos,
+                // se conserva la primera aparición.
+                if (lista.Exists(c => string.Equals(c.Codigo, codigo, StringComparison.OrdinalIgnoreCase)))
+                    continue;
+
+                string naturaleza = LeerTexto(obj, "naturaleza").Trim().ToLowerInvariant();
+                if (naturaleza != NaturalezaCredito) naturaleza = NaturalezaDebito;
+
+                string estado = LeerTexto(obj, "estado").Trim().ToLowerInvariant();
+                if (estado != EstadoInactivo) estado = EstadoActivo;
+
+                lista.Add(new CuentaContable
+                {
+                    Codigo = codigo,
+                    Nombre = LeerTexto(obj, "nombre").Trim(),
+                    Naturaleza = naturaleza,
+                    Estado = estado,
+                    TipoClave = tipoCanonico,
+                    TipoNombre = EtiquetaTipo(tipoCanonico),
+                    GrupoClave = string.Empty,
+                    GrupoNombre = string.Empty
+                });
+            }
         }
 
         public static List<AsientoContable> CargarAsientos(out string error)
@@ -459,6 +572,7 @@ namespace WindowsFormsApp1
 
             DateTime limite = hasta.Date;
             decimal ingresos = 0m;
+            decimal costos = 0m;
             decimal gastos = 0m;
 
             foreach (AsientoContable asiento in asientos)
@@ -472,11 +586,85 @@ namespace WindowsFormsApp1
 
                     decimal efecto = EfectoEnNaturaleza(cuenta, partida.Debe, partida.Haber);
                     if (cuenta.EsIngreso) ingresos += efecto;
+                    else if (cuenta.EsCosto) costos += efecto;
                     else if (cuenta.EsGasto) gastos += efecto;
                 }
             }
 
-            return ingresos - gastos;
+            return ingresos - costos - gastos;
+        }
+
+        public static decimal CalcularResultadoEnRango(IEnumerable<AsientoContable> asientos,
+            IDictionary<string, CuentaContable> cuentas, DateTime desde, DateTime hasta)
+        {
+            if (asientos == null || cuentas == null) return 0m;
+
+            DateTime fechaDesde = desde.Date;
+            DateTime fechaHasta = hasta.Date;
+            decimal ingresos = 0m;
+            decimal costos = 0m;
+            decimal gastos = 0m;
+
+            foreach (AsientoContable asiento in asientos)
+            {
+                if (!asiento.Fecha.HasValue) continue;
+                if (asiento.Fecha.Value.Date < fechaDesde || asiento.Fecha.Value.Date > fechaHasta) continue;
+
+                foreach (PartidaContable partida in asiento.Partidas)
+                {
+                    CuentaContable cuenta;
+                    if (!cuentas.TryGetValue(partida.Cuenta, out cuenta)) continue;
+
+                    decimal efecto = EfectoEnNaturaleza(cuenta, partida.Debe, partida.Haber);
+                    if (cuenta.EsIngreso) ingresos += efecto;
+                    else if (cuenta.EsCosto) costos += efecto;
+                    else if (cuenta.EsGasto) gastos += efecto;
+                }
+            }
+
+            return ingresos - costos - gastos;
+        }
+
+        public static bool EsCuentaEfectivo(CuentaContable cuenta)
+        {
+            if (cuenta == null || !cuenta.EsActivo || !cuenta.EsActiva) return false;
+
+            string codigo = (cuenta.Codigo ?? string.Empty).Trim();
+            if (codigo.StartsWith("1101", StringComparison.Ordinal)
+                || codigo.StartsWith("1104", StringComparison.Ordinal))
+                return true;
+
+            string nombre = NormalizarTexto(cuenta.Nombre);
+            return nombre.IndexOf("caja", StringComparison.Ordinal) >= 0
+                || nombre.IndexOf("banco", StringComparison.Ordinal) >= 0
+                || nombre.IndexOf("efectivo", StringComparison.Ordinal) >= 0;
+        }
+
+        public static bool EsActivoNoCorriente(CuentaContable cuenta)
+        {
+            if (cuenta == null || !cuenta.EsActivo) return false;
+
+            string codigo = (cuenta.Codigo ?? string.Empty).Trim();
+            return codigo.StartsWith("12", StringComparison.Ordinal)
+                || codigo.StartsWith("13", StringComparison.Ordinal);
+        }
+
+        public static bool EsActivoCorriente(CuentaContable cuenta)
+        {
+            return cuenta != null && cuenta.EsActivo && !EsActivoNoCorriente(cuenta);
+        }
+
+        public static bool EsPasivoNoCorriente(CuentaContable cuenta)
+        {
+            if (cuenta == null || !cuenta.EsPasivo) return false;
+
+            string codigo = (cuenta.Codigo ?? string.Empty).Trim();
+            return codigo.StartsWith("22", StringComparison.Ordinal);
+        }
+
+        public static bool EsPasivoCorriente(CuentaContable cuenta)
+        {
+            return cuenta != null && cuenta.EsPasivo && !EsPasivoNoCorriente(cuenta);
         }
 
         public static IEnumerable<AsientoContable> OrdenarPorFecha(IEnumerable<AsientoContable> asientos)

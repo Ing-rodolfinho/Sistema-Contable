@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,52 +10,11 @@ namespace WindowsFormsApp1
         private readonly List<CuentaContable> cuentas = new List<CuentaContable>();
         private readonly List<AsientoContable> asientos = new List<AsientoContable>();
 
-        private DateTimePicker dtpDesde;
-        private DateTimePicker dtpHasta;
-        private DataGridView dgvResultados;
-        private Label lblEstado;
         private bool cargando;
 
         public FormGenerarEstadosDeResultados()
         {
             InitializeComponent();
-            ConstruirInterfaz();
-        }
-
-        private void ConstruirInterfaz()
-        {
-            Text = "Estados de Resultados";
-            BackColor = UiContable.Fondo;
-            FormBorderStyle = FormBorderStyle.None;
-            Dock = DockStyle.Fill;
-            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-
-            TableLayoutPanel raiz = UiContable.CrearRaiz(this, "ESTADO DE RESULTADOS");
-
-            FlowLayoutPanel filtros = UiContable.CrearBarra();
-            filtros.Controls.Add(UiContable.Etiqueta("Desde:"));
-            dtpDesde = UiContable.CrearFecha(DateTime.Today.AddMonths(-1));
-            dtpDesde.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpDesde);
-
-            filtros.Controls.Add(UiContable.Etiqueta("Hasta:"));
-            dtpHasta = UiContable.CrearFecha(DateTime.Today);
-            dtpHasta.ValueChanged += Filtro_ValueChanged;
-            filtros.Controls.Add(dtpHasta);
-
-            filtros.Controls.Add(UiContable.CrearBoton("Generar estado", btnGenerar_Click));
-            raiz.Controls.Add(filtros, 0, 1);
-
-            dgvResultados = UiContable.CrearGrid();
-            dgvResultados.Columns.AddRange(new DataGridViewColumn[]
-            {
-                UiContable.Columna("colConcepto", "Concepto", 280F, false),
-                UiContable.Columna("colImporte", "Importe", 105F, true)
-            });
-            UiContable.AgregarContenido(raiz, UiContable.CrearTarjeta(dgvResultados));
-
-            lblEstado = UiContable.CrearEstado();
-            raiz.Controls.Add(lblEstado, 0, 3);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -151,22 +110,25 @@ namespace WindowsFormsApp1
 
             List<CuentaContable> ordenadas = ObtenerCuentasOrdenadas();
             List<CuentaContable> ingresos = new List<CuentaContable>();
+            List<CuentaContable> costos = new List<CuentaContable>();
             List<CuentaContable> gastos = new List<CuentaContable>();
             var importes = new Dictionary<string, decimal>(StringComparer.OrdinalIgnoreCase);
 
             foreach (CuentaContable cuenta in ordenadas)
             {
-                if (!cuenta.EsIngreso && !cuenta.EsGasto) continue;
+                if (!cuenta.EsIngreso && !cuenta.EsCosto && !cuenta.EsGasto) continue;
 
                 decimal efecto = DatosContables.EfectoEnRango(cuenta, asientos, desde, hasta);
                 if (efecto == 0m) continue;
 
                 importes[cuenta.Codigo] = efecto;
                 if (cuenta.EsIngreso) ingresos.Add(cuenta);
+                else if (cuenta.EsCosto) costos.Add(cuenta);
                 else gastos.Add(cuenta);
             }
 
             decimal totalIngresos = 0m;
+            decimal totalCostos = 0m;
             decimal totalGastos = 0m;
 
             int fila = dgvResultados.Rows.Add("INGRESOS", string.Empty);
@@ -188,6 +150,29 @@ namespace WindowsFormsApp1
             }
 
             fila = dgvResultados.Rows.Add("TOTAL INGRESOS", DatosContables.FormatearMonto(totalIngresos));
+            UiContable.EstilizarFila(dgvResultados.Rows[fila], true, UiContable.RosaSuave);
+
+            dgvResultados.Rows.Add(string.Empty, string.Empty);
+
+            fila = dgvResultados.Rows.Add("COSTOS", string.Empty);
+            UiContable.EstilizarFila(dgvResultados.Rows[fila], true, UiContable.EncabezadoTabla);
+
+            if (costos.Count == 0)
+            {
+                dgvResultados.Rows.Add("Sin costos registrados en el período.", string.Empty);
+            }
+            else
+            {
+                foreach (CuentaContable cuenta in costos)
+                {
+                    decimal importe = importes[cuenta.Codigo];
+                    totalCostos += importe;
+                    dgvResultados.Rows.Add(cuenta.Codigo + " - " + cuenta.Nombre,
+                        DatosContables.FormatearMonto(importe));
+                }
+            }
+
+            fila = dgvResultados.Rows.Add("TOTAL COSTOS", DatosContables.FormatearMonto(totalCostos));
             UiContable.EstilizarFila(dgvResultados.Rows[fila], true, UiContable.RosaSuave);
 
             dgvResultados.Rows.Add(string.Empty, string.Empty);
@@ -215,7 +200,7 @@ namespace WindowsFormsApp1
 
             dgvResultados.Rows.Add(string.Empty, string.Empty);
 
-            decimal resultado = totalIngresos - totalGastos;
+            decimal resultado = totalIngresos - totalCostos - totalGastos;
             bool utilidad = resultado >= 0m;
             string etiquetaResultado = utilidad ? "UTILIDAD DEL EJERCICIO" : "PÉRDIDA DEL EJERCICIO";
 
@@ -227,6 +212,7 @@ namespace WindowsFormsApp1
 
             string mensaje = "Período: " + desde.ToString("dd/MM/yyyy") + " al " + hasta.ToString("dd/MM/yyyy")
                 + "   |   Ingresos: " + DatosContables.FormatearMonto(totalIngresos)
+                + "   |   Costos: " + DatosContables.FormatearMonto(totalCostos)
                 + "   |   Gastos: " + DatosContables.FormatearMonto(totalGastos)
                 + "   |   Resultado: " + DatosContables.FormatearMonto(resultado);
 

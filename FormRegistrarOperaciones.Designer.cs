@@ -217,7 +217,6 @@
             this.panelEncabezado.Location = new System.Drawing.Point(4, 4);
             this.panelEncabezado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelEncabezado.Name = "panelEncabezado";
-            this.panelEncabezado.Radius = 20;
             this.panelEncabezado.ShadowColor = System.Drawing.Color.Black;
             this.panelEncabezado.Size = new System.Drawing.Size(1359, 116);
             this.panelEncabezado.TabIndex = 0;
@@ -247,6 +246,7 @@
             this.tlpEncabezado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tlpEncabezado.Size = new System.Drawing.Size(1359, 116);
             this.tlpEncabezado.TabIndex = 0;
+            this.tlpEncabezado.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpEncabezado_Paint);
             // 
             // lblNumeroAsiento
             // 
@@ -388,7 +388,6 @@
             this.panelPartidas.Location = new System.Drawing.Point(4, 134);
             this.panelPartidas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelPartidas.Name = "panelPartidas";
-            this.panelPartidas.Radius = 20;
             this.panelPartidas.ShadowColor = System.Drawing.Color.Black;
             this.panelPartidas.Size = new System.Drawing.Size(1359, 459);
             this.panelPartidas.TabIndex = 1;
@@ -494,7 +493,7 @@
             // colDebe
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.Format = "\'C$\' #,##0.00";
             this.colDebe.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDebe.FillWeight = 20F;
             this.colDebe.HeaderText = "Débito";
@@ -505,7 +504,7 @@
             // colHaber
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.Format = "\'C$\' #,##0.00";
             this.colHaber.DefaultCellStyle = dataGridViewCellStyle3;
             this.colHaber.FillWeight = 20F;
             this.colHaber.HeaderText = "Crédito";
@@ -709,7 +708,7 @@
             this.lblTotalDebe.Name = "lblTotalDebe";
             this.lblTotalDebe.Size = new System.Drawing.Size(439, 31);
             this.lblTotalDebe.TabIndex = 0;
-            this.lblTotalDebe.Text = "Total Debe: 0.00";
+            this.lblTotalDebe.Text = "Total Debe: C$ 0.00";
             this.lblTotalDebe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTotalHaber
@@ -723,7 +722,7 @@
             this.lblTotalHaber.Name = "lblTotalHaber";
             this.lblTotalHaber.Size = new System.Drawing.Size(439, 31);
             this.lblTotalHaber.TabIndex = 1;
-            this.lblTotalHaber.Text = "Total Haber: 0.00";
+            this.lblTotalHaber.Text = "Total Haber: C$ 0.00";
             this.lblTotalHaber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDiferencia
@@ -737,7 +736,7 @@
             this.lblDiferencia.Name = "lblDiferencia";
             this.lblDiferencia.Size = new System.Drawing.Size(439, 31);
             this.lblDiferencia.TabIndex = 2;
-            this.lblDiferencia.Text = "Diferencia: 0.00";
+            this.lblDiferencia.Text = "Diferencia: C$ 0.00";
             this.lblDiferencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tlpPie
@@ -996,7 +995,7 @@
             // colTotalDebe
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.Format = "\'C$\' #,##0.00";
             this.colTotalDebe.DefaultCellStyle = dataGridViewCellStyle6;
             this.colTotalDebe.FillWeight = 12F;
             this.colTotalDebe.HeaderText = "Total Débito";
@@ -1007,7 +1006,7 @@
             // colTotalHaber
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.Format = "\'C$\' #,##0.00";
             this.colTotalHaber.DefaultCellStyle = dataGridViewCellStyle7;
             this.colTotalHaber.FillWeight = 12F;
             this.colTotalHaber.HeaderText = "Total Crédito";
@@ -1062,15 +1061,6 @@
         private System.Windows.Forms.TabPage tabNuevo;
         private System.Windows.Forms.TableLayoutPanel tlpNuevo;
         private Guna.UI2.WinForms.Guna2ShadowPanel panelEncabezado;
-        private System.Windows.Forms.TableLayoutPanel tlpEncabezado;
-        private System.Windows.Forms.Label lblNumeroAsiento;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Label lblReferencia;
-        private System.Windows.Forms.Label lblDescripcion;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numNumeroAsiento;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFecha;
-        private System.Windows.Forms.TextBox txtReferencia;
-        private System.Windows.Forms.TextBox txtDescripcion;
         private Guna.UI2.WinForms.Guna2ShadowPanel panelPartidas;
         private System.Windows.Forms.TableLayoutPanel tlpPartidas;
         private System.Windows.Forms.Label lblPartidasTitulo;
@@ -1111,5 +1101,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotalDebe;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotalHaber;
+        private System.Windows.Forms.TableLayoutPanel tlpEncabezado;
+        private System.Windows.Forms.Label lblNumeroAsiento;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblReferencia;
+        private System.Windows.Forms.Label lblDescripcion;
+        private Guna.UI2.WinForms.Guna2NumericUpDown numNumeroAsiento;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFecha;
+        private System.Windows.Forms.TextBox txtReferencia;
+        private System.Windows.Forms.TextBox txtDescripcion;
     }
 }

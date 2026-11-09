@@ -33,7 +33,6 @@ namespace WindowsFormsApp1
         {
             public string Nivel;
             public string Tipo;
-            public string Grupo;
             public string Codigo;
             public string Nombre;
             public string Naturaleza;
@@ -106,8 +105,11 @@ namespace WindowsFormsApp1
                     return;
                 }
 
+                // El formato viejo (tipo -> grupo -> arreglo) se convierte en memoria
+                // al formato plano nuevo (tipo -> arreglo). Al guardar se escribe plano.
+                MigrarCatalogoAFormatoPlano();
+
                 ActualizarComboTipos(null);
-                ActualizarComboGrupos(null, null);
                 CargarNaturalezas();
                 CargarEstados();
                 NormalizarCuentas();
@@ -152,49 +154,92 @@ namespace WindowsFormsApp1
             }
         }
 
-        private static string NombreBonito(string clave)
+        /// <summary>
+        /// Convierte el catálogo viejo con grupos al esquema plano de seis tipos.
+        /// Si el archivo ya está plano, solo normaliza y reemplaza la raíz.
+        /// </summary>
+        private void MigrarCatalogoAFormatoPlano()
         {
-            return string.Join(" ", clave.Split('_')
-                .Where(p => p.Length > 0)
-                .Select(p => char.ToUpperInvariant(p[0]) + p.Substring(1)));
+            var plano = new JsonObject();
+            foreach (string tipo in DatosContables.TiposCuenta)
+                plano[tipo] = new JsonArray();
+
+            var codigos = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (KeyValuePair<string, JsonNode> entrada in catalogo)
+            {
+                string tipoPadre = DatosContables.NormalizarTipo(entrada.Key);
+
+                if (entrada.Value is JsonArray cuentasPlanas)
+                {
+                    if (tipoPadre == null) continue;
+                    AgregarCuentasPlano(plano, tipoPadre, cuentasPlanas, codigos);
+                    continue;
+                }
+
+                if (!(entrada.Value is JsonObject grupos)) continue;
+
+                foreach (KeyValuePair<string, JsonNode> grupo in grupos)
+                {
+                    if (!(grupo.Value is JsonArray cuentas)) continue;
+
+                    string tipo = DatosContables.NormalizarTipo(grupo.Key) ?? tipoPadre;
+                    if (tipo == null) continue;
+
+                    AgregarCuentasPlano(plano, tipo, cuentas, codigos);
+                }
+            }
+
+            raizCatalogo["catalogo_cuentas"] = plano;
+            catalogo = plano;
         }
 
-        private string ClaveDesdeTexto(string texto, IEnumerable<string> existentes)
+        private static void AgregarCuentasPlano(JsonObject plano, string tipo, JsonArray cuentas,
+            HashSet<string> codigos)
         {
-            texto = (texto ?? "").Trim();
-            if (texto.Length == 0) return "";
+            JsonArray destino = plano[tipo] as JsonArray;
+            if (destino == null)
+            {
+                destino = new JsonArray();
+                plano[tipo] = destino;
+            }
 
-            string coincidencia = existentes.FirstOrDefault(
-                k => string.Equals(NombreBonito(k), texto, StringComparison.OrdinalIgnoreCase));
-            if (coincidencia != null) return coincidencia;
+            foreach (JsonNode nodo in cuentas)
+            {
+                if (!(nodo is JsonObject cuenta)) continue;
 
-            return string.Join("_", texto.ToLowerInvariant()
-                .Split(new[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries));
+                string codigo = LeerTexto(cuenta, "codigo").Trim();
+                if (codigo.Length == 0) continue;
+                if (!codigos.Add(codigo)) continue;
+
+                destino.Add(new JsonObject
+                {
+                    ["codigo"] = codigo,
+                    ["nombre"] = LeerTexto(cuenta, "nombre").Trim(),
+                    ["naturaleza"] = LeerNaturaleza(cuenta) ?? NaturalezaSugerida(tipo),
+                    ["estado"] = LeerEstado(cuenta)
+                });
+            }
         }
 
-        private static string EtiquetaNaturaleza(string clave)
+        private static string LeerTexto(JsonObject objeto, string clave)
         {
-            return clave == NaturalezaCredito ? EtiquetaCredito : EtiquetaDebito;
+            if (objeto == null || !(objeto[clave] is JsonValue valor)) return string.Empty;
+            string texto;
+            return valor.TryGetValue(out texto) ? (texto ?? string.Empty) : string.Empty;
         }
 
-        private static string ClaveNaturalezaDesdeTexto(string texto)
+        private static string NaturalezaSugerida(string claveTipo)
         {
-            return string.Equals((texto ?? "").Trim(), EtiquetaCredito, StringComparison.OrdinalIgnoreCase)
-                ? NaturalezaCredito
-                : NaturalezaDebito;
-        }
-
-        private static string NaturalezaSugerida(string claveTipo, string claveGrupo)
-        {
-            string tipo = (claveTipo ?? "").ToLowerInvariant();
-            string grupo = (claveGrupo ?? "").ToLowerInvariant();
-
-            if (grupo.Contains("gasto") || grupo.Contains("egreso")) return NaturalezaDebito;
-            if (grupo.Contains("ingreso")) return NaturalezaCredito;
-            if (tipo.Contains("activo")) return NaturalezaDebito;
-            if (tipo.Contains("pasivo")) return NaturalezaCredito;
-            if (tipo.Contains("patrimonio")) return NaturalezaCredito;
-            return NaturalezaDebito;
+            switch (DatosContables.NormalizarTipo(claveTipo))
+            {
+                case DatosContables.TipoPasivo:
+                case DatosContables.TipoCapitalPatrimonio:
+                case DatosContables.TipoIngresos:
+                    return NaturalezaCredito;
+                default:
+                    return NaturalezaDebito;
+            }
         }
 
         private static string LeerNaturaleza(JsonNode cuenta)
@@ -219,28 +264,53 @@ namespace WindowsFormsApp1
             return texto == EstadoInactivo ? EstadoInactivo : EstadoActivo;
         }
 
+        private static string EtiquetaNaturaleza(string clave)
+        {
+            return clave == NaturalezaCredito ? EtiquetaCredito : EtiquetaDebito;
+        }
+
+        private static string ClaveNaturalezaDesdeTexto(string texto)
+        {
+            return string.Equals((texto ?? "").Trim(), EtiquetaCredito, StringComparison.OrdinalIgnoreCase)
+                ? NaturalezaCredito
+                : NaturalezaDebito;
+        }
+
+        private static string EtiquetaEstado(string clave)
+        {
+            return clave == EstadoInactivo ? EtiquetaInactivo : EtiquetaActivo;
+        }
+
+        private static string ClaveEstadoDesdeTexto(string texto)
+        {
+            return string.Equals((texto ?? "").Trim(), EtiquetaInactivo, StringComparison.OrdinalIgnoreCase)
+                ? EstadoInactivo
+                : EstadoActivo;
+        }
+
+        private static string ClaveTipoDesdeTexto(string texto)
+        {
+            string clave = DatosContables.NormalizarTipo(texto);
+            if (clave != null) return clave;
+
+            foreach (string tipo in DatosContables.TiposCuenta)
+            {
+                if (string.Equals(DatosContables.EtiquetaTipo(tipo), (texto ?? "").Trim(),
+                    StringComparison.OrdinalIgnoreCase))
+                    return tipo;
+            }
+
+            return string.Empty;
+        }
+
         private void ActualizarComboTipos(string seleccion)
         {
             bool estado = cargando;
             cargando = true;
             cboTipo.Items.Clear();
-            foreach (KeyValuePair<string, JsonNode> tipo in catalogo.AsObject())
-                cboTipo.Items.Add(NombreBonito(tipo.Key));
+            foreach (string tipo in DatosContables.TiposCuenta)
+                cboTipo.Items.Add(DatosContables.EtiquetaTipo(tipo));
             if (seleccion != null) cboTipo.Text = seleccion;
-            cargando = estado;
-        }
-
-        private void ActualizarComboGrupos(string claveTipo, string seleccion)
-        {
-            bool estado = cargando;
-            cargando = true;
-            cboGrupo.Items.Clear();
-            if (claveTipo != null && catalogo[claveTipo] is JsonObject grupos)
-            {
-                foreach (KeyValuePair<string, JsonNode> grupo in grupos.AsObject())
-                    cboGrupo.Items.Add(NombreBonito(grupo.Key));
-            }
-            if (seleccion != null) cboGrupo.Text = seleccion;
             cargando = estado;
         }
 
@@ -269,42 +339,26 @@ namespace WindowsFormsApp1
             cargando = estado;
         }
 
-        private static string ClaveEstadoDesdeTexto(string texto)
-        {
-            return string.Equals((texto ?? "").Trim(), EtiquetaInactivo, StringComparison.OrdinalIgnoreCase)
-                ? EstadoInactivo
-                : EstadoActivo;
-        }
-
-        private static string EtiquetaEstado(string clave)
-        {
-            return clave == EstadoInactivo ? EtiquetaInactivo : EtiquetaActivo;
-        }
-
         private void NormalizarCuentas()
         {
-            foreach (KeyValuePair<string, JsonNode> tipo in catalogo.AsObject())
+            foreach (string tipo in DatosContables.TiposCuenta)
             {
-                if (!(tipo.Value is JsonObject grupos)) continue;
+                JsonArray cuentas = ObtenerListaCuentas(tipo, false);
+                if (cuentas == null) continue;
 
-                foreach (KeyValuePair<string, JsonNode> grupo in grupos.AsObject())
+                foreach (JsonNode nodo in cuentas)
                 {
-                    if (!(grupo.Value is JsonArray cuentas)) continue;
+                    if (!(nodo is JsonObject cuenta)) continue;
 
-                    foreach (JsonNode cta in cuentas)
-                    {
-                        if (!(cta is JsonObject cuenta)) continue;
+                    if (LeerNaturaleza(cuenta) == null)
+                        cuenta["naturaleza"] = NaturalezaSugerida(tipo);
 
-                        if (LeerNaturaleza(cuenta) == null)
-                            cuenta["naturaleza"] = NaturalezaSugerida(tipo.Key, grupo.Key);
+                    // El saldo dejó de almacenarse en el catálogo: se calcula con los asientos.
+                    if (cuenta.ContainsKey("saldo"))
+                        cuenta.Remove("saldo");
 
-                        // El saldo dejó de almacenarse en el catálogo: se calcula con los asientos.
-                        if (cuenta.ContainsKey("saldo"))
-                            cuenta.Remove("saldo");
-
-                        if (cuenta["estado"] == null)
-                            cuenta["estado"] = EstadoActivo;
-                    }
+                    if (cuenta["estado"] == null)
+                        cuenta["estado"] = EstadoActivo;
                 }
             }
         }
@@ -322,74 +376,62 @@ namespace WindowsFormsApp1
                 Tag = new NodoRef { Nivel = "raiz" }
             };
 
-            foreach (KeyValuePair<string, JsonNode> tipo in catalogo.AsObject())
+            foreach (string tipo in DatosContables.TiposCuenta)
             {
-                var nodoTipo = new TreeNode(NombreBonito(tipo.Key))
+                string etiquetaTipo = DatosContables.EtiquetaTipo(tipo);
+                var nodoTipo = new TreeNode(etiquetaTipo)
                 {
-                    Tag = new NodoRef { Nivel = "tipo", Tipo = tipo.Key },
-                    ToolTipText = "Tipo de cuenta: " + NombreBonito(tipo.Key)
+                    Tag = new NodoRef { Nivel = "tipo", Tipo = tipo },
+                    ToolTipText = "Tipo de cuenta: " + etiquetaTipo
                 };
 
-                if (tipo.Value is JsonObject grupos)
+                JsonArray cuentas = ObtenerListaCuentas(tipo, false);
+                bool tipoTieneVisible = false;
+
+                if (cuentas != null)
                 {
-                    foreach (KeyValuePair<string, JsonNode> grupo in grupos.AsObject())
+                    foreach (JsonNode nodo in cuentas)
                     {
-                        var nodoGrupo = new TreeNode(NombreBonito(grupo.Key))
-                        {
-                            Tag = new NodoRef { Nivel = "grupo", Tipo = tipo.Key, Grupo = grupo.Key },
-                            ToolTipText = "Grupo: " + NombreBonito(grupo.Key)
-                        };
+                        if (!(nodo is JsonObject cta)) continue;
 
-                        bool grupoTieneVisible = false;
+                        string codigo = LeerTexto(cta, "codigo").Trim();
+                        string nombre = LeerTexto(cta, "nombre").Trim();
+                        string naturaleza = LeerNaturaleza(cta) ?? NaturalezaSugerida(tipo);
+                        string etiquetaNaturaleza = EtiquetaNaturaleza(naturaleza);
+                        string estado = LeerEstado(cta);
+                        string etiquetaEstado = EtiquetaEstado(estado);
 
-                        if (grupo.Value is JsonArray cuentas)
+                        bool coincide = !hayFiltro
+                            || codigo.ToLowerInvariant().Contains(filtro)
+                            || nombre.ToLowerInvariant().Contains(filtro)
+                            || etiquetaNaturaleza.ToLowerInvariant().Contains(filtro)
+                            || etiquetaEstado.ToLowerInvariant().Contains(filtro)
+                            || etiquetaTipo.ToLowerInvariant().Contains(filtro);
+
+                        if (!coincide) continue;
+
+                        nodoTipo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " (" + etiquetaNaturaleza
+                            + ") - " + etiquetaEstado)
                         {
-                            foreach (JsonNode cta in cuentas)
+                            Tag = new NodoRef
                             {
-                                string codigo = cta?["codigo"]?.GetValue<string>() ?? "";
-                                string nombre = cta?["nombre"]?.GetValue<string>() ?? "";
-                                string naturaleza = LeerNaturaleza(cta) ?? NaturalezaSugerida(tipo.Key, grupo.Key);
-                                string etiquetaNaturaleza = EtiquetaNaturaleza(naturaleza);
-                                string estado = LeerEstado(cta);
-                                string etiquetaEstado = EtiquetaEstado(estado);
-                                bool coincide = !hayFiltro
-                                    || codigo.ToLowerInvariant().Contains(filtro)
-                                    || nombre.ToLowerInvariant().Contains(filtro)
-                                    || etiquetaNaturaleza.ToLowerInvariant().Contains(filtro)
-                                    || etiquetaEstado.ToLowerInvariant().Contains(filtro)
-                                    || NombreBonito(tipo.Key).ToLowerInvariant().Contains(filtro)
-                                    || NombreBonito(grupo.Key).ToLowerInvariant().Contains(filtro);
-
-                                if (!coincide) continue;
-
-                                nodoGrupo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " (" + etiquetaNaturaleza + ") - " + etiquetaEstado)
-                                {
-                                    Tag = new NodoRef
-                                    {
-                                        Nivel = "cuenta",
-                                        Tipo = tipo.Key,
-                                        Grupo = grupo.Key,
-                                        Codigo = codigo,
-                                        Nombre = nombre,
-                                        Naturaleza = naturaleza,
-                                        Estado = estado
-                                    },
-                                    ToolTipText = "Cuenta " + codigo + ": " + nombre
-                                        + " | Naturaleza: " + etiquetaNaturaleza
-                                        + " | Estado: " + etiquetaEstado
-                                });
-                                grupoTieneVisible = true;
-                            }
-                        }
-
-                        if (grupoTieneVisible || !hayFiltro)
-                        {
-                            nodoTipo.Nodes.Add(nodoGrupo);
-                        }
+                                Nivel = "cuenta",
+                                Tipo = tipo,
+                                Codigo = codigo,
+                                Nombre = nombre,
+                                Naturaleza = naturaleza,
+                                Estado = estado
+                            },
+                            ToolTipText = "Cuenta " + codigo + ": " + nombre
+                                + " | Tipo: " + etiquetaTipo
+                                + " | Naturaleza: " + etiquetaNaturaleza
+                                + " | Estado: " + etiquetaEstado
+                        });
+                        tipoTieneVisible = true;
                     }
                 }
 
-                if (nodoTipo.Nodes.Count > 0)
+                if (tipoTieneVisible || !hayFiltro)
                 {
                     nodoRaiz.Nodes.Add(nodoTipo);
                 }
@@ -408,42 +450,27 @@ namespace WindowsFormsApp1
             switch (cuentaSeleccionada.Nivel)
             {
                 case "cuenta":
-                    ActualizarComboTipos(NombreBonito(cuentaSeleccionada.Tipo));
-                    ActualizarComboGrupos(cuentaSeleccionada.Tipo, NombreBonito(cuentaSeleccionada.Grupo));
+                    ActualizarComboTipos(DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo));
                     txtCodigo.Text = cuentaSeleccionada.Codigo;
                     txtNombre.Text = cuentaSeleccionada.Nombre;
                     AplicarNaturalezaSeleccionada(cuentaSeleccionada.Naturaleza);
                     AplicarEstadoSeleccionado(cuentaSeleccionada.Estado ?? EstadoActivo);
-                    lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
-                    lblMensaje.Text = "Cuenta consultada: " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre;
+                    lblRuta.Text = DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo);
+                    lblMensaje.Text = "Cuenta consultada: " + cuentaSeleccionada.Codigo + " - "
+                        + cuentaSeleccionada.Nombre;
                     btnModificar.Enabled = true;
                     btnEliminar.Enabled = true;
                     break;
 
-                case "grupo":
-                    ActualizarComboTipos(NombreBonito(cuentaSeleccionada.Tipo));
-                    ActualizarComboGrupos(cuentaSeleccionada.Tipo, NombreBonito(cuentaSeleccionada.Grupo));
-                    txtCodigo.Clear();
-                    txtNombre.Clear();
-                    LimpiarNaturaleza();
-                    AplicarNaturalezaSugerida();
-                    AplicarEstadoDefecto();
-                    lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo) + " › " + NombreBonito(cuentaSeleccionada.Grupo);
-                    lblMensaje.Text = "Grupo seleccionado. Complete los datos para agregar una cuenta aquí.";
-                    btnModificar.Enabled = false;
-                    btnEliminar.Enabled = false;
-                    break;
-
                 case "tipo":
-                    ActualizarComboTipos(NombreBonito(cuentaSeleccionada.Tipo));
-                    ActualizarComboGrupos(cuentaSeleccionada.Tipo, null);
+                    ActualizarComboTipos(DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo));
                     txtCodigo.Clear();
                     txtNombre.Clear();
                     LimpiarNaturaleza();
                     AplicarNaturalezaSugerida();
                     AplicarEstadoDefecto();
-                    lblRuta.Text = NombreBonito(cuentaSeleccionada.Tipo);
-                    lblMensaje.Text = "Tipo seleccionado. Elija o escriba un grupo para agregar una cuenta.";
+                    lblRuta.Text = DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo);
+                    lblMensaje.Text = "Tipo seleccionado. Complete los datos para agregar una cuenta aquí.";
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
                     break;
@@ -456,14 +483,6 @@ namespace WindowsFormsApp1
         }
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cargando) return;
-            string claveTipo = ClaveDesdeTexto(cboTipo.Text, catalogo.AsObject().Select(kv => kv.Key));
-            ActualizarComboGrupos(claveTipo, null);
-            AplicarNaturalezaSugerida();
-        }
-
-        private void cboGrupo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cargando) return;
             AplicarNaturalezaSugerida();
@@ -479,15 +498,12 @@ namespace WindowsFormsApp1
         {
             if (cargando || naturalezaManual || catalogo == null) return;
 
-            string claveTipo = ClaveDesdeTexto(cboTipo.Text, catalogo.AsObject().Select(kv => kv.Key));
+            string claveTipo = ClaveTipoDesdeTexto(cboTipo.Text);
             if (claveTipo.Length == 0) return;
-
-            string claveGrupo = ClaveDesdeTexto(cboGrupo.Text,
-                catalogo[claveTipo] is JsonObject g ? g.AsObject().Select(kv => kv.Key) : Enumerable.Empty<string>());
 
             bool estado = cargando;
             cargando = true;
-            cboNaturaleza.Text = EtiquetaNaturaleza(NaturalezaSugerida(claveTipo, claveGrupo));
+            cboNaturaleza.Text = EtiquetaNaturaleza(NaturalezaSugerida(claveTipo));
             cargando = estado;
         }
 
@@ -535,21 +551,24 @@ namespace WindowsFormsApp1
             ConstruirArbol();
         }
 
-        private bool ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
+        private bool ValidarCampos(out string claveTipo, out string codigo,
             out string nombre, out string naturaleza, out string estado)
         {
-            claveTipo = claveGrupo = codigo = nombre = naturaleza = estado = EstadoActivo;
+            claveTipo = codigo = nombre = naturaleza = string.Empty;
+            estado = EstadoActivo;
 
             if (cboTipo.Text.Trim().Length == 0)
             {
-                lblMensaje.Text = "Seleccione o escriba el tipo de cuenta.";
+                lblMensaje.Text = "Seleccione el tipo de cuenta.";
                 cboTipo.Focus();
                 return false;
             }
-            if (cboGrupo.Text.Trim().Length == 0)
+
+            claveTipo = ClaveTipoDesdeTexto(cboTipo.Text);
+            if (claveTipo.Length == 0)
             {
-                lblMensaje.Text = "Seleccione o escriba el grupo de la cuenta.";
-                cboGrupo.Focus();
+                lblMensaje.Text = "El tipo de cuenta seleccionado no es válido.";
+                cboTipo.Focus();
                 return false;
             }
 
@@ -592,62 +611,54 @@ namespace WindowsFormsApp1
 
             naturaleza = ClaveNaturalezaDesdeTexto(cboNaturaleza.Text);
             estado = cboEstado != null ? ClaveEstadoDesdeTexto(cboEstado.Text) : EstadoActivo;
-
-            claveTipo = ClaveDesdeTexto(cboTipo.Text, catalogo.AsObject().Select(kv => kv.Key));
-            claveGrupo = ClaveDesdeTexto(cboGrupo.Text,
-                catalogo[claveTipo] is JsonObject g ? g.AsObject().Select(kv => kv.Key) : Enumerable.Empty<string>());
-
-            if (claveTipo.Length == 0 || claveGrupo.Length == 0)
-            {
-                lblMensaje.Text = "El tipo y el grupo no pueden estar vacíos.";
-                return false;
-            }
             return true;
         }
 
-        private JsonArray BuscarCuenta(string claveTipo, string claveGrupo, string codigo, out JsonObject cuenta)
+        private JsonArray BuscarCuenta(string claveTipo, string codigo, out JsonObject cuenta)
         {
             cuenta = null;
-            if (!(catalogo[claveTipo] is JsonObject grupos)) return null;
-            if (!(grupos[claveGrupo] is JsonArray cuentas)) return null;
+            JsonArray cuentas = ObtenerListaCuentas(claveTipo, false);
+            if (cuentas == null) return null;
 
             foreach (JsonNode cta in cuentas)
             {
-                if (cta?["codigo"]?.GetValue<string>() == codigo)
+                if (!(cta is JsonObject objeto)) continue;
+
+                string cod = LeerTexto(objeto, "codigo").Trim();
+                if (string.Equals(cod, codigo, StringComparison.OrdinalIgnoreCase))
                 {
-                    cuenta = (JsonObject)cta;
+                    cuenta = objeto;
                     return cuentas;
                 }
             }
             return null;
         }
 
-        private bool ExisteCodigo(string codigo, string tipoExcluido, string grupoExcluido, string codigoExcluido)
+        private bool ExisteCodigo(string codigo, string codigoExcluido)
         {
-            foreach (KeyValuePair<string, JsonNode> tipo in catalogo.AsObject())
+            foreach (string tipo in DatosContables.TiposCuenta)
             {
-                if (!(tipo.Value is JsonObject grupos)) continue;
+                JsonArray cuentas = ObtenerListaCuentas(tipo, false);
+                if (cuentas == null) continue;
 
-                foreach (KeyValuePair<string, JsonNode> grupo in grupos.AsObject())
+                foreach (JsonNode cta in cuentas)
                 {
-                    if (!(grupo.Value is JsonArray cuentas)) continue;
+                    if (!(cta is JsonObject objeto)) continue;
 
-                    foreach (JsonNode cta in cuentas)
-                    {
-                        string cod = cta?["codigo"]?.GetValue<string>();
-                        if (cod != codigo) continue;
+                    string cod = LeerTexto(objeto, "codigo").Trim();
+                    if (!string.Equals(cod, codigo, StringComparison.OrdinalIgnoreCase)) continue;
 
-                        bool esLaExcluida = tipo.Key == tipoExcluido
-                            && grupo.Key == grupoExcluido
-                            && cod == codigoExcluido;
-                        if (!esLaExcluida) return true;
-                    }
+                    if (!string.IsNullOrEmpty(codigoExcluido)
+                        && string.Equals(cod, codigoExcluido, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    return true;
                 }
             }
             return false;
         }
 
-        private void SeleccionarCuenta(string claveTipo, string claveGrupo, string codigo)
+        private void SeleccionarCuenta(string claveTipo, string codigo)
         {
             if (treeCuentas.Nodes.Count == 0) return;
 
@@ -657,20 +668,14 @@ namespace WindowsFormsApp1
                 if (refTipo == null || refTipo.Tipo != claveTipo) continue;
 
                 nodoTipo.Expand();
-                foreach (TreeNode nodoGrupo in nodoTipo.Nodes)
+                foreach (TreeNode nodoCta in nodoTipo.Nodes)
                 {
-                    var refGrupo = nodoGrupo.Tag as NodoRef;
-                    if (refGrupo == null || refGrupo.Grupo != claveGrupo) continue;
-
-                    nodoGrupo.Expand();
-                    foreach (TreeNode nodoCta in nodoGrupo.Nodes)
+                    var refCta = nodoCta.Tag as NodoRef;
+                    if (refCta != null && string.Equals(refCta.Codigo, codigo,
+                        StringComparison.OrdinalIgnoreCase))
                     {
-                        var refCta = nodoCta.Tag as NodoRef;
-                        if (refCta != null && refCta.Codigo == codigo)
-                        {
-                            treeCuentas.SelectedNode = nodoCta;
-                            return;
-                        }
+                        treeCuentas.SelectedNode = nodoCta;
+                        return;
                     }
                 }
             }
@@ -680,17 +685,17 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
+                if (!ValidarCampos(out string claveTipo, out string codigo,
                     out string nombre, out string naturaleza, out string estado))
                     return;
 
-                if (ExisteCodigo(codigo, claveTipo, claveGrupo, null))
+                if (ExisteCodigo(codigo, null))
                 {
                     lblMensaje.Text = "Ya existe una cuenta con el código " + codigo + ".";
                     return;
                 }
 
-                JsonArray cuentas = ObtenerListaCuentas(claveTipo, claveGrupo);
+                JsonArray cuentas = ObtenerListaCuentas(claveTipo, true);
                 cuentas.Add(new JsonObject
                 {
                     ["codigo"] = codigo,
@@ -701,9 +706,8 @@ namespace WindowsFormsApp1
 
                 hayCambiosPendientes = true;
                 ConstruirArbol();
-                ActualizarComboTipos(NombreBonito(claveTipo));
-                ActualizarComboGrupos(claveTipo, NombreBonito(claveGrupo));
-                SeleccionarCuenta(claveTipo, claveGrupo, codigo);
+                ActualizarComboTipos(DatosContables.EtiquetaTipo(claveTipo));
+                SeleccionarCuenta(claveTipo, codigo);
                 lblMensaje.Text = "Cuenta " + codigo + " agregada. Pulse \"Guardar Cambios\" para confirmar.";
             }
             catch (Exception ex)
@@ -722,7 +726,7 @@ namespace WindowsFormsApp1
                     lblMensaje.Text = "Seleccione la cuenta que desea modificar.";
                     return;
                 }
-                if (!ValidarCampos(out string claveTipo, out string claveGrupo, out string codigo,
+                if (!ValidarCampos(out string claveTipo, out string codigo,
                     out string nombre, out string naturaleza, out string estado))
                     return;
 
@@ -731,25 +735,27 @@ namespace WindowsFormsApp1
                     && CuentaTieneMovimientos(codigoAntiguo))
                 {
                     lblMensaje.Text = "No se puede cambiar el código de la cuenta " + codigoAntiguo
-                        + " porque tiene movimientos registrados en operaciones.json. Puede cambiar el nombre, la naturaleza o el estado.";
+                        + " porque tiene movimientos registrados en operaciones.json. "
+                        + "Puede cambiar el nombre, la naturaleza, el estado o el tipo.";
                     return;
                 }
 
-                if (codigo != codigoAntiguo && ExisteCodigo(codigo, claveTipo, claveGrupo, codigoAntiguo))
+                if (!string.Equals(codigo, codigoAntiguo, StringComparison.OrdinalIgnoreCase)
+                    && ExisteCodigo(codigo, codigoAntiguo))
                 {
                     lblMensaje.Text = "Ya existe una cuenta con el código " + codigo + ".";
                     return;
                 }
 
-                JsonArray cuentasViejas = BuscarCuenta(cuentaSeleccionada.Tipo, cuentaSeleccionada.Grupo,
-                    codigoAntiguo, out JsonObject cuentaVieja);
-                if (cuentasViejas == null)
+                JsonArray cuentasViejas = BuscarCuenta(cuentaSeleccionada.Tipo, codigoAntiguo,
+                    out JsonObject cuentaVieja);
+                if (cuentasViejas == null || cuentaVieja == null)
                 {
                     lblMensaje.Text = "No se encontró la cuenta original en el archivo.";
                     return;
                 }
 
-                if (claveTipo == cuentaSeleccionada.Tipo && claveGrupo == cuentaSeleccionada.Grupo)
+                if (string.Equals(claveTipo, cuentaSeleccionada.Tipo, StringComparison.OrdinalIgnoreCase))
                 {
                     cuentaVieja["codigo"] = codigo;
                     cuentaVieja["nombre"] = nombre;
@@ -759,7 +765,7 @@ namespace WindowsFormsApp1
                 else
                 {
                     cuentasViejas.Remove(cuentaVieja);
-                    ObtenerListaCuentas(claveTipo, claveGrupo).Add(new JsonObject
+                    ObtenerListaCuentas(claveTipo, true).Add(new JsonObject
                     {
                         ["codigo"] = codigo,
                         ["nombre"] = nombre,
@@ -770,9 +776,8 @@ namespace WindowsFormsApp1
 
                 hayCambiosPendientes = true;
                 ConstruirArbol();
-                ActualizarComboTipos(NombreBonito(claveTipo));
-                ActualizarComboGrupos(claveTipo, NombreBonito(claveGrupo));
-                SeleccionarCuenta(claveTipo, claveGrupo, codigo);
+                ActualizarComboTipos(DatosContables.EtiquetaTipo(claveTipo));
+                SeleccionarCuenta(claveTipo, codigo);
                 lblMensaje.Text = "Cuenta modificada. Pulse \"Guardar Cambios\" para confirmar.";
             }
             catch (Exception ex)
@@ -800,13 +805,14 @@ namespace WindowsFormsApp1
                 }
 
                 DialogResult respuesta = MessageBox.Show(
-                    "¿Desea eliminar la cuenta " + cuentaSeleccionada.Codigo + " - " + cuentaSeleccionada.Nombre + "?",
+                    "¿Desea eliminar la cuenta " + cuentaSeleccionada.Codigo + " - "
+                    + cuentaSeleccionada.Nombre + "?",
                     "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta != DialogResult.Yes) return;
 
-                JsonArray cuentas = BuscarCuenta(cuentaSeleccionada.Tipo, cuentaSeleccionada.Grupo,
-                    cuentaSeleccionada.Codigo, out JsonObject cuenta);
-                if (cuentas == null)
+                JsonArray cuentas = BuscarCuenta(cuentaSeleccionada.Tipo, cuentaSeleccionada.Codigo,
+                    out JsonObject cuenta);
+                if (cuentas == null || cuenta == null)
                 {
                     lblMensaje.Text = "No se encontró la cuenta en el archivo.";
                     return;
@@ -817,7 +823,8 @@ namespace WindowsFormsApp1
                 hayCambiosPendientes = true;
                 ConstruirArbol();
                 LimpiarCampos();
-                lblMensaje.Text = "Cuenta " + codigoEliminado + " eliminada. Pulse \"Guardar Cambios\" para confirmar.";
+                lblMensaje.Text = "Cuenta " + codigoEliminado
+                    + " eliminada. Pulse \"Guardar Cambios\" para confirmar.";
             }
             catch (Exception ex)
             {
@@ -882,17 +889,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        private JsonArray ObtenerListaCuentas(string claveTipo, string claveGrupo)
+        private JsonArray ObtenerListaCuentas(string claveTipo, bool crear)
         {
-            if (!(catalogo[claveTipo] is JsonObject grupos))
-            {
-                grupos = new JsonObject();
-                catalogo[claveTipo] = grupos;
-            }
-            if (!(grupos[claveGrupo] is JsonArray cuentas))
+            JsonArray cuentas = catalogo[claveTipo] as JsonArray;
+            if (cuentas == null && crear)
             {
                 cuentas = new JsonArray();
-                grupos[claveGrupo] = cuentas;
+                catalogo[claveTipo] = cuentas;
             }
             return cuentas;
         }
@@ -902,7 +905,6 @@ namespace WindowsFormsApp1
             bool estado = cargando;
             cargando = true;
             cboTipo.Text = "";
-            cboGrupo.Text = "";
             cboNaturaleza.Text = "";
             if (cboEstado != null) cboEstado.Text = EtiquetaActivo;
             cargando = estado;

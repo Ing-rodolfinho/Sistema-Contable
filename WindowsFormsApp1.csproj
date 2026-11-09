@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -92,9 +92,6 @@
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPagoVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DatosContables.cs" />
     <Compile Include="UiContable.cs" />
     <Compile Include="Form1.Designer.cs">
@@ -136,6 +133,18 @@
     <Compile Include="FormGenerarEstadosDeResultados.Designer.cs">
       <DependentUpon>FormGenerarEstadosDeResultados.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGenerarEstadoFlujoEfectivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGenerarEstadoFlujoEfectivo.Designer.cs">
+      <DependentUpon>FormGenerarEstadoFlujoEfectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGenerarEstadoVariacionCapital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGenerarEstadoVariacionCapital.Designer.cs">
+      <DependentUpon>FormGenerarEstadoVariacionCapital.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGenerarLibroDiario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,11 +183,35 @@
     <EmbeddedResource Include="FormAdministrarCuentas.resx">
       <DependentUpon>FormAdministrarCuentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultarMovimientos.resx">
+      <DependentUpon>FormConsultarMovimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarBalanceGeneral.resx">
+      <DependentUpon>FormGenerarBalanceGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarBalanzaDeComprobación.resx">
+      <DependentUpon>FormGenerarBalanzaDeComprobación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarEstadoFlujoEfectivo.resx">
+      <DependentUpon>FormGenerarEstadoFlujoEfectivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarEstadosDeResultados.resx">
+      <DependentUpon>FormGenerarEstadosDeResultados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarEstadoVariacionCapital.resx">
+      <DependentUpon>FormGenerarEstadoVariacionCapital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerarLibroMayor.resx">
+      <DependentUpon>FormGenerarLibroMayor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarOperaciones.resx">
       <DependentUpon>FormRegistrarOperaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRespaldarInformacion.resx">
+      <DependentUpon>FormRespaldarInformacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

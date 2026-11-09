@@ -171,53 +171,27 @@ namespace WindowsFormsApp1
         {
             try
             {
-                JsonObject raizCuentas = null;
                 cuentas.Clear();
 
-                string ruta = RutaCuentasActual;
-                if (!File.Exists(ruta))
+                string error;
+                List<CuentaContable> catalogo = DatosContables.CargarCuentas(out error);
+
+                if (!string.IsNullOrEmpty(error))
                 {
-                    MessageBox.Show("No se encontró el archivo Cuentas.json.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                raizCuentas = JsonNode.Parse(File.ReadAllText(ruta)) as JsonObject;
-                cuentas.Clear();
-
-                if (raizCuentas?["catalogo_cuentas"] is JsonObject catalogo)
+                foreach (CuentaContable cuenta in catalogo)
                 {
-                    foreach (KeyValuePair<string, JsonNode> tipo in catalogo)
+                    if (!cuenta.EsActiva) continue;
+
+                    cuentas.Add(new CuentaItem
                     {
-                        if (!(tipo.Value is JsonObject grupos)) continue;
-
-                        foreach (KeyValuePair<string, JsonNode> grupo in grupos)
-                        {
-                            if (!(grupo.Value is JsonArray lista)) continue;
-
-                            foreach (JsonNode nodo in lista)
-                            {
-                                if (!(nodo is JsonObject cuenta)) continue;
-
-                                string codigo = LeerTexto(cuenta, "codigo").Trim();
-                                if (codigo.Length == 0) continue;
-
-                                string estadoCuenta = LeerTexto(cuenta, "estado").Trim().ToLowerInvariant();
-                                if (estadoCuenta == "inactivo")
-                                    continue;
-
-                                string naturaleza = LeerTexto(cuenta, "naturaleza").Trim().ToLowerInvariant();
-                                if (naturaleza != NaturalezaCredito) naturaleza = NaturalezaDebito;
-
-                                cuentas.Add(new CuentaItem
-                                {
-                                    Codigo = codigo,
-                                    Nombre = LeerTexto(cuenta, "nombre").Trim(),
-                                    Naturaleza = naturaleza
-                                });
-                            }
-                        }
-                    }
+                        Codigo = cuenta.Codigo,
+                        Nombre = cuenta.Nombre,
+                        Naturaleza = cuenta.Naturaleza
+                    });
                 }
 
                 cboCuenta.Items.Clear();
@@ -337,9 +311,9 @@ namespace WindowsFormsApp1
 
             decimal diferencia = totalDebe - totalHaber;
 
-            lblTotalDebe.Text = "Total Debe: " + totalDebe.ToString("N2");
-            lblTotalHaber.Text = "Total Haber: " + totalHaber.ToString("N2");
-            lblDiferencia.Text = "Diferencia: " + diferencia.ToString("N2");
+            lblTotalDebe.Text = "Total Debe: " + DatosContables.FormatearMonto(totalDebe);
+            lblTotalHaber.Text = "Total Haber: " + DatosContables.FormatearMonto(totalHaber);
+            lblDiferencia.Text = "Diferencia: " + DatosContables.FormatearMonto(diferencia);
             lblDiferencia.ForeColor = diferencia == 0m ? Color.SeaGreen : Color.Firebrick;
         }
 
@@ -365,6 +339,15 @@ namespace WindowsFormsApp1
             {
                 lblMensaje.Text = "Seleccione Debe o Haber para la partida.";
                 cboTipoPartida.Focus();
+                return;
+            }
+
+            if (partidas.Exists(p => string.Equals(p.Codigo, cuenta.Codigo,
+                StringComparison.OrdinalIgnoreCase)))
+            {
+                lblMensaje.Text = "La cuenta " + cuenta.Codigo + " - " + cuenta.Nombre
+                    + " ya está incluida en este asiento. Cada cuenta puede aparecer una sola vez.";
+                cboCuenta.Focus();
                 return;
             }
 
@@ -451,7 +434,7 @@ namespace WindowsFormsApp1
                 if (totalDebe != totalHaber)
                 {
                     lblMensaje.Text = "El asiento no cuadra: la diferencia entre debe y haber es "
-                        + (totalDebe - totalHaber).ToString("N2") + ".";
+                        + DatosContables.FormatearMonto(totalDebe - totalHaber) + ".";
                     return;
                 }
 
@@ -660,6 +643,11 @@ namespace WindowsFormsApp1
             txtDescripcion.Clear();
             numNumeroAsiento.Value = Math.Min(SiguienteNumeroAsiento(), (int)numNumeroAsiento.Maximum);
             dtpFecha.Value = DateTime.Today;
+        }
+
+        private void tlpEncabezado_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
