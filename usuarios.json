@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "usuario": "admin",
+      "nombre": "Administrador",
+      "clave_hash": "cd4fcdd99a34130b3f2f2f9b17e4b31b6d0f5db09cd7394d17a6af520c6340b5",
+      "activo": true
+    },
+    {
+      "usuario": "rodolfo",
+      "nombre": "rodolfo ismael escobar gonzalez",
+      "clave_hash": "cd4fcdd99a34130b3f2f2f9b17e4b31b6d0f5db09cd7394d17a6af520c6340b5",
+      "activo": true
+    }
+  ]
+}

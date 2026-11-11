@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -258,6 +259,46 @@ namespace WindowsFormsApp1
         {
             if (raiz == null || contenido == null) return;
             raiz.Controls.Add(contenido, 0, 2);
+        }
+
+        /// <summary>
+        /// Dibuja el icono de ojo (abierto o tachado) que usan los campos de contraseña.
+        /// </summary>
+        public static void DibujarOjo(Graphics g, Size tamano, bool claveVisible)
+        {
+            if (g == null) return;
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            int ancho = Math.Min(tamano.Width, tamano.Height) - 12;
+            if (ancho < 10) ancho = 10;
+
+            int alto = Math.Max(8, ancho / 2);
+            int cx = tamano.Width / 2;
+            int cy = tamano.Height / 2;
+            int izquierda = cx - ancho / 2;
+            int arriba = cy - alto / 2;
+
+            using (GraphicsPath ojo = new GraphicsPath())
+            using (Pen lapiz = new Pen(Acento, 1.6f))
+            using (SolidBrush relleno = new SolidBrush(Acento))
+            {
+                ojo.AddBezier(izquierda, cy, izquierda + ancho / 4, arriba,
+                    izquierda + ancho * 3 / 4, arriba, izquierda + ancho, cy);
+                ojo.AddBezier(izquierda + ancho, cy, izquierda + ancho * 3 / 4, arriba + alto,
+                    izquierda + ancho / 4, arriba + alto, izquierda, cy);
+
+                g.DrawPath(lapiz, ojo);
+
+                int radio = Math.Max(2, alto / 4);
+                g.FillEllipse(relleno, cx - radio, cy - radio, radio * 2, radio * 2);
+
+                if (!claveVisible)
+                {
+                    g.DrawLine(lapiz, izquierda - 1, arriba + alto + 1,
+                        izquierda + ancho + 1, arriba - 1);
+                }
+            }
         }
 
         public static void EstilizarFila(DataGridViewRow fila, bool negrita, Color? fondo)
