@@ -92,6 +92,7 @@
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Autenticacion.cs" />
     <Compile Include="DatosContables.cs" />
     <Compile Include="UiContable.cs" />
     <Compile Include="Form1.Designer.cs">
@@ -163,6 +164,30 @@
     <Compile Include="FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInicioSesion.Designer.cs">
+      <DependentUpon>FormInicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClaveAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClaveAdmin.Designer.cs">
+      <DependentUpon>FormClaveAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearUsuario.Designer.cs">
+      <DependentUpon>FormCrearUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCambiarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCambiarClave.Designer.cs">
+      <DependentUpon>FormCambiarClave.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRegistrarOperaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInicioSesion.resx">
+      <DependentUpon>FormInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarOperaciones.resx">
       <DependentUpon>FormRegistrarOperaciones.cs</DependentUpon>
@@ -304,6 +332,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="operaciones.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="usuarios.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
