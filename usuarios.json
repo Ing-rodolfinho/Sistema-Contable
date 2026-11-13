@@ -3,13 +3,20 @@
     {
       "usuario": "admin",
       "nombre": "Administrador",
-      "clave_hash": "cd4fcdd99a34130b3f2f2f9b17e4b31b6d0f5db09cd7394d17a6af520c6340b5",
+      "a": null,
+      "clave_hash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
       "activo": true
     },
     {
       "usuario": "rodolfo",
       "nombre": "rodolfo ismael escobar gonzalez",
-      "clave_hash": "cd4fcdd99a34130b3f2f2f9b17e4b31b6d0f5db09cd7394d17a6af520c6340b5",
+      "clave_hash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+      "activo": true
+    },
+    {
+      "usuario": "123",
+      "nombre": "52456",
+      "clave_hash": "9d96e21a72c0a447697f42c3aff3655407aa96fdf5387ded84090ccddd4e4a53",
       "activo": true
     }
   ]

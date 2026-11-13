@@ -2,87 +2,149 @@
   "asientos": [
     {
       "numero_asiento": 1,
-      "fecha": "2026-11-08",
-      "referencia": "RIEG-1",
-      "descripcion": "cargo a banco por 10000 y abono a capital social por 10000",
+      "fecha": "2026-11-12",
+      "referencia": "FAC-001",
+      "descripcion": "cobro en efectivo por servicios realizados en el dia",
       "partidas": [
         {
-          "cuenta": "1104",
-          "nombre_cuenta": "Bancos",
+          "cuenta": "1101",
+          "nombre_cuenta": "caja",
           "naturaleza": "debito",
-          "debe": 100000.00,
+          "debe": 2400.00,
           "haber": 0
         },
         {
-          "cuenta": "3111",
-          "nombre_cuenta": "Capital social",
+          "cuenta": "4103",
+          "nombre_cuenta": "Ingresos por servicios",
           "naturaleza": "credito",
           "debe": 0,
-          "haber": 100000.00
+          "haber": 2400.00
         }
       ],
-      "total_debe": 100000.00,
-      "total_haber": 100000.00
+      "total_debe": 2400.00,
+      "total_haber": 2400.00
     },
     {
       "numero_asiento": 2,
-      "fecha": "2026-11-08",
-      "referencia": "RIEG-2",
-      "descripcion": "cargo a imventario por 50000 y abono a proveedores por 50000",
+      "fecha": "2026-11-12",
+      "referencia": "FAC-002",
+      "descripcion": "compra de esmaltes, acrilicos, toalla y desinfectante",
       "partidas": [
         {
           "cuenta": "1103",
           "nombre_cuenta": "Inventario",
           "naturaleza": "debito",
-          "debe": 50000.00,
+          "debe": 4850.00,
           "haber": 0
         },
-        {
-          "cuenta": "2203",
-          "nombre_cuenta": "Proveedores",
-          "naturaleza": "credito",
-          "debe": 0,
-          "haber": 50000.00
-        }
-      ],
-      "total_debe": 50000.00,
-      "total_haber": 50000.00
-    },
-    {
-      "numero_asiento": 3,
-      "fecha": "2026-11-08",
-      "referencia": "RIEG-3",
-      "descripcion": "cargo a bancos por 30000 y abono a ingresos por 30000",
-      "partidas": [
         {
           "cuenta": "1104",
           "nombre_cuenta": "Bancos",
           "naturaleza": "debito",
-          "debe": 30000.00,
+          "debe": 0,
+          "haber": 4850.00
+        }
+      ],
+      "total_debe": 4850.00,
+      "total_haber": 4850.00
+    },
+    {
+      "numero_asiento": 3,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-003",
+      "descripcion": "Adquisicion de lampara UV a un plazo de 30 dias",
+      "partidas": [
+        {
+          "cuenta": "1201",
+          "nombre_cuenta": "Mobiliario y equipo de oficina",
+          "naturaleza": "debito",
+          "debe": 1000.00,
           "haber": 0
+        },
+        {
+          "cuenta": "2104",
+          "nombre_cuenta": "Cuentas por pagar",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 1000.00
+        }
+      ],
+      "total_debe": 1000.00,
+      "total_haber": 1000.00
+    },
+    {
+      "numero_asiento": 4,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-4",
+      "descripcion": "Pago del 50% de la deuda pendiente por compra de mobiliario",
+      "partidas": [
+        {
+          "cuenta": "2104",
+          "nombre_cuenta": "Cuentas por pagar",
+          "naturaleza": "credito",
+          "debe": 4250.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 4250.00
+        }
+      ],
+      "total_debe": 4250.00,
+      "total_haber": 4250.00
+    },
+    {
+      "numero_asiento": 5,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-005",
+      "descripcion": "Servicios realizados y ventas de productos cobrados en efectivo y transferencia",
+      "partidas": [
+        {
+          "cuenta": "1101",
+          "nombre_cuenta": "caja",
+          "naturaleza": "debito",
+          "debe": 3500.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 4100.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "4103",
+          "nombre_cuenta": "Ingresos por servicios",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 6200.00
         },
         {
           "cuenta": "4102",
           "nombre_cuenta": "Otros ingresos",
           "naturaleza": "credito",
           "debe": 0,
-          "haber": 30000.00
+          "haber": 1400.00
         }
       ],
-      "total_debe": 30000.00,
-      "total_haber": 30000.00
+      "total_debe": 7600.00,
+      "total_haber": 7600.00
     },
     {
-      "numero_asiento": 4,
-      "fecha": "2026-11-08",
-      "referencia": "RIEG-4",
-      "descripcion": "cargo a gastos por 10000 y abono a bancos por 10000",
+      "numero_asiento": 6,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-006",
+      "descripcion": "Compra de liquidos removedoresy limas de uso inmediatopagada en efectivo y transferencia",
       "partidas": [
         {
-          "cuenta": "5201",
-          "nombre_cuenta": "Gastos financieros",
+          "cuenta": "5002",
+          "nombre_cuenta": "Costos de servicio",
           "naturaleza": "debito",
-          "debe": 10000.00,
+          "debe": 5000.00,
           "haber": 0
         },
         {
@@ -90,11 +152,272 @@
           "nombre_cuenta": "Bancos",
           "naturaleza": "debito",
           "debe": 0,
-          "haber": 10000.00
+          "haber": 3000.00
+        },
+        {
+          "cuenta": "1101",
+          "nombre_cuenta": "caja",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 2000.00
         }
       ],
-      "total_debe": 10000.00,
-      "total_haber": 10000.00
+      "total_debe": 5000.00,
+      "total_haber": 5000.00
+    },
+    {
+      "numero_asiento": 7,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-007",
+      "descripcion": "Cancelacion en efectivo de factura de energia y agua potable",
+      "partidas": [
+        {
+          "cuenta": "5203",
+          "nombre_cuenta": "Gastos de servicios basicos",
+          "naturaleza": "debito",
+          "debe": 1850.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1101",
+          "nombre_cuenta": "caja",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 1850.00
+        }
+      ],
+      "total_debe": 1850.00,
+      "total_haber": 1850.00
+    },
+    {
+      "numero_asiento": 8,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-008",
+      "descripcion": "pago en efectivo por anuncio en redes sociales y compra de talonarios de resivos",
+      "partidas": [
+        {
+          "cuenta": "5204",
+          "nombre_cuenta": "Gastos de publicidad",
+          "naturaleza": "debito",
+          "debe": 1200.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "5205",
+          "nombre_cuenta": "Gastos de papeleria y utiles",
+          "naturaleza": "debito",
+          "debe": 650.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1101",
+          "nombre_cuenta": "caja",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 1850.00
+        }
+      ],
+      "total_debe": 1850.00,
+      "total_haber": 1850.00
+    },
+    {
+      "numero_asiento": 9,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-009",
+      "descripcion": "Pago de servicios t\u00E9cnicos del personal y compra directa de esterilizantes mediante transferencia bancaria.",
+      "partidas": [
+        {
+          "cuenta": "5003",
+          "nombre_cuenta": "Costo de mano de obra directa",
+          "naturaleza": "debito",
+          "debe": 5500.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "5004",
+          "nombre_cuenta": "Costo de materiales e insumos",
+          "naturaleza": "debito",
+          "debe": 1900.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 7400.00
+        }
+      ],
+      "total_debe": 7400.00,
+      "total_haber": 7400.00
+    },
+    {
+      "numero_asiento": 10,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-010",
+      "descripcion": "Cobro de servicios de manicura y pedicura realizados durante la semana.",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 7500.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "4103",
+          "nombre_cuenta": "Ingresos por servicios",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 7500.00
+        }
+      ],
+      "total_debe": 7500.00,
+      "total_haber": 7500.00
+    },
+    {
+      "numero_asiento": 11,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-011",
+      "descripcion": "Compra de mobiliario y equipo de oficina pagada mediante transferencia bancaria.",
+      "partidas": [
+        {
+          "cuenta": "1201",
+          "nombre_cuenta": "Mobiliario y equipo de oficina",
+          "naturaleza": "debito",
+          "debe": 8500.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 8500.00
+        }
+      ],
+      "total_debe": 8500.00,
+      "total_haber": 8500.00
+    },
+    {
+      "numero_asiento": 12,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-012",
+      "descripcion": "Adquisicion de patente para la marca pagada mediante transferencia bancaria.",
+      "partidas": [
+        {
+          "cuenta": "1301",
+          "nombre_cuenta": "Patentes",
+          "naturaleza": "debito",
+          "debe": 3200.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 3200.00
+        }
+      ],
+      "total_debe": 3200.00,
+      "total_haber": 3200.00
+    },
+    {
+      "numero_asiento": 13,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-013",
+      "descripcion": "Venta de mobiliario en desuso cobrada mediante transferencia bancaria.",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 2000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1201",
+          "nombre_cuenta": "Mobiliario y equipo de oficina",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 2000.00
+        }
+      ],
+      "total_debe": 2000.00,
+      "total_haber": 2000.00
+    },
+    {
+      "numero_asiento": 14,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-014",
+      "descripcion": "Prestamo bancario a largo plazo recibido para capital de trabajo.",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 25000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "2201",
+          "nombre_cuenta": "Prestamos a largo plazo",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 25000.00
+        }
+      ],
+      "total_debe": 25000.00,
+      "total_haber": 25000.00
+    },
+    {
+      "numero_asiento": 15,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-015",
+      "descripcion": "Aportacion de socios para fortalecer el capital de trabajo.",
+      "partidas": [
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 15000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "3112",
+          "nombre_cuenta": "Aportaciones de socios",
+          "naturaleza": "credito",
+          "debe": 0,
+          "haber": 15000.00
+        }
+      ],
+      "total_debe": 15000.00,
+      "total_haber": 15000.00
+    },
+    {
+      "numero_asiento": 16,
+      "fecha": "2026-11-12",
+      "referencia": "FAC-016",
+      "descripcion": "Abono parcial al prestamo bancario a largo plazo mediante transferencia.",
+      "partidas": [
+        {
+          "cuenta": "2201",
+          "nombre_cuenta": "Prestamos a largo plazo",
+          "naturaleza": "credito",
+          "debe": 4000.00,
+          "haber": 0
+        },
+        {
+          "cuenta": "1104",
+          "nombre_cuenta": "Bancos",
+          "naturaleza": "debito",
+          "debe": 0,
+          "haber": 4000.00
+        }
+      ],
+      "total_debe": 4000.00,
+      "total_haber": 4000.00
     }
   ]
 }

@@ -29,23 +29,46 @@ namespace WindowsFormsApp1
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            UsuarioSesion sesion;
-            string error;
-
-            if (!Autenticacion.IniciarSesion(txtUsuario.Text, txtClave.Text, out sesion, out error))
+            try
             {
-                txtClave.Clear();
-                claveVisible = false;
-                AplicarVisibilidadClave();
-                lblError.Text = error;
-                txtClave.Focus();
-                return;
-            }
+                string usuario = txtUsuario.Text.Trim();
+                string clave = txtClave.Text;
 
-            UsuarioAutenticado = sesion;
-            lblError.Text = string.Empty;
-            DialogResult = DialogResult.OK;
-            Close();
+                if (usuario.Length == 0)
+                {
+                    lblError.Text = "Escriba el nombre de usuario.";
+                    txtUsuario.Focus();
+                    return;
+                }
+                if (clave.Length == 0)
+                {
+                    lblError.Text = "Escriba la contraseña.";
+                    txtClave.Focus();
+                    return;
+                }
+
+                UsuarioSesion sesion;
+                string error;
+
+                if (!Autenticacion.IniciarSesion(usuario, clave, out sesion, out error))
+                {
+                    txtClave.Clear();
+                    claveVisible = false;
+                    AplicarVisibilidadClave();
+                    lblError.Text = error;
+                    txtClave.Focus();
+                    return;
+                }
+
+                UsuarioAutenticado = sesion;
+                lblError.Text = string.Empty;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                ManejadorErrores.Mostrar(ex, "Error al iniciar sesión");
+            }
         }
 
         private void btnCambiarClave_Click(object sender, EventArgs e)

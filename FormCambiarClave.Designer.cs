@@ -178,6 +178,7 @@ namespace WindowsFormsApp1
             this.txtUsuario.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtUsuario.Location = new System.Drawing.Point(0, 98);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(400, 26);
             this.txtUsuario.TabIndex = 0;
@@ -222,6 +223,7 @@ namespace WindowsFormsApp1
             this.txtActual.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtActual.Location = new System.Drawing.Point(0, 0);
             this.txtActual.Margin = new System.Windows.Forms.Padding(0);
+            this.txtActual.MaxLength = 100;
             this.txtActual.Name = "txtActual";
             this.txtActual.PasswordChar = '\u25CF';
             this.txtActual.Size = new System.Drawing.Size(366, 26);
@@ -287,6 +289,7 @@ namespace WindowsFormsApp1
             this.txtNueva.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtNueva.Location = new System.Drawing.Point(0, 0);
             this.txtNueva.Margin = new System.Windows.Forms.Padding(0);
+            this.txtNueva.MaxLength = 100;
             this.txtNueva.Name = "txtNueva";
             this.txtNueva.PasswordChar = '\u25CF';
             this.txtNueva.Size = new System.Drawing.Size(366, 26);
@@ -352,6 +355,7 @@ namespace WindowsFormsApp1
             this.txtConfirmar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtConfirmar.Location = new System.Drawing.Point(0, 0);
             this.txtConfirmar.Margin = new System.Windows.Forms.Padding(0);
+            this.txtConfirmar.MaxLength = 100;
             this.txtConfirmar.Name = "txtConfirmar";
             this.txtConfirmar.PasswordChar = '\u25CF';
             this.txtConfirmar.Size = new System.Drawing.Size(366, 26);

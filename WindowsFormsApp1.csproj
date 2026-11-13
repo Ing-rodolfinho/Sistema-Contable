@@ -95,6 +95,7 @@
     <Compile Include="Autenticacion.cs" />
     <Compile Include="DatosContables.cs" />
     <Compile Include="UiContable.cs" />
+    <Compile Include="ManejadorErrores.cs" />
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -207,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdministrarCuentas.resx">
       <DependentUpon>FormAdministrarCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultarCuentasT.resx">
+      <DependentUpon>FormConsultarCuentasT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultarMovimientos.resx">
       <DependentUpon>FormConsultarMovimientos.cs</DependentUpon>

@@ -94,6 +94,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar el Estado de Resultados");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvResultados == null) return;
 
             dgvResultados.Rows.Clear();

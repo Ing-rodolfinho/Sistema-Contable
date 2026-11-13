@@ -88,6 +88,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar la Balanza de Comprobación");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvBalanza == null) return;
 
             dgvBalanza.Rows.Clear();

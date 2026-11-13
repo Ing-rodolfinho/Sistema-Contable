@@ -138,6 +138,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar el Estado de Flujo de Efectivo");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvFlujo == null) return;
 
             dgvFlujo.Rows.Clear();

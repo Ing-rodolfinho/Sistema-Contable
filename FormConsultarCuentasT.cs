@@ -29,8 +29,6 @@ namespace WindowsFormsApp1
         private JsonObject raizOperaciones;
         private JsonArray asientos;
         private bool cargandoFiltros;
-        private bool filtrosFechaEnDosFilas;
-        private const int AnchoMinimoFiltrosUnaFila = 450;
 
         private class CuentaListaItem
         {
@@ -81,70 +79,7 @@ namespace WindowsFormsApp1
             if (dgvCuentasLista != null)
                 dgvCuentasLista.CellDoubleClick += dgvCuentasLista_CellDoubleClick;
 
-            AjustarFiltrosFecha();
             CargarDatos();
-        }
-
-        protected override void OnLayout(LayoutEventArgs levent)
-        {
-            base.OnLayout(levent);
-            AjustarFiltrosFecha();
-        }
-
-        /// <summary>
-        /// Cuando el panel de fechas es angosto, el botón Consultar baja a una
-        /// segunda fila. Así los controles nunca se superponen y el formulario
-        /// conserva la misma distribución desde que se muestra.
-        /// </summary>
-        private void AjustarFiltrosFecha()
-        {
-            if (panelFiltrosFecha == null || tlpFiltrosFecha == null || btnConsultar == null)
-                return;
-            if (panelFiltrosFecha.ClientSize.Width <= 0)
-                return;
-
-            bool dosFilas = panelFiltrosFecha.ClientSize.Width < AnchoMinimoFiltrosUnaFila;
-            if (dosFilas == filtrosFechaEnDosFilas)
-                return;
-
-            filtrosFechaEnDosFilas = dosFilas;
-
-            tlpFiltrosFecha.SuspendLayout();
-            panelFiltrosFecha.SuspendLayout();
-            try
-            {
-                if (dosFilas)
-                {
-                    tlpFiltrosFecha.RowCount = 2;
-                    tlpFiltrosFecha.RowStyles.Clear();
-                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-                    tlpFiltrosFecha.SetCellPosition(btnConsultar, new TableLayoutPanelCellPosition(1, 1));
-                    tlpFiltrosFecha.SetColumnSpan(btnConsultar, 3);
-                    panelFiltrosFecha.MinimumSize = new Size(0, 74);
-                    panelFiltrosFecha.MaximumSize = new Size(0, 74);
-                }
-                else
-                {
-                    tlpFiltrosFecha.RowCount = 1;
-                    tlpFiltrosFecha.RowStyles.Clear();
-                    tlpFiltrosFecha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-                    tlpFiltrosFecha.SetCellPosition(btnConsultar, new TableLayoutPanelCellPosition(4, 0));
-                    tlpFiltrosFecha.SetColumnSpan(btnConsultar, 1);
-                    panelFiltrosFecha.MaximumSize = new Size(0, 48);
-                    panelFiltrosFecha.MinimumSize = new Size(0, 48);
-                }
-            }
-            finally
-            {
-                tlpFiltrosFecha.ResumeLayout(true);
-                panelFiltrosFecha.ResumeLayout(true);
-            }
-
-            // El alto de la fila que contiene el panel es automático: hay que
-            // pedirle a la tabla principal que vuelva a medirla al cambiar de modo.
-            if (tlpCuentaT != null)
-                tlpCuentaT.PerformLayout();
         }
 
         private void dgvCuentasLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -228,6 +163,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Consultar Cuentas T: error al cargar los datos");
                 MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -294,6 +230,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Consultar Cuentas T: error al cargar Cuentas.json");
                 MessageBox.Show("Error al cargar Cuentas.json: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -597,6 +534,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Consultar Cuentas T: error al consultar la cuenta");
                 MessageBox.Show("Error al consultar la cuenta: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
