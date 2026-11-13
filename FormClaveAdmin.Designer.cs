@@ -171,6 +171,7 @@ namespace WindowsFormsApp1
             this.txtClave.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txtClave.Location = new System.Drawing.Point(0, 0);
             this.txtClave.Margin = new System.Windows.Forms.Padding(0);
+            this.txtClave.MaxLength = 100;
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '\u25CF';
             this.txtClave.Size = new System.Drawing.Size(334, 26);

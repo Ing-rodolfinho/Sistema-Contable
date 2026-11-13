@@ -51,6 +51,7 @@ namespace WindowsFormsApp1
             this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colConcepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCuentasAfectadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -268,6 +269,7 @@ namespace WindowsFormsApp1
             this.colFecha,
             this.colReferencia,
             this.colConcepto,
+            this.colCuentasAfectadas,
             this.colDebe,
             this.colHaber,
             this.colSaldo});
@@ -328,6 +330,15 @@ namespace WindowsFormsApp1
             this.colConcepto.Name = "colConcepto";
             this.colConcepto.ReadOnly = true;
             this.colConcepto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colCuentasAfectadas
+            // 
+            this.colCuentasAfectadas.FillWeight = 150F;
+            this.colCuentasAfectadas.HeaderText = "Cuentas afectadas";
+            this.colCuentasAfectadas.MinimumWidth = 120;
+            this.colCuentasAfectadas.Name = "colCuentasAfectadas";
+            this.colCuentasAfectadas.ReadOnly = true;
+            this.colCuentasAfectadas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colDebe
             // 
@@ -416,6 +427,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReferencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colConcepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCuentasAfectadas;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDebe;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHaber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaldo;

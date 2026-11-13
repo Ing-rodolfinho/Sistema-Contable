@@ -78,6 +78,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar el Balance General");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvBalance == null) return;
 
             dgvBalance.Rows.Clear();

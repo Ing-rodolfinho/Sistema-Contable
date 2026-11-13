@@ -14,16 +14,25 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            ManejadorErrores.Instalar();
 
-            using (var login = new FormInicioSesion())
+            try
             {
-                if (login.ShowDialog() != DialogResult.OK)
-                    return;
-            }
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Form1());
+                using (var login = new FormInicioSesion())
+                {
+                    if (login.ShowDialog() != DialogResult.OK)
+                        return;
+                }
+
+                Application.Run(new Form1());
+            }
+            catch (Exception ex)
+            {
+                ManejadorErrores.Mostrar(ex, "No se pudo iniciar el sistema contable");
+            }
         }
     }
 }

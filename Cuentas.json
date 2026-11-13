@@ -35,13 +35,13 @@
         "codigo": "1202",
         "nombre": "muebles y enseres",
         "naturaleza": "debito",
-        "estado": "activo"
+        "estado": "inactivo"
       },
       {
         "codigo": "1203",
         "nombre": "equipo de transporte",
         "naturaleza": "debito",
-        "estado": "activo"
+        "estado": "inactivo"
       },
       {
         "codigo": "1301",
@@ -59,7 +59,7 @@
         "codigo": "1303",
         "nombre": "Software",
         "naturaleza": "debito",
-        "estado": "activo"
+        "estado": "inactivo"
       }
     ],
     "pasivo": [
@@ -85,11 +85,23 @@
         "codigo": "2202",
         "nombre": "Hipoteca por pagar",
         "naturaleza": "credito",
-        "estado": "activo"
+        "estado": "inactivo"
       },
       {
         "codigo": "2203",
         "nombre": "Proveedores",
+        "naturaleza": "credito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "2103",
+        "nombre": "Mobiliario y equipo",
+        "naturaleza": "credito",
+        "estado": "inactivo"
+      },
+      {
+        "codigo": "2104",
+        "nombre": "Cuentas por pagar",
         "naturaleza": "credito",
         "estado": "activo"
       }
@@ -105,7 +117,7 @@
         "codigo": "3102",
         "nombre": "Utilidades del ejercicio",
         "naturaleza": "credito",
-        "estado": "inactivo"
+        "estado": "activo"
       },
       {
         "codigo": "3111",
@@ -144,12 +156,36 @@
         "nombre": "Otros ingresos",
         "naturaleza": "credito",
         "estado": "activo"
+      },
+      {
+        "codigo": "4103",
+        "nombre": "Ingresos por servicios",
+        "naturaleza": "credito",
+        "estado": "activo"
       }
     ],
     "costos": [
       {
         "codigo": "5001",
         "nombre": "Costo de ventas",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5002",
+        "nombre": "Costos de servicio",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5003",
+        "nombre": "Costo de mano de obra directa",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5004",
+        "nombre": "Costo de materiales e insumos",
         "naturaleza": "debito",
         "estado": "activo"
       }
@@ -176,6 +212,24 @@
       {
         "codigo": "5202",
         "nombre": "Gastos generales",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5203",
+        "nombre": "Gastos de servicios basicos",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5204",
+        "nombre": "Gastos de publicidad",
+        "naturaleza": "debito",
+        "estado": "activo"
+      },
+      {
+        "codigo": "5205",
+        "nombre": "Gastos de papeleria y utiles",
         "naturaleza": "debito",
         "estado": "activo"
       }

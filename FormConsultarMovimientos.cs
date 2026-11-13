@@ -102,6 +102,11 @@ namespace WindowsFormsApp1
 
         private void Consultar()
         {
+            ManejadorErrores.Ejecutar(ConsultarInterno, "Error al consultar los movimientos");
+        }
+
+        private void ConsultarInterno()
+        {
             if (cargando || dgvMovimientos == null) return;
 
             dgvMovimientos.Rows.Clear();

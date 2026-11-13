@@ -101,6 +101,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar el Libro Mayor");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvMayor == null) return;
 
             dgvMayor.Rows.Clear();
@@ -171,6 +176,7 @@ namespace WindowsFormsApp1
                     "SALDO ANTERIOR",
                     string.Empty,
                     string.Empty,
+                    string.Empty,
                     DatosContables.FormatearMonto(saldoAnterior));
                 UiContable.EstilizarFila(dgvMayor.Rows[filaEncabezado], true, UiContable.EncabezadoTabla);
 
@@ -188,14 +194,16 @@ namespace WindowsFormsApp1
                         DatosContables.FormatearFecha(movimiento.Asiento.Fecha),
                         movimiento.Asiento.Referencia,
                         movimiento.Asiento.Descripcion,
+                        DescribirCuentasAfectadas(movimiento.Asiento),
                         DatosContables.MontoCelda(movimiento.Partida.Debe),
                         DatosContables.MontoCelda(movimiento.Partida.Haber),
                         DatosContables.FormatearMonto(saldo));
 
+                    int indiceSaldo = dgvMayor.Columns["colSaldo"].Index;
                     if (saldo < 0m)
-                        dgvMayor.Rows[fila].Cells[6].Style.ForeColor = UiContable.Negativo;
+                        dgvMayor.Rows[fila].Cells[indiceSaldo].Style.ForeColor = UiContable.Negativo;
                     else if (saldo > 0m)
-                        dgvMayor.Rows[fila].Cells[6].Style.ForeColor = UiContable.Positivo;
+                        dgvMayor.Rows[fila].Cells[indiceSaldo].Style.ForeColor = UiContable.Positivo;
                 }
 
                 int filaFinal = dgvMayor.Rows.Add(
@@ -203,6 +211,7 @@ namespace WindowsFormsApp1
                     string.Empty,
                     string.Empty,
                     "SALDO FINAL",
+                    string.Empty,
                     DatosContables.FormatearMonto(debeCuenta),
                     DatosContables.FormatearMonto(haberCuenta),
                     DatosContables.FormatearMonto(saldo));
@@ -249,6 +258,28 @@ namespace WindowsFormsApp1
                 mensaje += "   |   Asientos descuadrados: " + asientosDescuadrados;
 
             lblEstado.Text = mensaje;
+        }
+
+        /// <summary>
+        /// Resume las cuentas que participan en un asiento mostrando solo su código y nombre,
+        /// para la columna "Cuentas afectadas".
+        /// </summary>
+        private static string DescribirCuentasAfectadas(AsientoContable asiento)
+        {
+            if (asiento == null || asiento.Partidas == null || asiento.Partidas.Count == 0)
+                return string.Empty;
+
+            var partes = new List<string>();
+            foreach (PartidaContable partida in asiento.Partidas)
+            {
+                string nombre = string.IsNullOrWhiteSpace(partida.NombreCuenta)
+                    ? string.Empty
+                    : " " + partida.NombreCuenta;
+
+                partes.Add(partida.Cuenta + nombre);
+            }
+
+            return string.Join("; ", partes.ToArray());
         }
     }
 }

@@ -325,8 +325,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al generar el Libro Diario: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ManejadorErrores.Mostrar(ex, "Error al generar el Libro Diario");
             }
         }
 

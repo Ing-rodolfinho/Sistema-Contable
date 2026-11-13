@@ -16,8 +16,6 @@ namespace WindowsFormsApp1
         private const string EtiquetaCredito = "Crédito";
         private const string EstadoActivo = "activo";
         private const string EstadoInactivo = "inactivo";
-        private const string EtiquetaActivo = "Activa";
-        private const string EtiquetaInactivo = "Inactiva";
 
         private readonly string rutaCuentas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cuentas.json");
         private readonly string rutaCuentasProyecto = Path.GetFullPath(
@@ -27,7 +25,6 @@ namespace WindowsFormsApp1
         private NodoRef cuentaSeleccionada;
         private bool cargando;
         private bool hayCambiosPendientes;
-        private bool naturalezaManual;
 
         private class NodoRef
         {
@@ -76,8 +73,6 @@ namespace WindowsFormsApp1
         protected override void OnPrepararContenido()
         {
             CargarCuentas();
-            if (cboEstado != null && cboEstado.Text.Trim().Length == 0)
-                cboEstado.Text = EtiquetaActivo;
         }
 
         private void CargarCuentas()
@@ -111,14 +106,15 @@ namespace WindowsFormsApp1
 
                 ActualizarComboTipos(null);
                 CargarNaturalezas();
-                CargarEstados();
                 NormalizarCuentas();
                 ConstruirArbol();
+                CargarCuentasEliminadas();
                 LimpiarCampos();
                 lblMensaje.Text = "Cuentas cargadas correctamente.";
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al leer Cuentas.json");
                 MessageBox.Show("Error al leer Cuentas.json: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -216,7 +212,7 @@ namespace WindowsFormsApp1
                 {
                     ["codigo"] = codigo,
                     ["nombre"] = LeerTexto(cuenta, "nombre").Trim(),
-                    ["naturaleza"] = LeerNaturaleza(cuenta) ?? NaturalezaSugerida(tipo),
+                    ["naturaleza"] = NaturalezaSugerida(tipo),
                     ["estado"] = LeerEstado(cuenta)
                 });
             }
@@ -229,6 +225,10 @@ namespace WindowsFormsApp1
             return valor.TryGetValue(out texto) ? (texto ?? string.Empty) : string.Empty;
         }
 
+        /// <summary>
+        /// La naturaleza se determina automáticamente por el tipo de cuenta:
+        /// Activo, Costos y Gastos son de débito; Pasivo, Capital/Patrimonio e Ingresos de crédito.
+        /// </summary>
         private static string NaturalezaSugerida(string claveTipo)
         {
             switch (DatosContables.NormalizarTipo(claveTipo))
@@ -240,17 +240,6 @@ namespace WindowsFormsApp1
                 default:
                     return NaturalezaDebito;
             }
-        }
-
-        private static string LeerNaturaleza(JsonNode cuenta)
-        {
-            if (!(cuenta?["naturaleza"] is JsonValue valor)) return null;
-            if (!valor.TryGetValue(out string texto)) return null;
-
-            texto = (texto ?? "").Trim().ToLowerInvariant();
-            if (texto.Length == 0) return null;
-
-            return texto == NaturalezaCredito ? NaturalezaCredito : NaturalezaDebito;
         }
 
         private static string LeerEstado(JsonNode cuenta)
@@ -267,25 +256,6 @@ namespace WindowsFormsApp1
         private static string EtiquetaNaturaleza(string clave)
         {
             return clave == NaturalezaCredito ? EtiquetaCredito : EtiquetaDebito;
-        }
-
-        private static string ClaveNaturalezaDesdeTexto(string texto)
-        {
-            return string.Equals((texto ?? "").Trim(), EtiquetaCredito, StringComparison.OrdinalIgnoreCase)
-                ? NaturalezaCredito
-                : NaturalezaDebito;
-        }
-
-        private static string EtiquetaEstado(string clave)
-        {
-            return clave == EstadoInactivo ? EtiquetaInactivo : EtiquetaActivo;
-        }
-
-        private static string ClaveEstadoDesdeTexto(string texto)
-        {
-            return string.Equals((texto ?? "").Trim(), EtiquetaInactivo, StringComparison.OrdinalIgnoreCase)
-                ? EstadoInactivo
-                : EstadoActivo;
         }
 
         private static string ClaveTipoDesdeTexto(string texto)
@@ -325,20 +295,6 @@ namespace WindowsFormsApp1
             cargando = estado;
         }
 
-        private void CargarEstados()
-        {
-            bool estado = cargando;
-            cargando = true;
-            if (cboEstado != null)
-            {
-                cboEstado.Items.Clear();
-                cboEstado.Items.Add(EtiquetaActivo);
-                cboEstado.Items.Add(EtiquetaInactivo);
-                cboEstado.Text = EtiquetaActivo;
-            }
-            cargando = estado;
-        }
-
         private void NormalizarCuentas()
         {
             foreach (string tipo in DatosContables.TiposCuenta)
@@ -350,15 +306,14 @@ namespace WindowsFormsApp1
                 {
                     if (!(nodo is JsonObject cuenta)) continue;
 
-                    if (LeerNaturaleza(cuenta) == null)
-                        cuenta["naturaleza"] = NaturalezaSugerida(tipo);
+                    // La naturaleza depende siempre del tipo, no se guarda una elección manual.
+                    cuenta["naturaleza"] = NaturalezaSugerida(tipo);
 
                     // El saldo dejó de almacenarse en el catálogo: se calcula con los asientos.
                     if (cuenta.ContainsKey("saldo"))
                         cuenta.Remove("saldo");
 
-                    if (cuenta["estado"] == null)
-                        cuenta["estado"] = EstadoActivo;
+                    cuenta["estado"] = LeerEstado(cuenta);
                 }
             }
         }
@@ -394,24 +349,24 @@ namespace WindowsFormsApp1
                     {
                         if (!(nodo is JsonObject cta)) continue;
 
+                        // Las cuentas eliminadas (inactivas) solo se muestran en su sección.
+                        if (LeerEstado(cta) == EstadoInactivo) continue;
+
                         string codigo = LeerTexto(cta, "codigo").Trim();
                         string nombre = LeerTexto(cta, "nombre").Trim();
-                        string naturaleza = LeerNaturaleza(cta) ?? NaturalezaSugerida(tipo);
+                        string naturaleza = NaturalezaSugerida(tipo);
                         string etiquetaNaturaleza = EtiquetaNaturaleza(naturaleza);
-                        string estado = LeerEstado(cta);
-                        string etiquetaEstado = EtiquetaEstado(estado);
 
                         bool coincide = !hayFiltro
                             || codigo.ToLowerInvariant().Contains(filtro)
                             || nombre.ToLowerInvariant().Contains(filtro)
                             || etiquetaNaturaleza.ToLowerInvariant().Contains(filtro)
-                            || etiquetaEstado.ToLowerInvariant().Contains(filtro)
                             || etiquetaTipo.ToLowerInvariant().Contains(filtro);
 
                         if (!coincide) continue;
 
-                        nodoTipo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " (" + etiquetaNaturaleza
-                            + ") - " + etiquetaEstado)
+                        nodoTipo.Nodes.Add(new TreeNode(codigo + " - " + nombre + " ("
+                            + etiquetaNaturaleza + ")")
                         {
                             Tag = new NodoRef
                             {
@@ -420,12 +375,11 @@ namespace WindowsFormsApp1
                                 Codigo = codigo,
                                 Nombre = nombre,
                                 Naturaleza = naturaleza,
-                                Estado = estado
+                                Estado = EstadoActivo
                             },
                             ToolTipText = "Cuenta " + codigo + ": " + nombre
                                 + " | Tipo: " + etiquetaTipo
                                 + " | Naturaleza: " + etiquetaNaturaleza
-                                + " | Estado: " + etiquetaEstado
                         });
                         tipoTieneVisible = true;
                     }
@@ -442,6 +396,52 @@ namespace WindowsFormsApp1
             treeCuentas.EndUpdate();
         }
 
+        private void CargarCuentasEliminadas()
+        {
+            lvEliminadas.BeginUpdate();
+            lvEliminadas.Items.Clear();
+
+            if (catalogo != null)
+            {
+                foreach (string tipo in DatosContables.TiposCuenta)
+                {
+                    JsonArray cuentas = ObtenerListaCuentas(tipo, false);
+                    if (cuentas == null) continue;
+
+                    foreach (JsonNode nodo in cuentas)
+                    {
+                        if (!(nodo is JsonObject cuenta)) continue;
+                        if (LeerEstado(cuenta) != EstadoInactivo) continue;
+
+                        string codigo = LeerTexto(cuenta, "codigo").Trim();
+                        string nombre = LeerTexto(cuenta, "nombre").Trim();
+
+                        var item = new ListViewItem(codigo);
+                        item.SubItems.Add(nombre);
+                        item.SubItems.Add(DatosContables.EtiquetaTipo(tipo));
+                        item.Tag = new NodoRef
+                        {
+                            Nivel = "cuenta",
+                            Tipo = tipo,
+                            Codigo = codigo,
+                            Nombre = nombre,
+                            Naturaleza = NaturalezaSugerida(tipo),
+                            Estado = EstadoInactivo
+                        };
+                        lvEliminadas.Items.Add(item);
+                    }
+                }
+            }
+
+            lvEliminadas.EndUpdate();
+            ActualizarEstadoBotonReactivar();
+        }
+
+        private void ActualizarEstadoBotonReactivar()
+        {
+            btnReactivar.Enabled = lvEliminadas.SelectedItems.Count > 0;
+        }
+
         private void treeCuentas_AfterSelect(object sender, TreeViewEventArgs e)
         {
             cuentaSeleccionada = e.Node.Tag as NodoRef;
@@ -453,8 +453,7 @@ namespace WindowsFormsApp1
                     ActualizarComboTipos(DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo));
                     txtCodigo.Text = cuentaSeleccionada.Codigo;
                     txtNombre.Text = cuentaSeleccionada.Nombre;
-                    AplicarNaturalezaSeleccionada(cuentaSeleccionada.Naturaleza);
-                    AplicarEstadoSeleccionado(cuentaSeleccionada.Estado ?? EstadoActivo);
+                    MostrarNaturaleza(NaturalezaSugerida(cuentaSeleccionada.Tipo));
                     lblRuta.Text = DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo);
                     lblMensaje.Text = "Cuenta consultada: " + cuentaSeleccionada.Codigo + " - "
                         + cuentaSeleccionada.Nombre;
@@ -468,7 +467,6 @@ namespace WindowsFormsApp1
                     txtNombre.Clear();
                     LimpiarNaturaleza();
                     AplicarNaturalezaSugerida();
-                    AplicarEstadoDefecto();
                     lblRuta.Text = DatosContables.EtiquetaTipo(cuentaSeleccionada.Tipo);
                     lblMensaje.Text = "Tipo seleccionado. Complete los datos para agregar una cuenta aquí.";
                     btnModificar.Enabled = false;
@@ -488,52 +486,21 @@ namespace WindowsFormsApp1
             AplicarNaturalezaSugerida();
         }
 
-        private void cboNaturaleza_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cargando) return;
-            naturalezaManual = true;
-        }
-
         private void AplicarNaturalezaSugerida()
         {
-            if (cargando || naturalezaManual || catalogo == null) return;
+            if (cargando || catalogo == null) return;
 
             string claveTipo = ClaveTipoDesdeTexto(cboTipo.Text);
             if (claveTipo.Length == 0) return;
 
-            bool estado = cargando;
-            cargando = true;
-            cboNaturaleza.Text = EtiquetaNaturaleza(NaturalezaSugerida(claveTipo));
-            cargando = estado;
+            MostrarNaturaleza(NaturalezaSugerida(claveTipo));
         }
 
-        private void AplicarNaturalezaSeleccionada(string naturaleza)
+        private void MostrarNaturaleza(string naturaleza)
         {
-            if (string.IsNullOrEmpty(naturaleza)) naturaleza = NaturalezaDebito;
-
             bool estado = cargando;
             cargando = true;
             cboNaturaleza.Text = EtiquetaNaturaleza(naturaleza);
-            cargando = estado;
-            naturalezaManual = false;
-        }
-
-        private void AplicarEstadoSeleccionado(string estadoCuenta)
-        {
-            string clave = string.IsNullOrEmpty(estadoCuenta) ? EstadoActivo : estadoCuenta;
-            bool estado = cargando;
-            cargando = true;
-            if (cboEstado != null)
-                cboEstado.Text = EtiquetaEstado(clave);
-            cargando = estado;
-        }
-
-        private void AplicarEstadoDefecto()
-        {
-            bool estado = cargando;
-            cargando = true;
-            if (cboEstado != null)
-                cboEstado.Text = EtiquetaActivo;
             cargando = estado;
         }
 
@@ -543,7 +510,6 @@ namespace WindowsFormsApp1
             cargando = true;
             cboNaturaleza.Text = "";
             cargando = estado;
-            naturalezaManual = false;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -552,10 +518,9 @@ namespace WindowsFormsApp1
         }
 
         private bool ValidarCampos(out string claveTipo, out string codigo,
-            out string nombre, out string naturaleza, out string estado)
+            out string nombre, out string naturaleza)
         {
             claveTipo = codigo = nombre = naturaleza = string.Empty;
-            estado = EstadoActivo;
 
             if (cboTipo.Text.Trim().Length == 0)
             {
@@ -594,23 +559,9 @@ namespace WindowsFormsApp1
                 return false;
             }
 
-            if (cboNaturaleza.Text.Trim().Length == 0)
-            {
-                AplicarNaturalezaSugerida();
-            }
-            if (cboNaturaleza.Text.Trim().Length == 0)
-            {
-                lblMensaje.Text = "Seleccione la naturaleza de la cuenta (Débito o Crédito).";
-                cboNaturaleza.Focus();
-                return false;
-            }
-            if (cboEstado != null && cboEstado.Text.Trim().Length == 0)
-            {
-                cboEstado.Text = EtiquetaActivo;
-            }
-
-            naturaleza = ClaveNaturalezaDesdeTexto(cboNaturaleza.Text);
-            estado = cboEstado != null ? ClaveEstadoDesdeTexto(cboEstado.Text) : EstadoActivo;
+            // La naturaleza se asigna automáticamente según el tipo seleccionado.
+            naturaleza = NaturalezaSugerida(claveTipo);
+            MostrarNaturaleza(naturaleza);
             return true;
         }
 
@@ -686,7 +637,7 @@ namespace WindowsFormsApp1
             try
             {
                 if (!ValidarCampos(out string claveTipo, out string codigo,
-                    out string nombre, out string naturaleza, out string estado))
+                    out string nombre, out string naturaleza))
                     return;
 
                 if (ExisteCodigo(codigo, null))
@@ -701,7 +652,7 @@ namespace WindowsFormsApp1
                     ["codigo"] = codigo,
                     ["nombre"] = nombre,
                     ["naturaleza"] = naturaleza,
-                    ["estado"] = estado
+                    ["estado"] = EstadoActivo
                 });
 
                 hayCambiosPendientes = true;
@@ -712,6 +663,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al agregar la cuenta");
                 MessageBox.Show("Error al agregar la cuenta: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -727,7 +679,7 @@ namespace WindowsFormsApp1
                     return;
                 }
                 if (!ValidarCampos(out string claveTipo, out string codigo,
-                    out string nombre, out string naturaleza, out string estado))
+                    out string nombre, out string naturaleza))
                     return;
 
                 string codigoAntiguo = cuentaSeleccionada.Codigo;
@@ -736,7 +688,7 @@ namespace WindowsFormsApp1
                 {
                     lblMensaje.Text = "No se puede cambiar el código de la cuenta " + codigoAntiguo
                         + " porque tiene movimientos registrados en operaciones.json. "
-                        + "Puede cambiar el nombre, la naturaleza, el estado o el tipo.";
+                        + "Puede cambiar el nombre o el tipo.";
                     return;
                 }
 
@@ -755,12 +707,13 @@ namespace WindowsFormsApp1
                     return;
                 }
 
+                string estadoActual = LeerEstado(cuentaVieja);
+
                 if (string.Equals(claveTipo, cuentaSeleccionada.Tipo, StringComparison.OrdinalIgnoreCase))
                 {
                     cuentaVieja["codigo"] = codigo;
                     cuentaVieja["nombre"] = nombre;
                     cuentaVieja["naturaleza"] = naturaleza;
-                    cuentaVieja["estado"] = estado;
                 }
                 else
                 {
@@ -770,7 +723,7 @@ namespace WindowsFormsApp1
                         ["codigo"] = codigo,
                         ["nombre"] = nombre,
                         ["naturaleza"] = naturaleza,
-                        ["estado"] = estado
+                        ["estado"] = estadoActual
                     });
                 }
 
@@ -782,6 +735,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al modificar la cuenta");
                 MessageBox.Show("Error al modificar la cuenta: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -797,16 +751,11 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                if (CuentaTieneMovimientos(cuentaSeleccionada.Codigo))
-                {
-                    lblMensaje.Text = "No se puede eliminar la cuenta " + cuentaSeleccionada.Codigo
-                        + " porque tiene movimientos registrados en operaciones.json.";
-                    return;
-                }
-
                 DialogResult respuesta = MessageBox.Show(
                     "¿Desea eliminar la cuenta " + cuentaSeleccionada.Codigo + " - "
-                    + cuentaSeleccionada.Nombre + "?",
+                    + cuentaSeleccionada.Nombre + "?\n\n"
+                    + "La cuenta no se borrará del catálogo: pasará a la sección "
+                    + "\"Cuentas eliminadas\" y podrá reactivarla cuando lo necesite.",
                     "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta != DialogResult.Yes) return;
 
@@ -819,16 +768,77 @@ namespace WindowsFormsApp1
                 }
 
                 string codigoEliminado = cuentaSeleccionada.Codigo;
-                cuentas.Remove(cuenta);
+                cuenta["estado"] = EstadoInactivo;
                 hayCambiosPendientes = true;
                 ConstruirArbol();
+                CargarCuentasEliminadas();
                 LimpiarCampos();
-                lblMensaje.Text = "Cuenta " + codigoEliminado
-                    + " eliminada. Pulse \"Guardar Cambios\" para confirmar.";
+                lblMensaje.Text = "Cuenta " + codigoEliminado + " eliminada. Puede restaurarla desde "
+                    + "\"Cuentas eliminadas\". Pulse \"Guardar Cambios\" para confirmar.";
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al eliminar la cuenta");
                 MessageBox.Show("Error al eliminar la cuenta: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReactivar_Click(object sender, EventArgs e)
+        {
+            ReactivarSeleccionada();
+        }
+
+        private void lvEliminadas_DoubleClick(object sender, EventArgs e)
+        {
+            ReactivarSeleccionada();
+        }
+
+        private void lvEliminadas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarEstadoBotonReactivar();
+        }
+
+        private void ReactivarSeleccionada()
+        {
+            try
+            {
+                if (lvEliminadas.SelectedItems.Count == 0)
+                {
+                    lblMensaje.Text = "Seleccione una cuenta eliminada para reactivarla.";
+                    return;
+                }
+
+                var referencia = lvEliminadas.SelectedItems[0].Tag as NodoRef;
+                if (referencia == null) return;
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Desea reactivar la cuenta " + referencia.Codigo + " - "
+                    + referencia.Nombre + "?",
+                    "Confirmar reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (respuesta != DialogResult.Yes) return;
+
+                JsonArray cuentas = BuscarCuenta(referencia.Tipo, referencia.Codigo,
+                    out JsonObject cuenta);
+                if (cuentas == null || cuenta == null)
+                {
+                    lblMensaje.Text = "No se encontró la cuenta en el archivo.";
+                    return;
+                }
+
+                cuenta["estado"] = EstadoActivo;
+                hayCambiosPendientes = true;
+                ConstruirArbol();
+                CargarCuentasEliminadas();
+                ActualizarComboTipos(DatosContables.EtiquetaTipo(referencia.Tipo));
+                SeleccionarCuenta(referencia.Tipo, referencia.Codigo);
+                lblMensaje.Text = "Cuenta " + referencia.Codigo
+                    + " reactivada. Pulse \"Guardar Cambios\" para confirmar.";
+            }
+            catch (Exception ex)
+            {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al reactivar la cuenta");
+                MessageBox.Show("Error al reactivar la cuenta: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -856,6 +866,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Administrar Cuentas: error al guardar los cambios");
                 MessageBox.Show("Error al guardar los cambios: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -906,11 +917,9 @@ namespace WindowsFormsApp1
             cargando = true;
             cboTipo.Text = "";
             cboNaturaleza.Text = "";
-            if (cboEstado != null) cboEstado.Text = EtiquetaActivo;
             cargando = estado;
             txtCodigo.Clear();
             txtNombre.Clear();
-            naturalezaManual = false;
             cuentaSeleccionada = null;
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;

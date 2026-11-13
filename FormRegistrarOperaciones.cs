@@ -18,6 +18,9 @@ namespace WindowsFormsApp1
         private const string TipoDebe = "Debe";
         private const string TipoHaber = "Haber";
 
+        private static readonly Font FuentePestana =
+            new Font("Segoe UI Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+
         private readonly string rutaOperaciones = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "operaciones.json");
         private readonly string rutaOperacionesProyecto = Path.GetFullPath(
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "operaciones.json"));
@@ -97,6 +100,38 @@ namespace WindowsFormsApp1
             foreach (Control child in control.Controls)
                 ResumeTree(child);
             control.ResumeLayout(true);
+        }
+
+        private void tcOperaciones_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabControl tab = sender as TabControl;
+            if (tab == null || e.Index < 0 || e.Index >= tab.TabPages.Count) return;
+
+            bool seleccionado = e.Index == tab.SelectedIndex;
+            Color fondo = seleccionado ? Color.FromArgb(245, 230, 220) : Color.LavenderBlush;
+            Color texto = Color.SaddleBrown;
+
+            using (SolidBrush pincel = new SolidBrush(fondo))
+                e.Graphics.FillRectangle(pincel, e.Bounds);
+
+            using (Pen borde = new Pen(Color.Tan, 1))
+                e.Graphics.DrawRectangle(borde, e.Bounds.Left, e.Bounds.Top,
+                    e.Bounds.Width - 1, e.Bounds.Height - 1);
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                tab.TabPages[e.Index].Text,
+                FuentePestana,
+                e.Bounds,
+                texto,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
+
+            if (seleccionado)
+            {
+                using (Pen lapiz = new Pen(Color.SaddleBrown, 3))
+                    e.Graphics.DrawLine(lapiz, e.Bounds.Left, e.Bounds.Bottom - 2,
+                        e.Bounds.Right, e.Bounds.Bottom - 2);
+            }
         }
 
         private void CargarTiposPartida()
@@ -205,6 +240,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Registrar Operaciones: error al leer Cuentas.json");
                 MessageBox.Show("Error al leer Cuentas.json: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -237,6 +273,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Registrar Operaciones: error al leer operaciones.json");
                 MessageBox.Show("Error al leer operaciones.json: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -471,6 +508,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Registrar Operaciones: error al registrar el asiento");
                 MessageBox.Show("Error al registrar el asiento: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -616,6 +654,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                ManejadorErrores.Registrar(ex, "Registrar Operaciones: error al borrar el asiento");
                 MessageBox.Show("Error al borrar el asiento: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

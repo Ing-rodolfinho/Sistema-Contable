@@ -54,25 +54,53 @@ namespace WindowsFormsApp1
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            if (!string.Equals(txtNueva.Text, txtConfirmar.Text, StringComparison.Ordinal))
+            try
             {
-                lblError.Text = "La nueva contraseña y su confirmación no coinciden.";
-                txtConfirmar.Focus();
-                return;
-            }
+                string usuario = txtUsuario.Text.Trim();
 
-            string error;
-            if (!Autenticacion.CambiarClave(txtUsuario.Text, txtActual.Text, txtNueva.Text, out error))
+                if (usuario.Length == 0)
+                {
+                    lblError.Text = "Escriba el nombre de usuario.";
+                    txtUsuario.Focus();
+                    return;
+                }
+                if (txtActual.Text.Length == 0)
+                {
+                    lblError.Text = "Escriba la contraseña actual.";
+                    txtActual.Focus();
+                    return;
+                }
+                if (txtNueva.Text.Length < Autenticacion.LongitudMinimaClave)
+                {
+                    lblError.Text = "La nueva contraseña debe tener al menos "
+                        + Autenticacion.LongitudMinimaClave + " caracteres.";
+                    txtNueva.Focus();
+                    return;
+                }
+                if (!string.Equals(txtNueva.Text, txtConfirmar.Text, StringComparison.Ordinal))
+                {
+                    lblError.Text = "La nueva contraseña y su confirmación no coinciden.";
+                    txtConfirmar.Focus();
+                    return;
+                }
+
+                string error;
+                if (!Autenticacion.CambiarClave(usuario, txtActual.Text, txtNueva.Text, out error))
+                {
+                    lblError.Text = error;
+                    return;
+                }
+
+                MessageBox.Show("La contraseña se cambió correctamente.", "Contraseña actualizada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
             {
-                lblError.Text = error;
-                return;
+                ManejadorErrores.Mostrar(ex, "Error al cambiar la contraseña");
             }
-
-            MessageBox.Show("La contraseña se cambió correctamente.", "Contraseña actualizada",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void btnOjoActual_Click(object sender, EventArgs e)

@@ -43,25 +43,54 @@ namespace WindowsFormsApp1
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (!string.Equals(txtClave.Text, txtConfirmar.Text, StringComparison.Ordinal))
+            try
             {
-                lblError.Text = "Las contraseñas no coinciden.";
-                txtConfirmar.Focus();
-                return;
-            }
+                string usuario = txtUsuario.Text.Trim();
+                string nombre = txtNombre.Text.Trim();
 
-            string error;
-            if (!Autenticacion.CrearUsuario(txtUsuario.Text, txtNombre.Text, txtClave.Text, out error))
+                if (usuario.Length == 0)
+                {
+                    lblError.Text = "Escriba el nombre de usuario.";
+                    txtUsuario.Focus();
+                    return;
+                }
+                if (nombre.Length == 0)
+                {
+                    lblError.Text = "Escriba el nombre completo del usuario.";
+                    txtNombre.Focus();
+                    return;
+                }
+                if (txtClave.Text.Length < Autenticacion.LongitudMinimaClave)
+                {
+                    lblError.Text = "La contraseña debe tener al menos "
+                        + Autenticacion.LongitudMinimaClave + " caracteres.";
+                    txtClave.Focus();
+                    return;
+                }
+                if (!string.Equals(txtClave.Text, txtConfirmar.Text, StringComparison.Ordinal))
+                {
+                    lblError.Text = "Las contraseñas no coinciden.";
+                    txtConfirmar.Focus();
+                    return;
+                }
+
+                string error;
+                if (!Autenticacion.CrearUsuario(usuario, nombre, txtClave.Text, out error))
+                {
+                    lblError.Text = error;
+                    return;
+                }
+
+                MessageBox.Show("El usuario \"" + usuario + "\" se creó correctamente.",
+                    "Usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
             {
-                lblError.Text = error;
-                return;
+                ManejadorErrores.Mostrar(ex, "Error al crear el usuario");
             }
-
-            MessageBox.Show("El usuario \"" + txtUsuario.Text.Trim() + "\" se creó correctamente.",
-                "Usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void btnOjo_Click(object sender, EventArgs e)

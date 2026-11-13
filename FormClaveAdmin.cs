@@ -27,19 +27,33 @@ namespace WindowsFormsApp1
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            string error;
-            if (!Autenticacion.VerificarClaveAdministrador(txtClave.Text, out error))
+            try
             {
-                txtClave.Clear();
-                claveVisible = false;
-                AplicarVisibilidad();
-                lblError.Text = error;
-                txtClave.Focus();
-                return;
-            }
+                if (txtClave.Text.Length == 0)
+                {
+                    lblError.Text = "Escriba la contraseña del administrador.";
+                    txtClave.Focus();
+                    return;
+                }
 
-            DialogResult = DialogResult.OK;
-            Close();
+                string error;
+                if (!Autenticacion.VerificarClaveAdministrador(txtClave.Text, out error))
+                {
+                    txtClave.Clear();
+                    claveVisible = false;
+                    AplicarVisibilidad();
+                    lblError.Text = error;
+                    txtClave.Focus();
+                    return;
+                }
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                ManejadorErrores.Mostrar(ex, "Error al verificar la contraseña del administrador");
+            }
         }
 
         private void btnOjo_Click(object sender, EventArgs e)

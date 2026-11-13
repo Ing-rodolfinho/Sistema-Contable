@@ -38,53 +38,53 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.tcOperaciones = new Guna.UI2.WinForms.Guna2TabControl();
+            this.tcOperaciones = new System.Windows.Forms.TabControl();
             this.tabNuevo = new System.Windows.Forms.TabPage();
             this.tlpNuevo = new System.Windows.Forms.TableLayoutPanel();
-            this.panelEncabezado = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.panelEncabezado = new System.Windows.Forms.Panel();
             this.tlpEncabezado = new System.Windows.Forms.TableLayoutPanel();
             this.lblNumeroAsiento = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblReferencia = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            this.numNumeroAsiento = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.dtpFecha = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.numNumeroAsiento = new System.Windows.Forms.NumericUpDown();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtReferencia = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.panelPartidas = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.panelPartidas = new System.Windows.Forms.Panel();
             this.tlpPartidas = new System.Windows.Forms.TableLayoutPanel();
             this.lblPartidasTitulo = new System.Windows.Forms.Label();
-            this.dgvPartidas = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dgvPartidas = new System.Windows.Forms.DataGridView();
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDebe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHaber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpCaptura = new System.Windows.Forms.TableLayoutPanel();
             this.lblCuenta = new System.Windows.Forms.Label();
-            this.cboCuenta = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cboCuenta = new System.Windows.Forms.ComboBox();
             this.lblImporte = new System.Windows.Forms.Label();
-            this.numImporte = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.numImporte = new System.Windows.Forms.NumericUpDown();
             this.lblTipo = new System.Windows.Forms.Label();
-            this.cboTipoPartida = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cboTipoPartida = new System.Windows.Forms.ComboBox();
             this.flpCapturaBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAgregarPartida = new Guna.UI2.WinForms.Guna2Button();
-            this.btnQuitarPartida = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAgregarPartida = new System.Windows.Forms.Button();
+            this.btnQuitarPartida = new System.Windows.Forms.Button();
             this.tlpTotales = new System.Windows.Forms.TableLayoutPanel();
             this.lblTotalDebe = new System.Windows.Forms.Label();
             this.lblTotalHaber = new System.Windows.Forms.Label();
             this.lblDiferencia = new System.Windows.Forms.Label();
             this.tlpPie = new System.Windows.Forms.TableLayoutPanel();
             this.flpBotones = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnRegistrarAsiento = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNuevoAsiento = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRegistrarAsiento = new System.Windows.Forms.Button();
+            this.btnNuevoAsiento = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.tabHistorial = new System.Windows.Forms.TabPage();
             this.tlpHistorial = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHistorialEncabezado = new System.Windows.Forms.TableLayoutPanel();
             this.lblHistorialTitulo = new System.Windows.Forms.Label();
-            this.btnEliminarAsiento = new Guna.UI2.WinForms.Guna2Button();
-            this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
-            this.dgvAsientos = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnEliminarAsiento = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.dgvAsientos = new System.Windows.Forms.DataGridView();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -149,6 +149,7 @@
             this.tcOperaciones.Controls.Add(this.tabNuevo);
             this.tcOperaciones.Controls.Add(this.tabHistorial);
             this.tcOperaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcOperaciones.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcOperaciones.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcOperaciones.ItemSize = new System.Drawing.Size(180, 40);
             this.tcOperaciones.Location = new System.Drawing.Point(24, 64);
@@ -156,25 +157,9 @@
             this.tcOperaciones.Name = "tcOperaciones";
             this.tcOperaciones.SelectedIndex = 0;
             this.tcOperaciones.Size = new System.Drawing.Size(1399, 762);
-            this.tcOperaciones.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonHoverState.FillColor = System.Drawing.Color.Tan;
-            this.tcOperaciones.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.tcOperaciones.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.tcOperaciones.TabButtonHoverState.InnerColor = System.Drawing.Color.Tan;
-            this.tcOperaciones.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonIdleState.FillColor = System.Drawing.Color.LavenderBlush;
-            this.tcOperaciones.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.tcOperaciones.TabButtonIdleState.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.tcOperaciones.TabButtonIdleState.InnerColor = System.Drawing.Color.LavenderBlush;
-            this.tcOperaciones.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.tcOperaciones.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
-            this.tcOperaciones.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.tcOperaciones.TabButtonSelectedState.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.tcOperaciones.TabButtonSelectedState.InnerColor = System.Drawing.Color.SaddleBrown;
-            this.tcOperaciones.TabButtonSize = new System.Drawing.Size(180, 40);
+            this.tcOperaciones.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcOperaciones.TabIndex = 1;
-            this.tcOperaciones.TabMenuBackColor = System.Drawing.Color.LavenderBlush;
-            this.tcOperaciones.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            this.tcOperaciones.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcOperaciones_DrawItem);
             // 
             // tabNuevo
             // 
@@ -187,7 +172,6 @@
             this.tabNuevo.Size = new System.Drawing.Size(1391, 714);
             this.tabNuevo.TabIndex = 0;
             this.tabNuevo.Text = "Nuevo Asiento";
-            this.tabNuevo.UseVisualStyleBackColor = true;
             // 
             // tlpNuevo
             // 
@@ -210,14 +194,12 @@
             // 
             // panelEncabezado
             // 
-            this.panelEncabezado.BackColor = System.Drawing.Color.Transparent;
+            this.panelEncabezado.BackColor = System.Drawing.Color.White;
             this.panelEncabezado.Controls.Add(this.tlpEncabezado);
             this.panelEncabezado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEncabezado.FillColor = System.Drawing.Color.White;
             this.panelEncabezado.Location = new System.Drawing.Point(4, 4);
             this.panelEncabezado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelEncabezado.Name = "panelEncabezado";
-            this.panelEncabezado.ShadowColor = System.Drawing.Color.Black;
             this.panelEncabezado.Size = new System.Drawing.Size(1359, 116);
             this.panelEncabezado.TabIndex = 0;
             // 
@@ -306,9 +288,8 @@
             // 
             // numNumeroAsiento
             // 
-            this.numNumeroAsiento.BackColor = System.Drawing.Color.Transparent;
-            this.numNumeroAsiento.BorderColor = System.Drawing.Color.Tan;
-            this.numNumeroAsiento.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.numNumeroAsiento.BackColor = System.Drawing.Color.White;
+            this.numNumeroAsiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numNumeroAsiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.numNumeroAsiento.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumeroAsiento.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -325,7 +306,7 @@
             0,
             0});
             this.numNumeroAsiento.Name = "numNumeroAsiento";
-            this.numNumeroAsiento.Size = new System.Drawing.Size(196, 32);
+            this.numNumeroAsiento.Size = new System.Drawing.Size(196, 30);
             this.numNumeroAsiento.TabIndex = 4;
             this.numNumeroAsiento.Value = new decimal(new int[] {
             1,
@@ -335,19 +316,12 @@
             // 
             // dtpFecha
             // 
-            this.dtpFecha.BorderColor = System.Drawing.Color.Tan;
-            this.dtpFecha.BorderRadius = 12;
-            this.dtpFecha.Checked = true;
             this.dtpFecha.CustomFormat = "dd/MM/yyyy";
             this.dtpFecha.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dtpFecha.FillColor = System.Drawing.Color.White;
             this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.ForeColor = System.Drawing.Color.SaddleBrown;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFecha.Location = new System.Drawing.Point(213, 36);
             this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtpFecha.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpFecha.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(461, 30);
             this.dtpFecha.TabIndex = 5;
@@ -381,14 +355,12 @@
             // 
             // panelPartidas
             // 
-            this.panelPartidas.BackColor = System.Drawing.Color.Transparent;
+            this.panelPartidas.BackColor = System.Drawing.Color.White;
             this.panelPartidas.Controls.Add(this.tlpPartidas);
             this.panelPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPartidas.FillColor = System.Drawing.Color.White;
             this.panelPartidas.Location = new System.Drawing.Point(4, 134);
             this.panelPartidas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.panelPartidas.Name = "panelPartidas";
-            this.panelPartidas.ShadowColor = System.Drawing.Color.Black;
             this.panelPartidas.Size = new System.Drawing.Size(1359, 459);
             this.panelPartidas.TabIndex = 1;
             // 
@@ -430,17 +402,17 @@
             this.dgvPartidas.AllowUserToAddRows = false;
             this.dgvPartidas.AllowUserToDeleteRows = false;
             this.dgvPartidas.AllowUserToResizeRows = false;
-            this.dgvPartidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dgvPartidas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPartidas.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Tan;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPartidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPartidas.ColumnHeadersHeight = 32;
-            this.dgvPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvPartidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
             this.colCuenta,
@@ -455,24 +427,20 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPartidas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPartidas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPartidas.EnableHeadersVisualStyles = false;
             this.dgvPartidas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPartidas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvPartidas.Location = new System.Drawing.Point(9, 47);
             this.dgvPartidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 4);
+            this.dgvPartidas.MultiSelect = false;
             this.dgvPartidas.Name = "dgvPartidas";
             this.dgvPartidas.ReadOnly = true;
             this.dgvPartidas.RowHeadersVisible = false;
             this.dgvPartidas.RowHeadersWidth = 51;
             this.dgvPartidas.RowTemplate.Height = 26;
+            this.dgvPartidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPartidas.Size = new System.Drawing.Size(1341, 255);
             this.dgvPartidas.TabIndex = 1;
-            this.dgvPartidas.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
-            this.dgvPartidas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
-            this.dgvPartidas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPartidas.ThemeStyle.HeaderStyle.Height = 32;
-            this.dgvPartidas.ThemeStyle.ReadOnly = true;
-            this.dgvPartidas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPartidas.ThemeStyle.RowsStyle.Height = 26;
             // 
             // colCodigo
             // 
@@ -553,20 +521,17 @@
             // 
             // cboCuenta
             // 
-            this.cboCuenta.BackColor = System.Drawing.Color.Transparent;
-            this.cboCuenta.BorderColor = System.Drawing.Color.Tan;
+            this.cboCuenta.BackColor = System.Drawing.Color.White;
             this.cboCuenta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboCuenta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCuenta.FocusedColor = System.Drawing.Color.Sienna;
-            this.cboCuenta.FocusedState.BorderColor = System.Drawing.Color.Sienna;
+            this.cboCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboCuenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCuenta.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.cboCuenta.ItemHeight = 30;
+            this.cboCuenta.IntegralHeight = false;
             this.cboCuenta.Location = new System.Drawing.Point(99, 4);
             this.cboCuenta.Margin = new System.Windows.Forms.Padding(4);
             this.cboCuenta.Name = "cboCuenta";
-            this.cboCuenta.Size = new System.Drawing.Size(439, 36);
+            this.cboCuenta.Size = new System.Drawing.Size(439, 31);
             this.cboCuenta.TabIndex = 3;
             // 
             // lblImporte
@@ -584,9 +549,8 @@
             // 
             // numImporte
             // 
-            this.numImporte.BackColor = System.Drawing.Color.Transparent;
-            this.numImporte.BorderColor = System.Drawing.Color.Tan;
-            this.numImporte.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.numImporte.BackColor = System.Drawing.Color.White;
+            this.numImporte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numImporte.DecimalPlaces = 2;
             this.numImporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numImporte.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -599,7 +563,7 @@
             0,
             0});
             this.numImporte.Name = "numImporte";
-            this.numImporte.Size = new System.Drawing.Size(271, 42);
+            this.numImporte.Size = new System.Drawing.Size(271, 30);
             this.numImporte.TabIndex = 4;
             this.numImporte.ThousandsSeparator = true;
             // 
@@ -618,20 +582,17 @@
             // 
             // cboTipoPartida
             // 
-            this.cboTipoPartida.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoPartida.BorderColor = System.Drawing.Color.Tan;
+            this.cboTipoPartida.BackColor = System.Drawing.Color.White;
             this.cboTipoPartida.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboTipoPartida.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboTipoPartida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoPartida.FocusedColor = System.Drawing.Color.Sienna;
-            this.cboTipoPartida.FocusedState.BorderColor = System.Drawing.Color.Sienna;
+            this.cboTipoPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboTipoPartida.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoPartida.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.cboTipoPartida.ItemHeight = 30;
+            this.cboTipoPartida.IntegralHeight = false;
             this.cboTipoPartida.Location = new System.Drawing.Point(1064, 4);
             this.cboTipoPartida.Margin = new System.Windows.Forms.Padding(4);
             this.cboTipoPartida.Name = "cboTipoPartida";
-            this.cboTipoPartida.Size = new System.Drawing.Size(273, 36);
+            this.cboTipoPartida.Size = new System.Drawing.Size(273, 31);
             this.cboTipoPartida.TabIndex = 5;
             // 
             // flpCapturaBotones
@@ -648,35 +609,38 @@
             // 
             // btnAgregarPartida
             // 
-            this.btnAgregarPartida.BorderRadius = 15;
-            this.btnAgregarPartida.FillColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnAgregarPartida.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnAgregarPartida.FlatAppearance.BorderSize = 0;
+            this.btnAgregarPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarPartida.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPartida.ForeColor = System.Drawing.Color.White;
             this.btnAgregarPartida.Image = global::WindowsFormsApp1.Properties.Resources.assignment_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnAgregarPartida.ImageSize = new System.Drawing.Size(22, 22);
             this.btnAgregarPartida.Location = new System.Drawing.Point(4, 4);
             this.btnAgregarPartida.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarPartida.Name = "btnAgregarPartida";
             this.btnAgregarPartida.Size = new System.Drawing.Size(197, 44);
             this.btnAgregarPartida.TabIndex = 0;
             this.btnAgregarPartida.Text = "Agregar Partida";
+            this.btnAgregarPartida.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgregarPartida.UseVisualStyleBackColor = false;
             this.btnAgregarPartida.Click += new System.EventHandler(this.btnAgregarPartida_Click);
             // 
             // btnQuitarPartida
             // 
-            this.btnQuitarPartida.BorderRadius = 15;
-            this.btnQuitarPartida.CustomBorderColor = System.Drawing.Color.Sienna;
-            this.btnQuitarPartida.FillColor = System.Drawing.Color.White;
+            this.btnQuitarPartida.BackColor = System.Drawing.Color.White;
+            this.btnQuitarPartida.FlatAppearance.BorderColor = System.Drawing.Color.Sienna;
+            this.btnQuitarPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitarPartida.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitarPartida.ForeColor = System.Drawing.Color.Sienna;
             this.btnQuitarPartida.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnQuitarPartida.ImageSize = new System.Drawing.Size(22, 22);
             this.btnQuitarPartida.Location = new System.Drawing.Point(209, 4);
             this.btnQuitarPartida.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuitarPartida.Name = "btnQuitarPartida";
             this.btnQuitarPartida.Size = new System.Drawing.Size(185, 44);
             this.btnQuitarPartida.TabIndex = 1;
             this.btnQuitarPartida.Text = "Quitar Partida";
+            this.btnQuitarPartida.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQuitarPartida.UseVisualStyleBackColor = false;
             this.btnQuitarPartida.Click += new System.EventHandler(this.btnQuitarPartida_Click);
             // 
             // tlpTotales
@@ -769,34 +733,38 @@
             // 
             // btnRegistrarAsiento
             // 
-            this.btnRegistrarAsiento.BorderRadius = 15;
-            this.btnRegistrarAsiento.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnRegistrarAsiento.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnRegistrarAsiento.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarAsiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarAsiento.ForeColor = System.Drawing.Color.White;
             this.btnRegistrarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.save_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnRegistrarAsiento.ImageSize = new System.Drawing.Size(22, 22);
             this.btnRegistrarAsiento.Location = new System.Drawing.Point(4, 4);
             this.btnRegistrarAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarAsiento.Name = "btnRegistrarAsiento";
             this.btnRegistrarAsiento.Size = new System.Drawing.Size(211, 46);
             this.btnRegistrarAsiento.TabIndex = 0;
             this.btnRegistrarAsiento.Text = "Registrar Asiento";
+            this.btnRegistrarAsiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrarAsiento.UseVisualStyleBackColor = false;
             this.btnRegistrarAsiento.Click += new System.EventHandler(this.btnRegistrarAsiento_Click);
             // 
             // btnNuevoAsiento
             // 
-            this.btnNuevoAsiento.BorderRadius = 15;
-            this.btnNuevoAsiento.FillColor = System.Drawing.Color.Tan;
+            this.btnNuevoAsiento.BackColor = System.Drawing.Color.Tan;
+            this.btnNuevoAsiento.FlatAppearance.BorderSize = 0;
+            this.btnNuevoAsiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoAsiento.ForeColor = System.Drawing.Color.White;
             this.btnNuevoAsiento.Image = global::WindowsFormsApp1.Properties.Resources.contract_edit_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnNuevoAsiento.ImageSize = new System.Drawing.Size(22, 22);
             this.btnNuevoAsiento.Location = new System.Drawing.Point(223, 4);
             this.btnNuevoAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevoAsiento.Name = "btnNuevoAsiento";
             this.btnNuevoAsiento.Size = new System.Drawing.Size(191, 46);
             this.btnNuevoAsiento.TabIndex = 1;
             this.btnNuevoAsiento.Text = "Nuevo Asiento";
+            this.btnNuevoAsiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevoAsiento.UseVisualStyleBackColor = false;
             this.btnNuevoAsiento.Click += new System.EventHandler(this.btnNuevoAsiento_Click);
             // 
             // lblMensaje
@@ -824,7 +792,6 @@
             this.tabHistorial.Size = new System.Drawing.Size(1391, 714);
             this.tabHistorial.TabIndex = 1;
             this.tabHistorial.Text = "Asientos Registrados";
-            this.tabHistorial.UseVisualStyleBackColor = true;
             // 
             // tlpHistorial
             // 
@@ -876,36 +843,38 @@
             // 
             // btnEliminarAsiento
             // 
-            this.btnEliminarAsiento.BorderRadius = 15;
-            this.btnEliminarAsiento.CustomBorderColor = System.Drawing.Color.Sienna;
-            this.btnEliminarAsiento.FillColor = System.Drawing.Color.White;
+            this.btnEliminarAsiento.BackColor = System.Drawing.Color.White;
+            this.btnEliminarAsiento.FlatAppearance.BorderColor = System.Drawing.Color.Sienna;
+            this.btnEliminarAsiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarAsiento.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarAsiento.ForeColor = System.Drawing.Color.Sienna;
             this.btnEliminarAsiento.Image = global::WindowsFormsApp1.Properties.Resources.free_cancellation_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnEliminarAsiento.ImageSize = new System.Drawing.Size(22, 22);
             this.btnEliminarAsiento.Location = new System.Drawing.Point(1011, 4);
             this.btnEliminarAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarAsiento.Name = "btnEliminarAsiento";
             this.btnEliminarAsiento.Size = new System.Drawing.Size(184, 46);
             this.btnEliminarAsiento.TabIndex = 2;
             this.btnEliminarAsiento.Text = "Borrar asiento";
+            this.btnEliminarAsiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminarAsiento.UseVisualStyleBackColor = false;
             this.btnEliminarAsiento.Click += new System.EventHandler(this.btnEliminarAsiento_Click);
             // 
             // btnActualizar
             // 
-            this.btnActualizar.BorderRadius = 15;
-            this.btnActualizar.CustomBorderColor = System.Drawing.Color.Sienna;
-            this.btnActualizar.FillColor = System.Drawing.Color.White;
+            this.btnActualizar.BackColor = System.Drawing.Color.White;
+            this.btnActualizar.FlatAppearance.BorderColor = System.Drawing.Color.Sienna;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.Sienna;
             this.btnActualizar.Image = global::WindowsFormsApp1.Properties.Resources.manage_search_24dp_000000_FILL0_wght400_GRAD0_opsz24;
-            this.btnActualizar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnActualizar.Location = new System.Drawing.Point(1203, 4);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(152, 46);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // dgvAsientos
@@ -913,17 +882,17 @@
             this.dgvAsientos.AllowUserToAddRows = false;
             this.dgvAsientos.AllowUserToDeleteRows = false;
             this.dgvAsientos.AllowUserToResizeRows = false;
-            this.dgvAsientos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dgvAsientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAsientos.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Tan;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Tan;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAsientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAsientos.ColumnHeadersHeight = 32;
-            this.dgvAsientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvAsientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNumero,
             this.colFecha,
@@ -940,24 +909,20 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAsientos.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAsientos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAsientos.EnableHeadersVisualStyles = false;
             this.dgvAsientos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAsientos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
             this.dgvAsientos.Location = new System.Drawing.Point(4, 61);
             this.dgvAsientos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 4);
+            this.dgvAsientos.MultiSelect = false;
             this.dgvAsientos.Name = "dgvAsientos";
             this.dgvAsientos.ReadOnly = true;
             this.dgvAsientos.RowHeadersVisible = false;
             this.dgvAsientos.RowHeadersWidth = 51;
             this.dgvAsientos.RowTemplate.Height = 26;
+            this.dgvAsientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAsientos.Size = new System.Drawing.Size(1359, 635);
             this.dgvAsientos.TabIndex = 1;
-            this.dgvAsientos.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(214)))), ((int)(((byte)(202)))));
-            this.dgvAsientos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Tan;
-            this.dgvAsientos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAsientos.ThemeStyle.HeaderStyle.Height = 32;
-            this.dgvAsientos.ThemeStyle.ReadOnly = true;
-            this.dgvAsientos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAsientos.ThemeStyle.RowsStyle.Height = 26;
             this.dgvAsientos.SelectionChanged += new System.EventHandler(this.dgvAsientos_SelectionChanged);
             // 
             // colNumero
@@ -1057,14 +1022,14 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpFondo;
         private System.Windows.Forms.Label lblTitulo;
-        private Guna.UI2.WinForms.Guna2TabControl tcOperaciones;
+        private System.Windows.Forms.TabControl tcOperaciones;
         private System.Windows.Forms.TabPage tabNuevo;
         private System.Windows.Forms.TableLayoutPanel tlpNuevo;
-        private Guna.UI2.WinForms.Guna2ShadowPanel panelEncabezado;
-        private Guna.UI2.WinForms.Guna2ShadowPanel panelPartidas;
+        private System.Windows.Forms.Panel panelEncabezado;
+        private System.Windows.Forms.Panel panelPartidas;
         private System.Windows.Forms.TableLayoutPanel tlpPartidas;
         private System.Windows.Forms.Label lblPartidasTitulo;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvPartidas;
+        private System.Windows.Forms.DataGridView dgvPartidas;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDebe;
@@ -1073,28 +1038,28 @@
         private System.Windows.Forms.Label lblCuenta;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.Label lblTipo;
-        private Guna.UI2.WinForms.Guna2ComboBox cboCuenta;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numImporte;
-        private Guna.UI2.WinForms.Guna2ComboBox cboTipoPartida;
+        private System.Windows.Forms.ComboBox cboCuenta;
+        private System.Windows.Forms.NumericUpDown numImporte;
+        private System.Windows.Forms.ComboBox cboTipoPartida;
         private System.Windows.Forms.FlowLayoutPanel flpCapturaBotones;
-        private Guna.UI2.WinForms.Guna2Button btnAgregarPartida;
-        private Guna.UI2.WinForms.Guna2Button btnQuitarPartida;
+        private System.Windows.Forms.Button btnAgregarPartida;
+        private System.Windows.Forms.Button btnQuitarPartida;
         private System.Windows.Forms.TableLayoutPanel tlpTotales;
         private System.Windows.Forms.Label lblTotalDebe;
         private System.Windows.Forms.Label lblTotalHaber;
         private System.Windows.Forms.Label lblDiferencia;
         private System.Windows.Forms.TableLayoutPanel tlpPie;
         private System.Windows.Forms.FlowLayoutPanel flpBotones;
-        private Guna.UI2.WinForms.Guna2Button btnRegistrarAsiento;
-        private Guna.UI2.WinForms.Guna2Button btnNuevoAsiento;
+        private System.Windows.Forms.Button btnRegistrarAsiento;
+        private System.Windows.Forms.Button btnNuevoAsiento;
         private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.TabPage tabHistorial;
         private System.Windows.Forms.TableLayoutPanel tlpHistorial;
         private System.Windows.Forms.TableLayoutPanel tlpHistorialEncabezado;
         private System.Windows.Forms.Label lblHistorialTitulo;
-        private Guna.UI2.WinForms.Guna2Button btnEliminarAsiento;
-        private Guna.UI2.WinForms.Guna2Button btnActualizar;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvAsientos;
+        private System.Windows.Forms.Button btnEliminarAsiento;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridView dgvAsientos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReferencia;
@@ -1106,8 +1071,8 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblReferencia;
         private System.Windows.Forms.Label lblDescripcion;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numNumeroAsiento;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFecha;
+        private System.Windows.Forms.NumericUpDown numNumeroAsiento;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.TextBox txtReferencia;
         private System.Windows.Forms.TextBox txtDescripcion;
     }

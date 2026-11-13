@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
                      ControlStyles.UserPaint | 
                      ControlStyles.OptimizedDoubleBuffer | 
                      ControlStyles.ResizeRedraw, true);
-
             DoubleBuffered = true;
             UpdateStyles();
         }
@@ -61,7 +60,15 @@ namespace WindowsFormsApp1
 
         protected override void OnLoad(EventArgs e)
         {
-            PrepararContenido();
+            try
+            {
+                PrepararContenido();
+            }
+            catch (Exception ex)
+            {
+                ManejadorErrores.Mostrar(ex, "Error al preparar la pantalla");
+            }
+
             base.OnLoad(e);
         }
 

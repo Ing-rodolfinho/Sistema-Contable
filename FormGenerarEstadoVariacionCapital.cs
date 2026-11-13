@@ -117,6 +117,11 @@ namespace WindowsFormsApp1
 
         private void Generar()
         {
+            ManejadorErrores.Ejecutar(GenerarInterno, "Error al generar el Estado de Variación de Capital");
+        }
+
+        private void GenerarInterno()
+        {
             if (cargando || dgvVariacion == null) return;
 
             dgvVariacion.Rows.Clear();
